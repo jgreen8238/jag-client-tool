@@ -13,231 +13,89 @@
   --sub:#5a5a5a;--border:#C8D6ED;
   --lp:#145a32;--ls:#1d6a3d;--ep:#1F3864;--po:#5a3e8a;
   --r:8px;--topbar-h:64px;
-  --pto:#b5451b;--telework:#1a6b3a;--offsite:#5a3e8a;  --condo:#b45309;
+  --pto:#b5451b;--telework:#1a6b3a;--offsite:#5a3e8a;--condo:#b45309;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  font-size:15px;line-height:1.45;color:#1a1a1a;background:#edf1f9;
-  padding-bottom:env(safe-area-inset-bottom,0px);min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.45;color:#1a1a1a;background:#edf1f9;padding-bottom:env(safe-area-inset-bottom,0px);min-height:100vh}
 .js-hidden{display:none!important}
-
-/* ── Topbar ── */
-#topbar{
-  background:var(--navy);
-  padding:0 16px;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-left:calc(16px + env(safe-area-inset-left,0px));
-  padding-right:calc(16px + env(safe-area-inset-right,0px));
-  position:-webkit-sticky;position:sticky;top:0;z-index:300;
-  box-shadow:0 2px 10px rgba(0,0,0,.4);
-  display:flex;align-items:center;gap:10px;
-  height:calc(var(--topbar-h) + env(safe-area-inset-top,0px));
-}
-#backBtn{
-  background:transparent;border:none;color:rgba(255,255,255,.75);
-  font-size:22px;cursor:pointer;padding:4px 8px 4px 0;line-height:1;
-  display:none;align-items:center;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-}
-#backBtn.visible{display:flex}
-#backBtn:active{color:#fff}
+/* TOPBAR */
+#topbar{background:var(--navy);padding:0 16px;padding-top:env(safe-area-inset-top,0px);padding-left:calc(16px + env(safe-area-inset-left,0px));padding-right:calc(16px + env(safe-area-inset-right,0px));position:-webkit-sticky;position:sticky;top:0;z-index:300;box-shadow:0 2px 10px rgba(0,0,0,.4);display:flex;align-items:center;gap:10px;height:calc(var(--topbar-h) + env(safe-area-inset-top,0px))}
+#backBtn{background:transparent;border:none;color:rgba(255,255,255,.75);font-size:22px;cursor:pointer;padding:4px 8px 4px 0;line-height:1;display:none;align-items:center;-webkit-tap-highlight-color:transparent}
+#backBtn.visible{display:flex}#backBtn:active{color:#fff}
 #topbar-titles{flex:1;min-width:0}
 #topbar-title{color:#fff;font-size:16px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #topbar-sub{color:#8da6cf;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-top:1px;display:none}
 #topbar-sub.visible{display:block}
-#printBtn{
-  height:40px;padding:0 14px;
-  background:var(--gold);border:none;border-radius:6px;
-  font-weight:700;font-size:13px;cursor:pointer;color:var(--navy);
-  white-space:nowrap;display:none;align-items:center;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-}
-#printBtn.visible{display:flex}
-#printBtn:active{background:var(--golddark)}
-
-/* ── Pages ── */
-.page{display:none;max-width:900px;margin:0 auto;
-  padding:20px 12px 60px;
-  padding-left:calc(12px + env(safe-area-inset-left,0px));
-  padding-right:calc(12px + env(safe-area-inset-right,0px));}
+#printBtn{height:40px;padding:0 14px;background:var(--gold);border:none;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;color:var(--navy);white-space:nowrap;display:none;align-items:center;-webkit-tap-highlight-color:transparent}
+#printBtn.visible{display:flex}#printBtn:active{background:var(--golddark)}
+/* PAGES */
+.page{display:none;max-width:900px;margin:0 auto;padding:20px 12px 60px;padding-left:calc(12px + env(safe-area-inset-left,0px));padding-right:calc(12px + env(safe-area-inset-right,0px))}
 .page.active{display:block}
-
-/* ── Home ── */
+/* HOME */
 .home-hero{text-align:center;padding:32px 16px 24px}
-.home-hero .firm-badge{
-  display:inline-block;background:var(--navy);color:#8da6cf;
-  font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  padding:5px 14px;border-radius:20px;margin-bottom:16px;
-}
+.home-hero .firm-badge{display:inline-block;background:var(--navy);color:#8da6cf;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
 .home-hero h2{font-size:22px;color:var(--navy);font-weight:800;margin-bottom:6px}
 .home-hero p{color:var(--sub);font-size:13px}
-.nav-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
-@media(max-width:480px){.nav-cards{grid-template-columns:1fr}}
-.nav-card{
-  background:#fff;border:1.5px solid var(--border);border-radius:12px;
-  padding:28px 20px 24px;cursor:pointer;text-align:center;
-  box-shadow:0 2px 8px rgba(31,56,100,.07);
-  transition:transform .12s,box-shadow .12s,border-color .12s;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-  -webkit-appearance:none;appearance:none;
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-}
-.nav-card:active{transform:scale(.97);box-shadow:0 1px 4px rgba(31,56,100,.1)}
+.nav-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:4px}
+.nav-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:28px 20px 24px;cursor:pointer;text-align:center;box-shadow:0 2px 8px rgba(31,56,100,.07);-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform .12s,box-shadow .12s,border-color .12s}
+.nav-card:active{transform:scale(.97)}
 @media(hover:hover){.nav-card:hover{border-color:var(--mid);box-shadow:0 4px 18px rgba(31,56,100,.13);transform:translateY(-2px)}}
-.nav-card .icon{
-  width:56px;height:56px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;
-}
-.icon-ca{background:#e8edf8}
-.icon-ws{background:#e8f3ec}
+.nav-card .icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px}
+.icon-ca{background:#e8edf8}.icon-ws{background:#e8f3ec}.icon-er{background:#fef3e2}
 .nav-card h3{font-size:16px;font-weight:700;color:var(--navy);margin:0}
 .nav-card p{font-size:12px;color:var(--sub);line-height:1.5;margin:0}
-
-/* ── Section heading ── */
-.section-head{
-  background:var(--navy);color:#fff;
-  padding:18px 20px 14px;
-  border-radius:var(--r) var(--r) 0 0;
-}
+/* SECTION HEAD */
+.section-head{background:var(--navy);color:#fff;padding:18px 20px 14px;border-radius:var(--r) var(--r) 0 0}
 .section-head .firm{font-size:10px;letter-spacing:1.5px;color:#8da6cf;text-transform:uppercase;margin-bottom:4px}
 .section-head h2{font-size:18px;margin-bottom:4px}
 .section-head .meta{font-size:12px;color:#afc3e3;line-height:1.6}
-
-/* ── Client Assignments — filter bar ── */
-.ca-filter{
-  background:var(--light);border:1px solid var(--border);border-top:none;
-  padding:10px 14px;display:flex;gap:8px;align-items:stretch;flex-wrap:wrap;
-}
+/* CA */
+.ca-filter{background:var(--light);border:1px solid var(--border);border-top:none;padding:10px 14px;display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
 .sel-wrap{flex:1;min-width:160px;position:relative;display:flex;align-items:stretch}
 .sel-wrap::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
-.ca-filter select{
-  width:100%;height:44px;padding:0 34px 0 12px;
-  border:1.5px solid var(--border);border-radius:6px;
-  font-size:15px;font-weight:600;color:var(--navy);background:#fff;
-  -webkit-appearance:none;appearance:none;cursor:pointer;touch-action:manipulation;
-}
+.ca-filter select{width:100%;height:44px;padding:0 34px 0 12px;border:1.5px solid var(--border);border-radius:6px;font-size:15px;font-weight:600;color:var(--navy);background:#fff;-webkit-appearance:none;appearance:none;cursor:pointer}
 .ca-filter select:focus{outline:2px solid var(--gold);outline-offset:2px}
-.count-bar{
-  background:var(--light);border:1px solid var(--border);border-top:none;
-  padding:9px 16px;font-size:13px;color:var(--navy);font-weight:700;
-}
-.tbl-wrap{
-  border:1px solid var(--border);border-top:none;
-  border-radius:0 0 var(--r) var(--r);
-  overflow:hidden;overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;
-}
+.count-bar{background:var(--light);border:1px solid var(--border);border-top:none;padding:9px 16px;font-size:13px;color:var(--navy);font-weight:700}
+.tbl-wrap{border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);overflow:hidden;overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px}
-thead th{
-  background:var(--mid);color:#fff;padding:0 12px;height:44px;text-align:left;
-  font-size:11px;text-transform:uppercase;letter-spacing:.4px;
-  border-bottom:2px solid #b4c6e7;cursor:pointer;user-select:none;white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-}
+thead th{background:var(--mid);color:#fff;padding:0 12px;height:44px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid #b4c6e7;cursor:pointer;user-select:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 @media(hover:hover){thead th:hover{background:var(--midlt)}}
 .si{margin-left:4px;opacity:.45;font-size:10px}
-th.asc .si::after{content:'▲';opacity:1}
-th.desc .si::after{content:'▼';opacity:1}
-th:not(.asc):not(.desc) .si::after{content:'⇅'}
-tbody tr{border-bottom:1px solid #e4ecf7}
-tbody tr:nth-child(even){background:var(--accent)}
+th.asc .si::after{content:'▲';opacity:1}th.desc .si::after{content:'▼';opacity:1}th:not(.asc):not(.desc) .si::after{content:'⇅'}
+tbody tr{border-bottom:1px solid #e4ecf7}tbody tr:nth-child(even){background:var(--accent)}
 @media(hover:hover){tbody tr:hover{background:#dce9f8}}
 td{padding:10px 12px;vertical-align:top;line-height:1.4}
-.cn{font-weight:700;color:var(--navy)}
-.lp-c{color:var(--lp)}.ls-c{color:var(--ls)}
-.ep-c{color:var(--ep);font-weight:700}.es-c{color:var(--mid)}
-.co{color:var(--sub);font-size:11px}.po{color:var(--po);font-size:11px}
-.dash{color:#bbb}
-.ca-placeholder{
-  text-align:center;color:var(--sub);
-  padding:48px 24px;font-size:15px;font-style:italic;line-height:1.7;
-  background:#fff;border:1px solid var(--border);border-radius:0 0 var(--r) var(--r);
-}
+.cn{font-weight:700;color:var(--navy)}.lp-c{color:var(--lp)}.ls-c{color:var(--ls)}.ep-c{color:var(--ep);font-weight:700}.es-c{color:var(--mid)}.co{color:var(--sub);font-size:11px}.po{color:var(--po);font-size:11px}.dash{color:#bbb}
+.ca-placeholder{text-align:center;color:var(--sub);padding:48px 24px;font-size:15px;font-style:italic;line-height:1.7;background:#fff;border:1px solid var(--border);border-radius:0 0 var(--r) var(--r)}
 .footnote{margin-top:14px;font-size:11px;color:#999;font-style:italic;text-align:center;line-height:1.7;padding:0 4px}
-
-/* Sort pills */
-.sort-bar{
-  background:var(--light);border:1px solid var(--border);border-top:none;
-  padding:7px 14px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;
-}
+.sort-bar{background:var(--light);border:1px solid var(--border);border-top:none;padding:7px 14px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .sort-label{font-size:11px;color:var(--sub);font-weight:600;white-space:nowrap;margin-right:2px}
-.pill{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:5px 12px;height:32px;border-radius:20px;
-  border:1.5px solid var(--border);background:#fff;
-  font-size:12px;font-weight:600;color:var(--navy);cursor:pointer;white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-}
-.pill.active{background:var(--mid);color:#fff;border-color:var(--mid)}
-.pill .arr{font-size:9px;line-height:1}
-
-/* ── Work Status ── */
-.ws-card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:0 0 var(--r) var(--r);
-  padding:24px 20px 28px;
-}
-.notice-banner{
-  background:#fff8e6;border:1.5px solid #e5c44a;border-radius:8px;
-  padding:12px 16px;margin-bottom:22px;
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:13px;color:#7a5500;line-height:1.5;
-}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;height:32px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--navy);cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.pill.active{background:var(--mid);color:#fff;border-color:var(--mid)}.pill .arr{font-size:9px;line-height:1}
+/* WS */
+.ws-card{background:#fff;border:1px solid var(--border);border-radius:0 0 var(--r) var(--r);padding:24px 20px 28px}
+.notice-banner{background:#fff8e6;border:1.5px solid #e5c44a;border-radius:8px;padding:12px 16px;margin-bottom:22px;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#7a5500;line-height:1.5}
 .notice-banner .bell{font-size:18px;flex-shrink:0;margin-top:1px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:560px){.form-grid{grid-template-columns:1fr}}
-.form-field{display:flex;flex-direction:column;gap:5px}
-.form-field.full{grid-column:1/-1}
-.form-field label{
-  font-size:11px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.5px;color:var(--sub);
-}
+.form-field{display:flex;flex-direction:column;gap:5px}.form-field.full{grid-column:1/-1}
+.form-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)}
 .form-field label .req{color:#c0392b;margin-left:2px}
-.form-field input,
-.form-field select,
-.form-field textarea{
-  border:1.5px solid var(--border);border-radius:6px;
-  padding:10px 12px;font-size:14px;color:#1a1a1a;
-  font-family:inherit;background:#fff;
-  -webkit-appearance:none;appearance:none;
-  transition:border-color .15s;
-}
-.form-field select{height:46px;cursor:pointer;padding-right:34px;background-image:none}
-.sel-inner{position:relative}
-.sel-inner::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus{
-  outline:none;border-color:var(--mid);
-  box-shadow:0 0 0 3px rgba(46,84,150,.12);
-}
+.form-field input,.form-field select,.form-field textarea{border:1.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;color:#1a1a1a;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none;transition:border-color .15s}
+.form-field select{height:46px;cursor:pointer;padding-right:34px}
+.sel-inner{position:relative}.sel-inner::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
 .form-field textarea{height:100px;resize:vertical;line-height:1.5}
 .type-pills{display:flex;gap:8px;flex-wrap:wrap}
-.type-pill{
-  flex:1;min-width:100px;height:46px;
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  border:2px solid var(--border);border-radius:8px;
-  font-size:13px;font-weight:700;cursor:pointer;color:#555;
-  background:#fff;-webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;transition:all .15s;
-}
-.type-pill:active{opacity:.8}
-.type-pill.sel-pto{border-color:var(--pto);background:#fff3f0;color:var(--pto)}
-.type-pill.sel-telework{border-color:var(--telework);background:#f0f9f3;color:var(--telework)}
-.type-pill.sel-offsite{border-color:var(--offsite);background:#f5f0ff;color:var(--offsite)}
-.type-pill.sel-condo{border-color:#c0392b!important;background:#c0392b!important;color:#fff!important}
+.type-pill{flex:1;min-width:90px;height:46px;display:flex;align-items:center;justify-content:center;gap:7px;border:2px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;color:#555;background:#fff;-webkit-tap-highlight-color:transparent;transition:all .15s}
 .dot{width:10px;height:10px;border-radius:50%;background:currentColor;flex-shrink:0}
-.ws-submit{
-  margin-top:22px;width:100%;height:50px;
-  background:var(--navy);border:none;border-radius:8px;
-  font-weight:700;font-size:15px;cursor:pointer;color:#fff;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-  transition:background .15s;
-}
-.ws-submit:active{background:var(--mid)}
-@media(hover:hover){.ws-submit:hover{background:var(--mid)}}
-.ws-submit:disabled{background:#b0bfd4;cursor:not-allowed}
+.type-pill.sel-pto{border-color:var(--pto)!important;background:var(--pto)!important;color:#fff!important}
+.type-pill.sel-telework{border-color:var(--telework)!important;background:var(--telework)!important;color:#fff!important}
+.type-pill.sel-offsite{border-color:var(--offsite)!important;background:var(--offsite)!important;color:#fff!important}
+.type-pill.sel-condo{border-color:#c0392b!important;background:#c0392b!important;color:#fff!important}
+.ws-submit{margin-top:22px;width:100%;height:50px;background:var(--navy);border:none;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;color:#fff;transition:background .15s}
+.ws-submit:hover,.ws-submit:active{background:var(--mid)}.ws-submit:disabled{background:#b0bfd4;cursor:not-allowed}
 .ws-note{font-size:11px;color:#888;text-align:center;margin-top:10px;font-style:italic}
 .ws-confirm-step{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
 .ws-confirm-step:last-child{border-bottom:none;padding-bottom:4px}
@@ -245,88 +103,97 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .step-body strong{font-size:14px;color:#1a1a1a;display:block;margin-bottom:3px}
 .step-body span{font-size:12px;color:var(--sub);line-height:1.5;display:block}
 #ws-ics-name{font-size:11px;color:var(--mid);font-family:monospace;margin-top:4px;word-break:break-all;display:block}
-
-/* ── Request Change Modal (CA) ── */
-#modal-overlay{
-  display:none;position:fixed;inset:0;z-index:1000;
-  background:rgba(10,20,45,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
-  align-items:center;justify-content:center;padding:16px;
-  padding-top:calc(16px + env(safe-area-inset-top,0px));
-  padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));
-}
-#modal-overlay.open{display:flex}
-#modal{
-  background:#fff;border-radius:12px;
-  width:100%;max-width:480px;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;
-  animation:modal-in .18s ease;
-}
+/* EXPENSE REPORT */
+.er-fields{background:#fff;border:1px solid var(--border);border-top:none;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.er-fields{grid-template-columns:1fr}}
+.er-field{display:flex;flex-direction:column;gap:4px}
+.er-field label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)}
+.er-field label .req{color:#c0392b;margin-left:2px}
+.er-sel-wrap{position:relative}
+.er-sel-wrap select{width:100%;height:44px;padding:0 34px 0 12px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;color:#1a1a1a;background:#fff;-webkit-appearance:none;appearance:none;cursor:pointer;font-family:inherit}
+.er-sel-wrap select:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
+.er-sel-wrap::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none}
+.er-sec-head{padding:9px 14px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--border);border-top:none}
+.er-sec-head.cc{background:#1a3a6e;color:#fff}
+.er-sec-head.ri{background:#2a4f96;color:#fff}
+.er-sec-head span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.er-sec-head .sec-total{font-size:13px;font-weight:800}
+.exp-outer{overflow-x:auto;border:1px solid var(--border);border-top:none;background:#fff;-webkit-overflow-scrolling:touch}
+.exp-tbl{border-collapse:collapse;font-size:12px;min-width:760px;width:100%}
+.exp-tbl thead th{background:#e4eaf6;color:var(--navy);padding:7px 7px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;border-bottom:1.5px solid var(--border);white-space:nowrap}
+.exp-tbl tbody td{padding:3px 4px;border-bottom:1px solid #edf1f9;vertical-align:middle}
+.exp-tbl tbody tr.exp-row:nth-child(odd){background:#fff}
+.exp-tbl tbody tr.exp-row:nth-child(even){background:var(--accent)}
+.exp-inp{width:100%;border:1px solid transparent;border-radius:4px;padding:5px 6px;font-size:12px;font-family:inherit;background:transparent;color:#1a1a1a}
+.exp-inp:hover{border-color:var(--border);background:#fff}
+.exp-inp:focus{outline:none;border-color:var(--mid);background:#fff;box-shadow:0 0 0 2px rgba(46,84,150,.1)}
+.exp-inp:disabled{color:#bbb;cursor:not-allowed;background:transparent}
+select.exp-inp{height:28px;cursor:pointer;-webkit-appearance:none;appearance:none}
+.exp-tbl .total-row td{background:var(--light);font-weight:700;font-size:12px;color:var(--navy);padding:7px 7px;border-top:1.5px solid var(--border)}
+.add-row-btn{width:100%;padding:8px;background:#fff;border:1px dashed var(--border);border-top:none;color:var(--mid);font-size:12px;font-weight:600;cursor:pointer;text-align:center}
+.add-row-btn:hover{background:var(--accent);border-color:var(--mid)}
+.cam-btn{width:28px;height:28px;background:var(--telework);color:#fff;border:none;border-radius:4px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;margin:0 auto;-webkit-tap-highlight-color:transparent}
+.cam-btn:active{opacity:.8}.cam-btn:disabled{opacity:.6;cursor:wait}
+.del-btn{background:transparent;color:#c0392b;border:none;font-size:15px;cursor:pointer;padding:2px 6px;line-height:1}
+.tc{text-align:center;width:34px;padding:3px 2px!important}
+.er-grand{background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);padding:12px 18px;display:flex;justify-content:flex-end;align-items:center;gap:14px}
+.er-grand .gt-label{font-size:13px;color:var(--sub);font-weight:600}
+.er-grand .gt-val{font-size:22px;font-weight:800;color:var(--navy)}
+.er-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.er-btn{flex:1;height:48px;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;min-width:140px;-webkit-tap-highlight-color:transparent}
+.er-btn-dl{background:var(--gold);color:var(--navy)}.er-btn-dl:active{background:var(--golddark)}
+.er-btn-send{background:var(--navy);color:#fff}.er-btn-send:hover,.er-btn-send:active{background:var(--mid)}
+.er-btn:disabled{opacity:.4;cursor:not-allowed}
+/* MODALS */
+#modal-overlay,#ws-modal-overlay,#er-modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,20,45,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+#modal-overlay.open,#ws-modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:12px;width:100%;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;animation:modal-in .18s ease}
 @keyframes modal-in{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .modal-head{background:var(--navy);color:#fff;padding:18px 20px 14px}
-.modal-head h3{font-size:15px;font-weight:700;margin-bottom:2px}
-.modal-head p{font-size:12px;color:#afc3e3;line-height:1.5}
+.modal-head h3{font-size:15px;font-weight:700;margin-bottom:2px}.modal-head p{font-size:12px;color:#afc3e3;line-height:1.5}
 .modal-body{padding:20px}
 .modal-field{margin-bottom:16px}
 .modal-field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub);margin-bottom:5px}
-.modal-field select,.modal-field textarea{
-  width:100%;border:1.5px solid var(--border);border-radius:6px;
-  padding:10px 12px;font-size:14px;color:#1a1a1a;
-  font-family:inherit;background:#fff;
-  -webkit-appearance:none;appearance:none;transition:border-color .15s;
-}
-.modal-field select{height:44px;cursor:pointer}
+.modal-field select,.modal-field textarea{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;color:#1a1a1a;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none}
+.modal-field select{height:44px;cursor:pointer}.modal-field textarea{height:110px;resize:vertical;line-height:1.5}
 .modal-field select:focus,.modal-field textarea:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
-.modal-field textarea{height:110px;resize:vertical;line-height:1.5}
-.modal-field .sel-wrap-inner{position:relative}
-.modal-field .sel-wrap-inner::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
+.modal-field .sel-wrap-inner{position:relative}.modal-field .sel-wrap-inner::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
 .modal-note{font-size:11px;color:#888;margin-top:-10px;margin-bottom:16px;font-style:italic;line-height:1.5}
-.modal-actions{display:flex;gap:10px;justify-content:flex-end;padding:0 20px 20px}
-.btn-cancel{height:42px;padding:0 18px;background:transparent;border:1.5px solid var(--border);border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;color:var(--sub);-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;padding:0 20px 20px;flex-wrap:wrap}
+.btn-cancel{height:42px;padding:0 18px;background:transparent;border:1.5px solid var(--border);border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;color:var(--sub)}
 .btn-cancel:active{background:#f5f5f5}
-.btn-send{height:42px;padding:0 20px;background:var(--navy);border:none;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;color:#fff;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.btn-send:active{background:var(--mid)}
-@media(hover:hover){.btn-send:hover{background:var(--mid)}}
-.btn-send:disabled{background:#b0bfd4;cursor:not-allowed}
-
-/* ── Mobile cards for CA table ── */
+.btn-send{height:42px;padding:0 20px;background:var(--navy);border:none;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;color:#fff}
+.btn-send:hover,.btn-send:active{background:var(--mid)}.btn-send:disabled{background:#b0bfd4;cursor:not-allowed}
+.btn-send-green{height:42px;padding:0 20px;background:var(--telework);border:none;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;color:#fff}
+.btn-send-green:hover,.btn-send-green:active{background:#145a32}
+/* Mobile CA cards */
 @media(max-width:599px){
   .tbl-wrap{overflow:visible;background:transparent;border:none}
-  table{display:block!important;min-width:unset}
-  thead{display:none!important}
+  table{display:block!important;min-width:unset}thead{display:none!important}
   tbody{display:flex!important;flex-direction:column;gap:10px}
   tbody tr{display:flex!important;flex-direction:column;background:#fff!important;border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
   tbody tr:nth-child(even){background:#fff!important}
-  td{display:block!important;padding:0;border:none;line-height:1.5}
-  td+td{margin-top:6px}
+  td{display:block!important;padding:0;border:none;line-height:1.5}td+td{margin-top:6px}
   td[data-label]::before{content:attr(data-label);display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--sub);margin-bottom:1px}
-  td.cn{font-size:16px;padding-bottom:8px!important;border-bottom:1px solid var(--border);margin-bottom:2px}
-  td.cn::before{display:none}
-  td.co,td.po{font-size:13px}
-  .count-bar{border-radius:var(--r) var(--r) 0 0;border:1px solid var(--border)}
-  .tbl-wrap{border-radius:0}
+  td.cn{font-size:16px;padding-bottom:8px!important;border-bottom:1px solid var(--border);margin-bottom:2px}td.cn::before{display:none}
+  .count-bar{border-radius:var(--r) var(--r) 0 0;border:1px solid var(--border)}.tbl-wrap{border-radius:0}
 }
-
 @media print{
-  #modal-overlay,.pill,#changeBtn,#backBtn{display:none!important}
-  .page{padding:0!important;max-width:100%}
-  .section-head{border-radius:0!important}
+  #modal-overlay,#ws-modal-overlay,#er-modal-overlay,.pill,#changeBtn,#backBtn{display:none!important}
+  .page{padding:0!important;max-width:100%}.section-head{border-radius:0!important}
   .tbl-wrap{overflow:visible;border-radius:0;background:#fff}
-  table{display:table!important;min-width:unset;width:100%}
-  thead{display:table-header-group!important}
-  tbody{display:table-row-group!important}
+  table{display:table!important;min-width:unset;width:100%}thead{display:table-header-group!important}tbody{display:table-row-group!important}
   tbody tr{display:table-row!important;background:#fff!important;border:none;box-shadow:none;border-bottom:1px solid #ddd!important}
   tbody tr:nth-child(even){background:#f5f8ff!important}
-  td{display:table-cell!important;padding:6px 9px!important;border:none;margin:0}
-  td[data-label]::before{display:none}
-  td.cn{font-size:11px;padding-bottom:6px!important;border-bottom:none!important}
+  td{display:table-cell!important;padding:6px 9px!important;border:none;margin:0}td[data-label]::before{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ── Topbar ── -->
+<!-- TOPBAR -->
 <div id="topbar">
-  <button id="backBtn" onclick="goHome()" aria-label="Back to home">&#8592;</button>
+  <button id="backBtn" onclick="goHome()" aria-label="Back">&#8592;</button>
   <div id="topbar-titles">
     <div id="topbar-title">J.A. Green &amp; Company — Staff Portal</div>
     <div id="topbar-sub"></div>
@@ -334,7 +201,7 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
   <button id="printBtn" onclick="window.print()">Print&nbsp;/&nbsp;PDF</button>
 </div>
 
-<!-- ══════════════ HOME PAGE ══════════════ -->
+<!-- HOME -->
 <div id="page-home" class="page active">
   <div class="home-hero">
     <div class="firm-badge">J.A. Green &amp; Company &nbsp;·&nbsp; Confidential</div>
@@ -342,20 +209,25 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
     <p>Select a module below to get started.</p>
   </div>
   <div class="nav-cards">
-    <button class="nav-card" onclick="goTo('ca')" aria-label="Client Assignments">
+    <button class="nav-card" onclick="goTo('ca')">
       <div class="icon icon-ca">📋</div>
       <h3>Client Assignments</h3>
       <p>View staffing assignments, positions, and policy leads across the client portfolio.</p>
     </button>
-    <button class="nav-card" onclick="goTo('ws')" aria-label="Work Status">
+    <button class="nav-card" onclick="goTo('ws')">
       <div class="icon icon-ws">📅</div>
       <h3>Work Status</h3>
-      <p>Submit PTO, Telework, or Offsite requests for review by JAG administration.</p>
+      <p>Submit PTO, Telework, Offsite, or Condo requests for JAG administration review.</p>
+    </button>
+    <button class="nav-card" onclick="goTo('er')">
+      <div class="icon icon-er">💳</div>
+      <h3>Expense Report</h3>
+      <p>Submit monthly credit card and reimbursement expenses. Scan receipts with your phone camera.</p>
     </button>
   </div>
 </div>
 
-<!-- ══════════════ CLIENT ASSIGNMENTS ══════════════ -->
+<!-- CLIENT ASSIGNMENTS -->
 <div id="page-ca" class="page">
   <div class="section-head">
     <div class="firm">J.A. Green &amp; Company &nbsp;·&nbsp; Confidential</div>
@@ -364,68 +236,46 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
   </div>
   <div class="ca-filter">
     <div class="sel-wrap">
-      <select id="staffSel" aria-label="Select staff member">
+      <select id="staffSel">
         <option value="">— Select a staff member —</option>
         <optgroup label="EVPs — Defense Programs">
-          <option value="Paul Ostrowski">Paul Ostrowski</option>
-          <option value="Eric Hill">Eric Hill</option>
-          <option value="Chip Rock">Chip Rock</option>
-          <option value="Karsten Heckl">Karsten Heckl</option>
-          <option value="Steven Basham">Steven Basham</option>
-          <option value="Steven Edwards">Steven Edwards</option>
-          <option value="Bill Hepworth">Bill Hepworth</option>
-          <option value="Karl Gingrich">Karl Gingrich</option>
+          <option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option>
+          <option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option>
+          <option>Bill Hepworth</option><option>Karl Gingrich</option>
         </optgroup>
         <optgroup label="Lobbyists">
-          <option value="Ryan Caldwell">Ryan Caldwell</option>
-          <option value="Shannon Green">Shannon Green</option>
-          <option value="Leonor Tomero">Leonor Tomero</option>
-          <option value="Kris Dellapina">Kris Dellapina</option>
-          <option value="Ike Blanton">Ike Blanton</option>
-          <option value="Jackson Cartwright">Jackson Cartwright</option>
-          <option value="Ryan Altman">Ryan Altman</option>
-          <option value="Geno Autrey">Geno Autrey</option>
+          <option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option>
+          <option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option>
+          <option>Ryan Altman</option><option>Geno Autrey</option>
         </optgroup>
         <optgroup label="Policy Staff">
-          <option value="Neha Shridhar">Neha Shridhar</option>
-          <option value="Aaron Onoff">Aaron Onoff</option>
-          <option value="Garrett Richards">Garrett Richards</option>
-          <option value="Michael Kaether">Michael Kaether</option>
-          <option value="Samuel Viskocil">Samuel Viskocil</option>
-          <option value="Bradley Jones">Bradley Jones</option>
-          <option value="Will Burgland">Will Burgland</option>
-          <option value="Kendal Walker">Kendal Walker</option>
+          <option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option>
+          <option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option>
+          <option>Will Burgland</option><option>Kendal Walker</option>
         </optgroup>
       </select>
     </div>
-    <button id="changeBtn" style="display:none;height:44px;padding:0 16px;background:transparent;border:1.5px solid var(--border);border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;color:var(--mid);white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation" onclick="openModal()">✏️ Request Change</button>
+    <button id="changeBtn" style="display:none;height:44px;padding:0 16px;background:transparent;border:1.5px solid var(--border);border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;color:var(--mid);white-space:nowrap" onclick="openModal()">✏️ Request Change</button>
   </div>
   <div id="ca-sort-bar" class="sort-bar js-hidden"></div>
   <div id="ca-count-bar" class="count-bar js-hidden"></div>
   <div id="ca-placeholder" class="ca-placeholder">Select a staff member above to view their client assignments.</div>
   <div id="ca-tbl-wrap" class="tbl-wrap js-hidden">
-    <table id="rpt-table">
-      <thead id="rpt-thead"></thead>
-      <tbody id="rpt-tbody"></tbody>
-    </table>
+    <table id="rpt-table"><thead id="rpt-thead"></thead><tbody id="rpt-tbody"></tbody></table>
   </div>
   <p class="footnote">This document reflects current client assignments and is intended for internal review. Please contact Jeff Green with any questions or corrections.</p>
 </div>
 
-<!-- ══════════════ WORK STATUS ══════════════ -->
+<!-- WORK STATUS -->
 <div id="page-ws" class="page">
   <div class="section-head">
     <div class="firm">J.A. Green &amp; Company &nbsp;·&nbsp; Confidential</div>
     <h2>Work Status Request</h2>
-    <div class="meta">PTO · Telework · Offsite &nbsp;—&nbsp; Requests sent to JAG Administration</div>
+    <div class="meta">PTO · Telework · Offsite · Condo Request — Requests sent to JAG Administration</div>
   </div>
   <div class="ws-card">
-    <div class="notice-banner">
-      <span class="bell">🔔</span>
-      <div><strong>24-Hour Advance Notice Required.</strong> All work status requests must be submitted at least 24 hours before the requested date. Last-minute requests may not be approved.</div>
-    </div>
+    <div class="notice-banner"><span class="bell">🔔</span><div><strong>24-Hour Advance Notice Required.</strong> All requests must be submitted at least 24 hours before the requested date.</div></div>
     <div class="form-grid">
-
       <div class="form-field full">
         <label>Staff Member <span class="req">*</span></label>
         <div class="sel-inner">
@@ -447,13 +297,10 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
               <option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option>
               <option>Will Burgland</option><option>Kendal Walker</option>
             </optgroup>
-            <optgroup label="Operations">
-              <option value="Jennifer Fay">Jennifer Fay</option>
-            </optgroup>
+            <optgroup label="Operations"><option value="Jennifer Fay">Jennifer Fay</option></optgroup>
           </select>
         </div>
       </div>
-
       <div class="form-field full">
         <label>Request Type <span class="req">*</span></label>
         <div class="type-pills">
@@ -463,60 +310,133 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
           <button type="button" class="type-pill" id="pill-condo" onclick="selectType('Condo Request')"><span class="dot"></span>Condo Request</button>
         </div>
       </div>
-
-      <div class="form-field">
-        <label>Start Date <span class="req">*</span></label>
-        <input type="date" id="ws-start">
-      </div>
-
-      <div class="form-field">
-        <label>End Date <span style="color:#888;font-weight:400;font-size:10px">(if multi-day)</span></label>
-        <input type="date" id="ws-end">
-      </div>
-
+      <div class="form-field"><label>Start Date <span class="req">*</span></label><input type="date" id="ws-start"></div>
+      <div class="form-field"><label>End Date <span style="color:#888;font-weight:400;font-size:10px">(if multi-day)</span></label><input type="date" id="ws-end"></div>
       <div class="form-field" id="ws-hours-field">
         <label>Total Hours <span class="req" id="ws-hours-req">*</span></label>
         <input type="text" id="ws-hours" placeholder="e.g. 8">
       </div>
-
-      <div class="form-field full">
-        <label>Comments <span style="color:#888;font-weight:400;font-size:10px">(optional)</span></label>
-        <textarea id="ws-comments" placeholder="Add any relevant context, project details, or special instructions…"></textarea>
-      </div>
-
+      <div class="form-field full"><label>Comments <span style="color:#888;font-weight:400;font-size:10px">(optional)</span></label><textarea id="ws-comments" placeholder="Add any relevant context…"></textarea></div>
     </div>
     <button class="ws-submit" id="ws-submit" onclick="submitWS()" disabled>Submit Request →</button>
-    <p class="ws-note">Submitting will open your email client with a pre-filled request addressed to jagadmin@jagreenco.com.</p>
+    <p class="ws-note">Submitting downloads a calendar invite and opens a pre-filled email to JAG Administration.</p>
   </div>
 </div>
 
-<!-- ── Request Change Modal ── -->
-<div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div id="modal">
-    <div class="modal-head">
-      <h3 id="modal-title">Request a Staffing Change</h3>
-      <p>Your request will be sent to Jeff Green for review.</p>
+<!-- EXPENSE REPORT -->
+<div id="page-er" class="page">
+  <div class="section-head">
+    <div class="firm">J.A. Green &amp; Company &nbsp;·&nbsp; Confidential</div>
+    <h2>Monthly Expense Report</h2>
+    <div class="meta">JAG Credit Card &amp; Reimbursements — Submitted to JAG Administration</div>
+  </div>
+  <div class="er-fields">
+    <div class="er-field">
+      <label>Staff Member <span class="req">*</span></label>
+      <div class="er-sel-wrap">
+        <select id="er-name" onchange="validateER()">
+          <option value="">— Select your name —</option>
+          <option value="Jeff Green">Jeff Green</option>
+          <optgroup label="EVPs — Defense Programs">
+            <option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option>
+            <option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option>
+            <option>Bill Hepworth</option><option>Karl Gingrich</option>
+          </optgroup>
+          <optgroup label="Lobbyists">
+            <option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option>
+            <option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option>
+            <option>Ryan Altman</option><option>Geno Autrey</option>
+          </optgroup>
+          <optgroup label="Policy Staff">
+            <option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option>
+            <option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option>
+            <option>Will Burgland</option><option>Kendal Walker</option>
+          </optgroup>
+          <optgroup label="Operations"><option value="Jennifer Fay">Jennifer Fay</option></optgroup>
+        </select>
+      </div>
     </div>
+    <div class="er-field">
+      <label>Billing Period <span class="req">*</span></label>
+      <div class="er-sel-wrap"><select id="er-month" onchange="validateER()"><option value="">— Select period —</option></select></div>
+    </div>
+  </div>
+
+  <!-- CC Section -->
+  <div class="er-sec-head cc">
+    <span>💳 JAG Credit Card</span>
+    <span class="sec-total" id="cc-total-head">Total: $0.00</span>
+  </div>
+  <div class="exp-outer">
+    <table class="exp-tbl">
+      <thead><tr>
+        <th class="tc">📷</th>
+        <th style="min-width:108px">Date</th>
+        <th style="min-width:138px">Vendor / Place</th>
+        <th style="min-width:158px">Biz Purpose / Meeting</th>
+        <th style="min-width:78px">Billable?</th>
+        <th style="min-width:148px">Client, if Billable</th>
+        <th style="min-width:82px">Amount ($)</th>
+        <th style="min-width:120px">Notes</th>
+        <th class="tc"></th>
+      </tr></thead>
+      <tbody id="cc-tbody">
+        <tr class="total-row">
+          <td colspan="6" style="text-align:right">Credit Card Total</td>
+          <td id="cc-total">$0.00</td><td colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="add-row-btn" onclick="addRow('cc-tbody')">＋ Add Credit Card Row</button>
+
+  <!-- Reimbursements Section -->
+  <div class="er-sec-head ri" style="margin-top:18px">
+    <span>🧾 Reimbursements</span>
+    <span class="sec-total" id="r-total-head">Total: $0.00</span>
+  </div>
+  <div class="exp-outer">
+    <table class="exp-tbl">
+      <thead><tr>
+        <th class="tc">📷</th>
+        <th style="min-width:108px">Date</th>
+        <th style="min-width:138px">Vendor / Place</th>
+        <th style="min-width:158px">Biz Purpose / Meeting</th>
+        <th style="min-width:78px">Billable?</th>
+        <th style="min-width:148px">Client, if Billable</th>
+        <th style="min-width:82px">Amount ($)</th>
+        <th style="min-width:120px">Notes</th>
+        <th class="tc"></th>
+      </tr></thead>
+      <tbody id="r-tbody">
+        <tr class="total-row">
+          <td colspan="6" style="text-align:right">Reimbursement Total</td>
+          <td id="r-total">$0.00</td><td colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="add-row-btn" onclick="addRow('r-tbody')">＋ Add Reimbursement Row</button>
+
+  <div class="er-grand">
+    <span class="gt-label">Grand Total:</span>
+    <span class="gt-val" id="er-grand-total">$0.00</span>
+  </div>
+  <div class="er-actions">
+    <button class="er-btn er-btn-dl" id="er-btn-dl" onclick="exportExcel()" disabled>⬇ Download Excel</button>
+    <button class="er-btn er-btn-send" id="er-submit" onclick="submitER()" disabled>Send Report →</button>
+  </div>
+</div>
+
+<!-- CA Modal -->
+<div id="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-head"><h3>Request a Staffing Change</h3><p>Your request will be sent to Jeff Green for review.</p></div>
     <div class="modal-body">
-      <div class="modal-field">
-        <label>Staff Member</label>
-        <div class="sel-wrap-inner">
-          <select id="modal-staff" disabled></select>
-        </div>
-      </div>
-      <div class="modal-field">
-        <label>Client (optional)</label>
-        <div class="sel-wrap-inner">
-          <select id="modal-client">
-            <option value="">-- All clients / General request --</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-field">
-        <label>Describe the requested change <span style="color:#c0392b">*</span></label>
-        <textarea id="modal-notes" placeholder="Describe the change you are requesting…"></textarea>
-      </div>
-      <p class="modal-note">Submitting will open your email client with a pre-filled message addressed to jeff@jagreenco.com.</p>
+      <div class="modal-field"><label>Staff Member</label><div class="sel-wrap-inner"><select id="modal-staff" disabled></select></div></div>
+      <div class="modal-field"><label>Client (optional)</label><div class="sel-wrap-inner"><select id="modal-client"><option value="">-- All clients / General request --</option></select></div></div>
+      <div class="modal-field"><label>Describe the requested change <span style="color:#c0392b">*</span></label><textarea id="modal-notes" placeholder="Describe the change…"></textarea></div>
+      <p class="modal-note">Submitting will open your email client with a pre-filled message to jeff@jagreenco.com.</p>
     </div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Cancel</button>
@@ -525,63 +445,58 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
   </div>
 </div>
 
-<!-- ── WS Confirm Modal ── -->
-<div id="ws-modal-overlay" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,20,45,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))" role="dialog" aria-modal="true">
-  <div style="background:#fff;border-radius:12px;width:100%;max-width:460px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;animation:modal-in .18s ease">
-    <div class="modal-head" style="background:var(--navy)">
-      <h3>📅 Request Ready to Send</h3>
-      <p>Your calendar invite (.ics) has been downloaded. Follow the steps below before sending.</p>
-    </div>
+<!-- WS Confirm Modal -->
+<div id="ws-modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-head"><h3>📅 Request Ready to Send</h3><p>Your calendar invite (.ics) has been downloaded.</p></div>
     <div class="modal-body">
-      <div class="ws-confirm-step">
-        <span class="step-icon">✅</span>
-        <div class="step-body">
-          <strong>Calendar invite downloaded</strong>
-          <span id="ws-ics-name"></span>
-          <span>Attach it from your <strong>Downloads</strong> folder when you open the email draft.</span>
-        </div>
-      </div>
-      <div class="ws-confirm-step">
-        <span class="step-icon">📅</span>
-        <div class="step-body">
-          <strong>Add directly to Outlook Calendar</strong>
-          <span>Opens a pre-filled event in Outlook Web — just click Save.</span>
-        </div>
-      </div>
-      <div class="ws-confirm-step">
-        <span class="step-icon">📧</span>
-        <div class="step-body">
-          <strong>Send the request email</strong>
-          <span>Opens a pre-filled draft to JAG Administration.</span>
-        </div>
-      </div>
+      <div class="ws-confirm-step"><span class="step-icon">✅</span><div class="step-body"><strong>Calendar invite downloaded</strong><span id="ws-ics-name"></span><span>Find it in your Downloads folder and attach to the email.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">📅</span><div class="step-body"><strong>Add directly to Outlook Calendar</strong><span>Opens a pre-filled event in Outlook Web — click Save.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">📧</span><div class="step-body"><strong>Send the request email</strong><span>Opens a pre-filled draft to JAG Administration.</span></div></div>
     </div>
-    <div class="modal-actions" style="flex-wrap:wrap;gap:8px">
+    <div class="modal-actions">
       <button class="btn-cancel" id="ws-modal-close">Cancel</button>
-      <button class="btn-send" id="ws-modal-cal" style="background:var(--telework)">Add to Outlook &rarr;</button>
+      <button class="btn-send-green" id="ws-modal-cal">Add to Outlook &rarr;</button>
       <button class="btn-send" id="ws-modal-open">Email Draft &rarr;</button>
     </div>
   </div>
 </div>
 
+<!-- ER Confirm Modal -->
+<div id="er-modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-head"><h3>📊 Expense Report Ready</h3><p>Your Excel file has been downloaded. Complete the steps below to send.</p></div>
+    <div class="modal-body">
+      <div class="ws-confirm-step"><span class="step-icon">✅</span><div class="step-body"><strong>Excel file downloaded</strong><span id="er-fname-display" style="font-size:11px;color:var(--mid);font-family:monospace;margin-top:4px;word-break:break-all;display:block"></span><span>Find it in your <strong>Downloads</strong> folder.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">📎</span><div class="step-body"><strong>Attach the Excel file to your email</strong><span>When Outlook opens, attach the .xlsx before hitting Send.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">📧</span><div class="step-body"><strong>Send to JAG Administration</strong><span>Pre-filled with your full expense summary.</span></div></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="er-modal-close">Cancel</button>
+      <button class="btn-send" id="er-modal-open">Open Email Draft &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-/* ═══════ DATA ═══════ */
-const D = {"staffType":{"Paul Ostrowski":"evp","Eric Hill":"evp","Chip Rock":"evp","Karsten Heckl":"evp","Steven Basham":"evp","Steven Edwards":"evp","Bill Hepworth":"evp","Karl Gingrich":"evp","Ryan Caldwell":"lobbyist","Shannon Green":"lobbyist","Leonor Tomero":"lobbyist","Kris Dellapina":"lobbyist","Ike Blanton":"lobbyist","Jackson Cartwright":"lobbyist","Ryan Altman":"lobbyist","Geno Autrey":"lobbyist","Neha Shridhar":"policy","Aaron Onoff":"policy","Garrett Richards":"policy","Michael Kaether":"policy","Samuel Viskocil":"policy","Bradley Jones":"policy","Will Burgland":"policy","Kendal Walker":"policy"},"evpLob":[{"staff":"Jackson Cartwright","client":"Titan AES","position":"Lobbyist Primary","coassigned":"","policy":""},{"staff":"Shannon Green","client":"Albion Platform","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Steven Basham","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"Albion Platform","position":"Lobbyist Secondary","coassigned":"Shannon Green; Steven Basham","policy":"Bradley Jones"},{"staff":"Steven Basham","client":"Albion Platform","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Argo Space","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Eric Hill","client":"Assured Space","position":"Defense Programs Primary","coassigned":"Paul Ostrowski","policy":"Bradley Jones"},{"staff":"Paul Ostrowski","client":"Assured Space","position":"Defense Programs Secondary","coassigned":"Eric Hill","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Avio USA","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Kris Dellapina","client":"Cross Domain Systems","position":"Lobbyist Primary","coassigned":"Geno Autrey; Steven Edwards","policy":"Bradley Jones"},{"staff":"Geno Autrey","client":"Cross Domain Systems","position":"Lobbyist Secondary","coassigned":"Kris Dellapina; Steven Edwards","policy":"Bradley Jones"},{"staff":"Steven Edwards","client":"Cross Domain Systems","position":"Defense Programs Primary","coassigned":"Kris Dellapina; Geno Autrey","policy":"Bradley Jones"},{"staff":"Shannon Green","client":"IDS","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Karl Gingrich; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"IDS","position":"Lobbyist Secondary","coassigned":"Shannon Green; Karl Gingrich; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Karl Gingrich","client":"IDS","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Bill Hepworth","client":"IDS","position":"Defense Programs Secondary","coassigned":"Shannon Green; Jackson Cartwright; Karl Gingrich","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Outpost Space","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"Outpost Space","position":"Lobbyist Secondary","coassigned":"Leonor Tomero","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"SpaceX","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"SpaceX","position":"Lobbyist Secondary","coassigned":"Leonor Tomero","policy":"Bradley Jones"},{"staff":"Kris Dellapina","client":"WPRC","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Karsten Heckl","client":"Aimpoint USA","position":"Lobbyist Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Karsten Heckl","client":"Aimpoint USA","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Eric Hill","client":"Digital Force Tech","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"GallatinAI","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Maytag Aircraft","position":"Lobbyist Primary","coassigned":"Steven Basham","policy":"Michael Kaether"},{"staff":"Steven Basham","client":"Maytag Aircraft","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Steven Basham","client":"Powerlight","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Leonor Tomero","client":"StemRad","position":"Lobbyist Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Striveworks","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Michael Kaether"},{"staff":"Paul Ostrowski","client":"Striveworks","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"Veritone","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"World Fuel","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Michael Kaether"},{"staff":"Chip Rock","client":"World Fuel","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"Zscaler","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Acalvio","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Kendal Walker"},{"staff":"Bill Hepworth","client":"Acalvio","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Kendal Walker"},{"staff":"Geno Autrey","client":"ACMI","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Steven Edwards","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"ACMI","position":"Lobbyist Secondary","coassigned":"Geno Autrey; Steven Edwards","policy":"Neha Shridhar"},{"staff":"Steven Edwards","client":"ACMI","position":"Defense Programs Primary","coassigned":"Geno Autrey; Jackson Cartwright","policy":"Neha Shridhar"},{"staff":"Eric Hill","client":"Adyton","position":"Defense Programs Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Ike Blanton","client":"Allocore","position":"Defense Programs Primary","coassigned":"","policy":"Aaron Onoff"},{"staff":"Karsten Heckl","client":"ARC","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Aaron Onoff"},{"staff":"Paul Ostrowski","client":"ARC","position":"Defense Programs Primary","coassigned":"Karsten Heckl","policy":"Aaron Onoff"},{"staff":"Chip Rock","client":"Ashland Foundry","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"Atlas Energy","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Aaron Onoff"},{"staff":"Chip Rock","client":"Atlas Energy","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Aaron Onoff"},{"staff":"Shannon Green","client":"CACI","position":"Lobbyist Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Bill Hepworth","client":"Dell / Carahsoft","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Shannon Green","client":"GelSight","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Paul Ostrowski","client":"GelSight","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Global Foundries","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ryan Caldwell","client":"Global Foundries","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Global Foundries","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"IBM / Hashi","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Kendal Walker"},{"staff":"Bill Hepworth","client":"IBM / Hashi","position":"Defense Programs Primary","coassigned":"Jackson Cartwright","policy":"Kendal Walker"},{"staff":"Geno Autrey","client":"Longwall","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Kendal Walker"},{"staff":"Paul Ostrowski","client":"Longwall","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Kendal Walker"},{"staff":"Leonor Tomero","client":"Lynx","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Kendal Walker"},{"staff":"Eric Hill","client":"Lynx","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Kendal Walker"},{"staff":"Ryan Altman","client":"MTSI","position":"Lobbyist Primary","coassigned":"","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"Nathan Trotter","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Nathan Trotter","position":"Lobbyist Secondary","coassigned":"Kris Dellapina","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"NobelClad","position":"Lobbyist Primary","coassigned":"Ryan Caldwell; Chip Rock","policy":"Kendal Walker"},{"staff":"Ryan Caldwell","client":"NobelClad","position":"Lobbyist Secondary","coassigned":"Kris Dellapina; Chip Rock","policy":"Kendal Walker"},{"staff":"Chip Rock","client":"NobelClad","position":"Defense Programs Primary","coassigned":"Kris Dellapina; Ryan Caldwell","policy":"Kendal Walker"},{"staff":"Leonor Tomero","client":"Oura","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Eric Hill; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"Oura","position":"Lobbyist Secondary","coassigned":"Leonor Tomero; Eric Hill; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Eric Hill","client":"Oura","position":"Defense Programs Primary","coassigned":"Leonor Tomero; Jackson Cartwright; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Paul Ostrowski","client":"Oura","position":"Defense Programs Secondary","coassigned":"Leonor Tomero; Jackson Cartwright; Eric Hill","policy":"Neha Shridhar"},{"staff":"Leonor Tomero","client":"Palantir","position":"Lobbyist Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Shannon Green","client":"Sayari","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Ike Blanton","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"Sayari","position":"Lobbyist Secondary","coassigned":"Shannon Green; Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Sayari","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"Senergy Power Solutions","position":"Lobbyist Primary","coassigned":"Steven Edwards","policy":"Aaron Onoff"},{"staff":"Steven Edwards","client":"Senergy Power Solutions","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Aaron Onoff"},{"staff":"Karsten Heckl","client":"Shield AI","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Eric Hill","policy":"Kendal Walker"},{"staff":"Jackson Cartwright","client":"Shield AI","position":"Lobbyist Secondary","coassigned":"Karsten Heckl; Eric Hill","policy":"Kendal Walker"},{"staff":"Eric Hill","client":"Shield AI","position":"Defense Programs Primary","coassigned":"Karsten Heckl; Jackson Cartwright","policy":"Kendal Walker"},{"staff":"Kris Dellapina","client":"Teamworks","position":"Lobbyist Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"TTM","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ryan Caldwell","client":"TTM","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"TTM","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Ucore","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Ucore","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Aaron Onoff"},{"staff":"Ike Blanton","client":"Umicore","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Umicore","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"US Ordnance","position":"Lobbyist Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Chip Rock","client":"Wellman Dynamics","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"ARD","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Will Burgland"},{"staff":"Jackson Cartwright","client":"ARD","position":"Lobbyist Secondary","coassigned":"Geno Autrey","policy":"Will Burgland"},{"staff":"Leonor Tomero","client":"BioFlyte","position":"Lobbyist Primary","coassigned":"Steven Basham","policy":"Will Burgland"},{"staff":"Steven Basham","client":"BioFlyte","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Will Burgland"},{"staff":"Chip Rock","client":"Gecko","position":"Defense Programs Primary","coassigned":"","policy":"Will Burgland"},{"staff":"Kris Dellapina","client":"Grid Aero","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Will Burgland"},{"staff":"Eric Hill","client":"Grid Aero","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Will Burgland"},{"staff":"Steven Edwards","client":"Hanjin","position":"Defense Programs Primary","coassigned":"","policy":"Will Burgland"},{"staff":"Karsten Heckl","client":"Secturion","position":"Defense Programs Primary","coassigned":"Bill Hepworth","policy":"Will Burgland"},{"staff":"Bill Hepworth","client":"Secturion","position":"Defense Programs Secondary","coassigned":"Karsten Heckl","policy":"Will Burgland"},{"staff":"Ike Blanton","client":"6K Additive","position":"Lobbyist Primary","coassigned":"","policy":"Samuel Viskocil"},{"staff":"Ryan Altman","client":"Arktos","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Samuel Viskocil"},{"staff":"Paul Ostrowski","client":"Arktos","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"GAM","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"GAM","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"GTP","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"GTP","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Magnetic Holdings","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Magnetic Holdings","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ryan Altman","client":"MAIA","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"MAIA","position":"Lobbyist Secondary","coassigned":"Ryan Altman","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Materion","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Materion","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"MP Materials","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"MP Materials","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Noveon","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Noveon","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Resin Solutions","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Resin Solutions","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Resin Solutions","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Geno Autrey","client":"Seurat","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Samuel Viskocil"},{"staff":"Paul Ostrowski","client":"Seurat","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Samuel Viskocil"},{"staff":"Steven Edwards","client":"South8","position":"Defense Programs Primary","coassigned":"","policy":"Samuel Viskocil"},{"staff":"Kris Dellapina","client":"Ti Group","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Ti Group","position":"Lobbyist Secondary","coassigned":"Kris Dellapina","policy":"Samuel Viskocil"},{"staff":"Kris Dellapina","client":"Western Digital","position":"Lobbyist Primary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Western Digital","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Samuel Viskocil"},{"staff":"Leonor Tomero","client":"Charter Communications","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Garrett Richards"},{"staff":"Bill Hepworth","client":"Charter Communications","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Garrett Richards"},{"staff":"Paul Ostrowski","client":"Conflict Kinetics","position":"Defense Programs Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Kris Dellapina","client":"Elbit","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"Elbit","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"HavocAI","position":"Defense Programs Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Ryan Altman","client":"Kodiak","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Garrett Richards"},{"staff":"Eric Hill","client":"Kodiak","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Garrett Richards"},{"staff":"Ryan Altman","client":"Motorola Solutions","position":"Lobbyist Primary","coassigned":"Karsten Heckl","policy":"Garrett Richards"},{"staff":"Karsten Heckl","client":"Motorola Solutions","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Garrett Richards"},{"staff":"Karsten Heckl","client":"Rolls Royce","position":"Lobbyist Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Geno Autrey","client":"RS Tech","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"RS Tech","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Garrett Richards"}],"policy":{"Neha Shridhar":[{"client":"ACMI","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":"Jackson Cartwright"},{"client":"Ashland Foundry","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"CACI","evp_pri":"","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Dell / Carahsoft","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"GelSight","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Global Foundries","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Oura","evp_pri":"Eric Hill","evp_sec":"Paul Ostrowski","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"Sayari","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Teamworks","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"TTM","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Wellman Dynamics","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""}],"Aaron Onoff":[{"client":"Allocore","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"ARC","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"Atlas Energy","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"MTSI","evp_pri":"","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Nathan Trotter","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Senergy Power Solutions","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"Ucore","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Umicore","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"}],"Garrett Richards":[{"client":"Charter Communications","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Conflict Kinetics","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Elbit","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"HavocAI","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Kodiak","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Motorola Solutions","evp_pri":"Karsten Heckl","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Rolls Royce","evp_pri":"","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"RS Tech","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""}],"Michael Kaether":[{"client":"Aimpoint USA","evp_pri":"Karsten Heckl","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"Digital Force Tech","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"GallatinAI","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Maytag Aircraft","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Powerlight","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"StemRad","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Striveworks","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Veritone","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"World Fuel","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Zscaler","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""}],"Samuel Viskocil":[{"client":"6K Additive","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":""},{"client":"Arktos","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"GAM","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"GTP","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Magnetic Holdings","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"MAIA","evp_pri":"","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":"Ryan Caldwell"},{"client":"Materion","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"MP Materials","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Noveon","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Resin Solutions","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Seurat","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"South8","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Ti Group","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Western Digital","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}],"Bradley Jones":[{"client":"Albion Platform","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Argo Space","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Assured Space","evp_pri":"Eric Hill","evp_sec":"Paul Ostrowski","lob_pri":"","lob_sec":""},{"client":"Avio USA","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Cross Domain Systems","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Geno Autrey"},{"client":"IDS","evp_pri":"Karl Gingrich","evp_sec":"Bill Hepworth","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Outpost Space","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"SpaceX","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"WPRC","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}],"Will Burgland":[{"client":"ARD","evp_pri":"","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":"Jackson Cartwright"},{"client":"BioFlyte","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Gecko","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Grid Aero","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"Hanjin","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Secturion","evp_pri":"Karsten Heckl","evp_sec":"Bill Hepworth","lob_pri":"","lob_sec":""}],"Kendal Walker":[{"client":"Acalvio","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Adyton","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"IBM / Hashi","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Jackson Cartwright","lob_sec":""},{"client":"Longwall","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"Lynx","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"NobelClad","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Palantir","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Shield AI","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":"Jackson Cartwright"},{"client":"US Ordnance","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}]}};
+/* ══ STAFF DATA ══ */
+const D={"staffType":{"Paul Ostrowski":"evp","Eric Hill":"evp","Chip Rock":"evp","Karsten Heckl":"evp","Steven Basham":"evp","Steven Edwards":"evp","Bill Hepworth":"evp","Karl Gingrich":"evp","Ryan Caldwell":"lobbyist","Shannon Green":"lobbyist","Leonor Tomero":"lobbyist","Kris Dellapina":"lobbyist","Ike Blanton":"lobbyist","Jackson Cartwright":"lobbyist","Ryan Altman":"lobbyist","Geno Autrey":"lobbyist","Neha Shridhar":"policy","Aaron Onoff":"policy","Garrett Richards":"policy","Michael Kaether":"policy","Samuel Viskocil":"policy","Bradley Jones":"policy","Will Burgland":"policy","Kendal Walker":"policy"},"evpLob":[{"staff":"Jackson Cartwright","client":"Titan AES","position":"Lobbyist Primary","coassigned":"","policy":""},{"staff":"Shannon Green","client":"Albion Platform","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Steven Basham","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"Albion Platform","position":"Lobbyist Secondary","coassigned":"Shannon Green; Steven Basham","policy":"Bradley Jones"},{"staff":"Steven Basham","client":"Albion Platform","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Argo Space","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Eric Hill","client":"Assured Space","position":"Defense Programs Primary","coassigned":"Paul Ostrowski","policy":"Bradley Jones"},{"staff":"Paul Ostrowski","client":"Assured Space","position":"Defense Programs Secondary","coassigned":"Eric Hill","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Avio USA","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Kris Dellapina","client":"Cross Domain Systems","position":"Lobbyist Primary","coassigned":"Geno Autrey; Steven Edwards","policy":"Bradley Jones"},{"staff":"Geno Autrey","client":"Cross Domain Systems","position":"Lobbyist Secondary","coassigned":"Kris Dellapina; Steven Edwards","policy":"Bradley Jones"},{"staff":"Steven Edwards","client":"Cross Domain Systems","position":"Defense Programs Primary","coassigned":"Kris Dellapina; Geno Autrey","policy":"Bradley Jones"},{"staff":"Shannon Green","client":"IDS","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Karl Gingrich; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"IDS","position":"Lobbyist Secondary","coassigned":"Shannon Green; Karl Gingrich; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Karl Gingrich","client":"IDS","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Bill Hepworth","client":"IDS","position":"Defense Programs Secondary","coassigned":"Shannon Green; Jackson Cartwright; Karl Gingrich","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Outpost Space","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"Outpost Space","position":"Lobbyist Secondary","coassigned":"Leonor Tomero","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"SpaceX","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"SpaceX","position":"Lobbyist Secondary","coassigned":"Leonor Tomero","policy":"Bradley Jones"},{"staff":"Kris Dellapina","client":"WPRC","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Karsten Heckl","client":"Aimpoint USA","position":"Lobbyist Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Karsten Heckl","client":"Aimpoint USA","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Eric Hill","client":"Digital Force Tech","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"GallatinAI","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Maytag Aircraft","position":"Lobbyist Primary","coassigned":"Steven Basham","policy":"Michael Kaether"},{"staff":"Steven Basham","client":"Maytag Aircraft","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Steven Basham","client":"Powerlight","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Leonor Tomero","client":"StemRad","position":"Lobbyist Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Striveworks","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Michael Kaether"},{"staff":"Paul Ostrowski","client":"Striveworks","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"Veritone","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"World Fuel","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Michael Kaether"},{"staff":"Chip Rock","client":"World Fuel","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"Zscaler","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Acalvio","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Kendal Walker"},{"staff":"Bill Hepworth","client":"Acalvio","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Kendal Walker"},{"staff":"Geno Autrey","client":"ACMI","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Steven Edwards","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"ACMI","position":"Lobbyist Secondary","coassigned":"Geno Autrey; Steven Edwards","policy":"Neha Shridhar"},{"staff":"Steven Edwards","client":"ACMI","position":"Defense Programs Primary","coassigned":"Geno Autrey; Jackson Cartwright","policy":"Neha Shridhar"},{"staff":"Eric Hill","client":"Adyton","position":"Defense Programs Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Ike Blanton","client":"Allocore","position":"Defense Programs Primary","coassigned":"","policy":"Aaron Onoff"},{"staff":"Karsten Heckl","client":"ARC","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Aaron Onoff"},{"staff":"Paul Ostrowski","client":"ARC","position":"Defense Programs Primary","coassigned":"Karsten Heckl","policy":"Aaron Onoff"},{"staff":"Chip Rock","client":"Ashland Foundry","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"Atlas Energy","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Aaron Onoff"},{"staff":"Chip Rock","client":"Atlas Energy","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Aaron Onoff"},{"staff":"Shannon Green","client":"CACI","position":"Lobbyist Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Bill Hepworth","client":"Dell / Carahsoft","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Shannon Green","client":"GelSight","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Paul Ostrowski","client":"GelSight","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Global Foundries","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ryan Caldwell","client":"Global Foundries","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Global Foundries","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"IBM / Hashi","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Kendal Walker"},{"staff":"Bill Hepworth","client":"IBM / Hashi","position":"Defense Programs Primary","coassigned":"Jackson Cartwright","policy":"Kendal Walker"},{"staff":"Geno Autrey","client":"Longwall","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Kendal Walker"},{"staff":"Paul Ostrowski","client":"Longwall","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Kendal Walker"},{"staff":"Leonor Tomero","client":"Lynx","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Kendal Walker"},{"staff":"Eric Hill","client":"Lynx","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Kendal Walker"},{"staff":"Ryan Altman","client":"MTSI","position":"Lobbyist Primary","coassigned":"","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"Nathan Trotter","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Nathan Trotter","position":"Lobbyist Secondary","coassigned":"Kris Dellapina","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"NobelClad","position":"Lobbyist Primary","coassigned":"Ryan Caldwell; Chip Rock","policy":"Kendal Walker"},{"staff":"Ryan Caldwell","client":"NobelClad","position":"Lobbyist Secondary","coassigned":"Kris Dellapina; Chip Rock","policy":"Kendal Walker"},{"staff":"Chip Rock","client":"NobelClad","position":"Defense Programs Primary","coassigned":"Kris Dellapina; Ryan Caldwell","policy":"Kendal Walker"},{"staff":"Leonor Tomero","client":"Oura","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Eric Hill; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"Oura","position":"Lobbyist Secondary","coassigned":"Leonor Tomero; Eric Hill; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Eric Hill","client":"Oura","position":"Defense Programs Primary","coassigned":"Leonor Tomero; Jackson Cartwright; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Paul Ostrowski","client":"Oura","position":"Defense Programs Secondary","coassigned":"Leonor Tomero; Jackson Cartwright; Eric Hill","policy":"Neha Shridhar"},{"staff":"Leonor Tomero","client":"Palantir","position":"Lobbyist Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Shannon Green","client":"Sayari","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Ike Blanton","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"Sayari","position":"Lobbyist Secondary","coassigned":"Shannon Green; Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Sayari","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"Senergy Power Solutions","position":"Lobbyist Primary","coassigned":"Steven Edwards","policy":"Aaron Onoff"},{"staff":"Steven Edwards","client":"Senergy Power Solutions","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Aaron Onoff"},{"staff":"Karsten Heckl","client":"Shield AI","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Eric Hill","policy":"Kendal Walker"},{"staff":"Jackson Cartwright","client":"Shield AI","position":"Lobbyist Secondary","coassigned":"Karsten Heckl; Eric Hill","policy":"Kendal Walker"},{"staff":"Eric Hill","client":"Shield AI","position":"Defense Programs Primary","coassigned":"Karsten Heckl; Jackson Cartwright","policy":"Kendal Walker"},{"staff":"Kris Dellapina","client":"Teamworks","position":"Lobbyist Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"TTM","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ryan Caldwell","client":"TTM","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"TTM","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Ucore","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Ucore","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Aaron Onoff"},{"staff":"Ike Blanton","client":"Umicore","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Umicore","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"US Ordnance","position":"Lobbyist Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Chip Rock","client":"Wellman Dynamics","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"ARD","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Will Burgland"},{"staff":"Jackson Cartwright","client":"ARD","position":"Lobbyist Secondary","coassigned":"Geno Autrey","policy":"Will Burgland"},{"staff":"Leonor Tomero","client":"BioFlyte","position":"Lobbyist Primary","coassigned":"Steven Basham","policy":"Will Burgland"},{"staff":"Steven Basham","client":"BioFlyte","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Will Burgland"},{"staff":"Chip Rock","client":"Gecko","position":"Defense Programs Primary","coassigned":"","policy":"Will Burgland"},{"staff":"Kris Dellapina","client":"Grid Aero","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Will Burgland"},{"staff":"Eric Hill","client":"Grid Aero","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Will Burgland"},{"staff":"Steven Edwards","client":"Hanjin","position":"Defense Programs Primary","coassigned":"","policy":"Will Burgland"},{"staff":"Karsten Heckl","client":"Secturion","position":"Defense Programs Primary","coassigned":"Bill Hepworth","policy":"Will Burgland"},{"staff":"Bill Hepworth","client":"Secturion","position":"Defense Programs Secondary","coassigned":"Karsten Heckl","policy":"Will Burgland"},{"staff":"Ike Blanton","client":"6K Additive","position":"Lobbyist Primary","coassigned":"","policy":"Samuel Viskocil"},{"staff":"Ryan Altman","client":"Arktos","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Samuel Viskocil"},{"staff":"Paul Ostrowski","client":"Arktos","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"GAM","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"GAM","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"GTP","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"GTP","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Magnetic Holdings","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Magnetic Holdings","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ryan Altman","client":"MAIA","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"MAIA","position":"Lobbyist Secondary","coassigned":"Ryan Altman","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Materion","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Materion","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"MP Materials","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"MP Materials","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Noveon","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Noveon","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Resin Solutions","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Resin Solutions","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Resin Solutions","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Geno Autrey","client":"Seurat","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Samuel Viskocil"},{"staff":"Paul Ostrowski","client":"Seurat","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Samuel Viskocil"},{"staff":"Steven Edwards","client":"South8","position":"Defense Programs Primary","coassigned":"","policy":"Samuel Viskocil"},{"staff":"Kris Dellapina","client":"Ti Group","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Ti Group","position":"Lobbyist Secondary","coassigned":"Kris Dellapina","policy":"Samuel Viskocil"},{"staff":"Kris Dellapina","client":"Western Digital","position":"Lobbyist Primary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Western Digital","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Samuel Viskocil"},{"staff":"Leonor Tomero","client":"Charter Communications","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Garrett Richards"},{"staff":"Bill Hepworth","client":"Charter Communications","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Garrett Richards"},{"staff":"Paul Ostrowski","client":"Conflict Kinetics","position":"Defense Programs Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Kris Dellapina","client":"Elbit","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"Elbit","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"HavocAI","position":"Defense Programs Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Ryan Altman","client":"Kodiak","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Garrett Richards"},{"staff":"Eric Hill","client":"Kodiak","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Garrett Richards"},{"staff":"Ryan Altman","client":"Motorola Solutions","position":"Lobbyist Primary","coassigned":"Karsten Heckl","policy":"Garrett Richards"},{"staff":"Karsten Heckl","client":"Motorola Solutions","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Garrett Richards"},{"staff":"Karsten Heckl","client":"Rolls Royce","position":"Lobbyist Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Geno Autrey","client":"RS Tech","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"RS Tech","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Garrett Richards"}],"policy":{"Neha Shridhar":[{"client":"ACMI","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":"Jackson Cartwright"},{"client":"Ashland Foundry","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"CACI","evp_pri":"","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Dell / Carahsoft","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"GelSight","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Global Foundries","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Oura","evp_pri":"Eric Hill","evp_sec":"Paul Ostrowski","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"Sayari","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Teamworks","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"TTM","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Wellman Dynamics","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""}],"Aaron Onoff":[{"client":"Allocore","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"ARC","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"Atlas Energy","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"MTSI","evp_pri":"","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Nathan Trotter","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Senergy Power Solutions","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"Ucore","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Umicore","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"}],"Garrett Richards":[{"client":"Charter Communications","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Conflict Kinetics","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Elbit","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"HavocAI","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Kodiak","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Motorola Solutions","evp_pri":"Karsten Heckl","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Rolls Royce","evp_pri":"","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"RS Tech","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""}],"Michael Kaether":[{"client":"Aimpoint USA","evp_pri":"Karsten Heckl","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"Digital Force Tech","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"GallatinAI","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Maytag Aircraft","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Powerlight","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"StemRad","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Striveworks","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Veritone","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"World Fuel","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Zscaler","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""}],"Samuel Viskocil":[{"client":"6K Additive","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":""},{"client":"Arktos","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"GAM","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"GTP","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Magnetic Holdings","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"MAIA","evp_pri":"","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":"Ryan Caldwell"},{"client":"Materion","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"MP Materials","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Noveon","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Resin Solutions","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Seurat","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"South8","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Ti Group","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Western Digital","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}],"Bradley Jones":[{"client":"Albion Platform","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Argo Space","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Assured Space","evp_pri":"Eric Hill","evp_sec":"Paul Ostrowski","lob_pri":"","lob_sec":""},{"client":"Avio USA","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Cross Domain Systems","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Geno Autrey"},{"client":"IDS","evp_pri":"Karl Gingrich","evp_sec":"Bill Hepworth","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Outpost Space","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"SpaceX","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"WPRC","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}],"Will Burgland":[{"client":"ARD","evp_pri":"","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":"Jackson Cartwright"},{"client":"BioFlyte","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Gecko","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Grid Aero","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"Hanjin","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Secturion","evp_pri":"Karsten Heckl","evp_sec":"Bill Hepworth","lob_pri":"","lob_sec":""}],"Kendal Walker":[{"client":"Acalvio","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Adyton","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"IBM / Hashi","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Jackson Cartwright","lob_sec":""},{"client":"Longwall","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"Lynx","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"NobelClad","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Palantir","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Shield AI","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":"Jackson Cartwright"},{"client":"US Ordnance","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}]}};
 
-/* ═══════ STATE ═══════ */
-let currentRows=[],sortCol=0,sortDir=1,currentType='';
-let wsType='';
+/* ══ CLIENT LIST ══ */
+const CLIENTS=['6K Additive','Acalvio','ACMI','Adyton','Aimpoint USA','Albion Platform','Allocore','ARC','ARD','Argo Space','Arktos','Ashland Foundry','Assured Space','Atlas Energy','Avio USA','BioFlyte','CACI','Charter Communications','Conflict Kinetics','Cross Domain Systems','Dell / Carahsoft','Digital Force Tech','Elbit','GallatinAI','GAM','Gecko','GelSight','Global Foundries','Grid Aero','GTP','Hanjin','HavocAI','IBM / Hashi','IDS','Kodiak','Longwall','Lynx','Magnetic Holdings','MAIA','Materion','Maytag Aircraft','Motorola Solutions','MP Materials','MTSI','Nathan Trotter','NobelClad','Noveon','Oura','Outpost Space','Palantir','Powerlight','Resin Solutions','Rolls Royce','RS Tech','Sayari','Secturion','Senergy Power Solutions','Seurat','Shield AI','South8','SpaceX','StemRad','Striveworks','Teamworks','Ti Group','Titan AES','TTM','Ucore','Umicore','US Ordnance','Veritone','Wellman Dynamics','Western Digital','World Fuel','WPRC','Zscaler'];
+const CLIENT_OPTS='<option value="">— Select —</option>'+CLIENTS.map(c=>`<option value="${c}">${c}</option>`).join('')+'<option value="__other__">Other (specify)...</option>';
 
-/* ═══════ NAVIGATION ═══════ */
-function goTo(pageId){
+/* ══ NAVIGATION ══ */
+function goTo(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+pageId).classList.add('active');
-  const titles={ca:'Client Assignments',ws:'Work Status'};
+  document.getElementById('page-'+id).classList.add('active');
+  const titles={ca:'Client Assignments',ws:'Work Status',er:'Expense Report'};
   document.getElementById('topbar-title').textContent='J.A. Green & Company';
-  document.getElementById('topbar-sub').textContent=titles[pageId]||'';
+  document.getElementById('topbar-sub').textContent=titles[id]||'';
   document.getElementById('topbar-sub').classList.add('visible');
   document.getElementById('backBtn').classList.add('visible');
-  document.getElementById('printBtn').classList.toggle('visible', pageId==='ca');
+  document.getElementById('printBtn').classList.toggle('visible',id==='ca');
   window.scrollTo(0,0);
 }
 function goHome(){
@@ -594,61 +509,32 @@ function goHome(){
   window.scrollTo(0,0);
 }
 
-/* ═══════ CA HELPERS ═══════ */
+/* ══ CA ══ */
 const CFG_EVP={keys:['client','position','coassigned','policy'],heads:['Client','Position','Co-Assigned Staff','Policy Staff'],pills:['Client','Position','Co-Assigned','Policy Staff']};
 const CFG_POL={keys:['client','evp_pri','lob_pri'],heads:['Client','Defense Programs','Lobbyist'],pills:['Client','Defense Programs','Lobbyist']};
+let currentRows=[],sortCol=0,sortDir=1,currentType='';
 function cfg(){return currentType==='policy'?CFG_POL:CFG_EVP}
-function posClass(p){
-  if(p==='Lobbyist Primary') return 'lp-c';
-  if(p==='Lobbyist Secondary') return 'ls-c';
-  if(p==='Defense Programs Primary') return 'ep-c';
-  if(p==='Defense Programs Secondary') return 'es-c';
-  return '';
-}
+function posClass(p){return p==='Lobbyist Primary'?'lp-c':p==='Lobbyist Secondary'?'ls-c':p==='Defense Programs Primary'?'ep-c':p==='Defense Programs Secondary'?'es-c':''}
 function today(){return new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}
-function sortData(rows,col,dir){
-  const key=cfg().keys[col]||'client';
-  return [...rows].sort((a,b)=>{const av=(a[key]||'').toLowerCase(),bv=(b[key]||'').toLowerCase();return av<bv?-dir:av>bv?dir:0});
-}
-function renderEvpRow(r){
-  const co=r.coassigned||'<span class="dash">—</span>';
-  const po=r.policy||'<span class="dash">—</span>';
-  return `<tr><td class="cn" data-label="Client">${r.client}</td><td class="${posClass(r.position)}" data-label="Position">${r.position}</td><td class="co" data-label="Co-Assigned Staff">${co}</td><td class="po" data-label="Policy Staff">${po}</td></tr>`;
-}
-function renderPolRow(r){
-  const ep=r.evp_pri||'<span class="dash">—</span>',es=r.evp_sec?` <span class="es-c">/ ${r.evp_sec}</span>`:'';
-  const lp=r.lob_pri||'<span class="dash">—</span>',ls=r.lob_sec?` <span class="ls-c">/ ${r.lob_sec}</span>`:'';
-  return `<tr><td class="cn" data-label="Client">${r.client}</td><td class="ep-c" data-label="Defense Programs">${ep}${es}</td><td class="lp-c" data-label="Lobbyist">${lp}${ls}</td></tr>`;
-}
+function sortData(rows,col,dir){const key=cfg().keys[col]||'client';return [...rows].sort((a,b)=>{const av=(a[key]||'').toLowerCase(),bv=(b[key]||'').toLowerCase();return av<bv?-dir:av>bv?dir:0})}
+function renderEvpRow(r){return`<tr><td class="cn" data-label="Client">${r.client}</td><td class="${posClass(r.position)}" data-label="Position">${r.position}</td><td class="co" data-label="Co-Assigned Staff">${r.coassigned||'<span class="dash">—</span>'}</td><td class="po" data-label="Policy Staff">${r.policy||'<span class="dash">—</span>'}</td></tr>`}
+function renderPolRow(r){const ep=r.evp_pri||'<span class="dash">—</span>',es=r.evp_sec?` <span class="es-c">/ ${r.evp_sec}</span>`:'',lp=r.lob_pri||'<span class="dash">—</span>',ls=r.lob_sec?` <span class="ls-c">/ ${r.lob_sec}</span>`:'';return`<tr><td class="cn" data-label="Client">${r.client}</td><td class="ep-c" data-label="Defense Programs">${ep}${es}</td><td class="lp-c" data-label="Lobbyist">${lp}${ls}</td></tr>`}
 function renderRow(r){return currentType==='policy'?renderPolRow(r):renderEvpRow(r)}
-
-function applySort(col){
-  sortDir=(sortCol===col)?-sortDir:1;sortCol=col;
-  currentRows=sortData(currentRows,sortCol,sortDir);
-  rebuildTable();rebuildSortBar();
-}
+function applySort(col){sortDir=(sortCol===col)?-sortDir:1;sortCol=col;currentRows=sortData(currentRows,sortCol,sortDir);rebuildTable();rebuildSortBar()}
 function rebuildTable(){
   const n=cfg().heads.length;
   document.getElementById('rpt-tbody').innerHTML=currentRows.length?currentRows.map(renderRow).join(''):`<tr><td colspan="${n}" style="text-align:center;padding:28px;color:#888;font-style:italic">No clients found.</td></tr>`;
   document.getElementById('rpt-thead').querySelectorAll('th').forEach((th,i)=>{th.classList.remove('asc','desc');if(i===sortCol)th.classList.add(sortDir===1?'asc':'desc')});
-  const cnt=document.getElementById('ca-count-bar');
-  cnt.textContent=`${currentRows.length} client assignment${currentRows.length!==1?'s':''}`;
+  document.getElementById('ca-count-bar').textContent=`${currentRows.length} client assignment${currentRows.length!==1?'s':''}`;
 }
 function rebuildSortBar(){
   const sb=document.getElementById('ca-sort-bar');
   sb.innerHTML=`<span class="sort-label">Sort:</span>`+cfg().pills.map((l,i)=>`<button class="pill${i===sortCol?' active':''}" data-col="${i}">${l}<span class="arr">${i===sortCol?(sortDir===1?'▲':'▼'):''}</span></button>`).join('');
 }
-
 document.getElementById('staffSel').addEventListener('change',function(){
   const name=this.value;
-  const ph=document.getElementById('ca-placeholder');
-  const tw=document.getElementById('ca-tbl-wrap');
-  const sb=document.getElementById('ca-sort-bar');
-  const cb=document.getElementById('ca-count-bar');
-  const chBtn=document.getElementById('changeBtn');
-  if(!name){
-    ph.style.display='';tw.classList.add('js-hidden');sb.classList.add('js-hidden');cb.classList.add('js-hidden');chBtn.style.display='none';return;
-  }
+  const ph=document.getElementById('ca-placeholder'),tw=document.getElementById('ca-tbl-wrap'),sb=document.getElementById('ca-sort-bar'),cb=document.getElementById('ca-count-bar'),chBtn=document.getElementById('changeBtn');
+  if(!name){ph.style.display='';tw.classList.add('js-hidden');sb.classList.add('js-hidden');cb.classList.add('js-hidden');chBtn.style.display='none';return}
   ph.style.display='none';tw.classList.remove('js-hidden');sb.classList.remove('js-hidden');cb.classList.remove('js-hidden');chBtn.style.display='flex';
   currentType=D.staffType[name]||'evp';sortCol=0;sortDir=1;
   currentRows=currentType==='policy'?sortData(D.policy[name]||[],0,1):sortData(D.evpLob.filter(a=>a.staff===name),0,1);
@@ -659,88 +545,198 @@ document.getElementById('staffSel').addEventListener('change',function(){
 document.getElementById('ca-sort-bar').addEventListener('click',e=>{const p=e.target.closest('.pill[data-col]');if(p)applySort(parseInt(p.dataset.col))});
 document.getElementById('rpt-table').addEventListener('click',e=>{const th=e.target.closest('th[data-col]');if(th)applySort(parseInt(th.dataset.col))});
 
-/* ═══════ CA MODAL ═══════ */
+/* ── CA Modal ── */
 function openModal(){
   const name=document.getElementById('staffSel').value;
   document.getElementById('modal-staff').innerHTML=`<option>${name}</option>`;
-  const mc=document.getElementById('modal-client');
-  mc.innerHTML='<option value="">-- All clients / General request --</option>';
+  const mc=document.getElementById('modal-client');mc.innerHTML='<option value="">-- All clients / General request --</option>';
   [...new Set(currentRows.map(r=>r.client))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;mc.appendChild(o)});
-  document.getElementById('modal-notes').value='';
-  document.getElementById('modal-send').disabled=true;
-  document.getElementById('modal-overlay').classList.add('open');
-  setTimeout(()=>document.getElementById('modal-notes').focus(),80);
+  document.getElementById('modal-notes').value='';document.getElementById('modal-send').disabled=true;
+  document.getElementById('modal-overlay').classList.add('open');setTimeout(()=>document.getElementById('modal-notes').focus(),80);
 }
 function closeModal(){document.getElementById('modal-overlay').classList.remove('open')}
 function sendModal(){
-  const name=document.getElementById('modal-staff').value;
-  const client=document.getElementById('modal-client').value;
-  const notes=document.getElementById('modal-notes').value.trim();
-  if(!notes) return;
+  const name=document.getElementById('modal-staff').value,client=document.getElementById('modal-client').value,notes=document.getElementById('modal-notes').value.trim();
+  if(!notes)return;
   const subj=client?`Assignment Change Request — ${name} / ${client}`:`Assignment Change Request — ${name}`;
-  const body=`Jeff,\n\nI am requesting a review of the following staffing assignment:\n\nStaff Member: ${name}\n${client?`Client: ${client}\n`:''}\nRequested Change:\n${notes}\n\nPlease let me know if you have any questions.\n\nThank you.`;
-  window.location.href=`mailto:jeff@jagreenco.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
-  closeModal();
+  const body=`Jeff,\n\nI am requesting a review of the following staffing assignment:\n\nStaff Member: ${name}\n${client?`Client: ${client}\n`:''}\nRequested Change:\n${notes}\n\nThank you.`;
+  window.location.href=`mailto:jeff@jagreenco.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;closeModal();
 }
 document.getElementById('modal-notes').addEventListener('input',function(){document.getElementById('modal-send').disabled=!this.value.trim()});
 document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('modal-overlay'))closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('modal-overlay').classList.contains('open'))closeModal()});
 
-/* ═══════ WORK STATUS ═══════ */
+/* ══ WORK STATUS ══ */
+let wsType='',pendingMailto='',pendingCalURL='';
 function selectType(t){
   wsType=t;
   document.querySelectorAll('.type-pill').forEach(p=>p.classList.remove('sel-pto','sel-telework','sel-offsite','sel-condo'));
-  const map={PTO:'sel-pto',Telework:'sel-telework',Offsite:'sel-offsite','Condo Request':'sel-condo'};
-  document.getElementById('pill-'+t.toLowerCase()).classList.add(map[t]);
+  const sMap={PTO:'sel-pto',Telework:'sel-telework',Offsite:'sel-offsite','Condo Request':'sel-condo'};
+  const iMap={PTO:'pill-pto',Telework:'pill-telework',Offsite:'pill-offsite','Condo Request':'pill-condo'};
+  document.getElementById(iMap[t]).classList.add(sMap[t]);
+  const hInput=document.getElementById('ws-hours');
+  if(t==='Condo Request'){hInput.value='N/A';hInput.readOnly=true;hInput.style.color='#888';hInput.style.fontStyle='italic';document.getElementById('ws-hours-req').style.display='none';}
+  else{if(hInput.value==='N/A')hInput.value='';hInput.readOnly=false;hInput.style.color='';hInput.style.fontStyle='';document.getElementById('ws-hours-req').style.display='';}
   validateWS();
 }
 function validateWS(){
-  const ok=document.getElementById('ws-staff').value&&wsType&&document.getElementById('ws-start').value&&document.getElementById('ws-hours').value;
-  document.getElementById('ws-submit').disabled=!ok;
+  const hoursOk=wsType==='Condo Request'||!!document.getElementById('ws-hours').value;
+  document.getElementById('ws-submit').disabled=!(document.getElementById('ws-staff').value&&wsType&&document.getElementById('ws-start').value&&hoursOk);
 }
 ['ws-staff','ws-start','ws-end','ws-hours','ws-comments'].forEach(id=>document.getElementById(id).addEventListener('input',validateWS));
 document.getElementById('ws-staff').addEventListener('change',validateWS);
-
 function generateICS(name,type,start,end,hrs,comments){
   const fmt=d=>d.replace(/-/g,'');
-  const startStr=fmt(start);
   const endObj=new Date(end||start);endObj.setDate(endObj.getDate()+1);
-  const endStr=endObj.toISOString().slice(0,10).replace(/-/g,'');
   const now=new Date().toISOString().replace(/[-:.]/g,'').slice(0,15)+'Z';
-  const uid=now+'-JAG@jagreenco.com';
-  const desc=`Work Status Request\\nType: ${type}\\nStaff: ${name}\\nHours: ${hrs}`+(comments?`\\nComments: ${comments}`:'');
-  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//J.A. Green & Company//Staff Portal//EN','CALSCALE:GREGORIAN','METHOD:REQUEST',
-    'BEGIN:VEVENT',`UID:${uid}`,`DTSTAMP:${now}`,`DTSTART;VALUE=DATE:${startStr}`,`DTEND;VALUE=DATE:${endStr}`,
-    `SUMMARY:${type} — ${name}`,`DESCRIPTION:${desc}`,
-    `ORGANIZER;CN=JAG Administration:mailto:jagadmin@jagreenco.com`,
-    'STATUS:TENTATIVE','TRANSP:OPAQUE','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const desc=`Work Status Request\\nType: ${type}\\nStaff: ${name}`+(hrs?`\\nHours: ${hrs}`:'')+( comments?`\\nComments: ${comments}`:'');
+  return['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//J.A. Green & Company//EN','CALSCALE:GREGORIAN','METHOD:REQUEST','BEGIN:VEVENT',`UID:${now}@jagreenco.com`,`DTSTAMP:${now}`,`DTSTART;VALUE=DATE:${fmt(start)}`,`DTEND;VALUE=DATE:${fmt(endObj.toISOString().slice(0,10))}`,`SUMMARY:${type} \u2014 ${name}`,`DESCRIPTION:${desc}`,'ORGANIZER;CN=JAG Administration:mailto:jagadmin@jagreenco.com','STATUS:TENTATIVE','END:VEVENT','END:VCALENDAR'].join('\r\n');
 }
-function downloadICS(content,filename){
-  const blob=new Blob([content],{type:'text/calendar;charset=utf-8'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();
-  setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url)},200);
+function downloadICS(content,fname){const blob=new Blob([content],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=fname;document.body.appendChild(a);a.click();setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url)},300)}
+function buildOutlookURL(name,type,start,end,hrs,comments){
+  const endD=end&&end!==start?end:start;const endObj=new Date(endD);endObj.setDate(endObj.getDate()+1);
+  const body=`Work Status Request\nType: ${type}\nStaff: ${name}\nDate(s): ${start}${end&&end!==start?' through '+end:''}`+(hrs?`\nHours: ${hrs}`:'')+( comments?`\nComments: ${comments}`:'');
+  return`https://outlook.office.com/calendar/action/compose?subject=${encodeURIComponent(`${type} \u2014 ${name}`)}&startdt=${start}&enddt=${endObj.toISOString().slice(0,10)}&body=${encodeURIComponent(body)}`;
 }
 function submitWS(){
-  const name=document.getElementById('ws-staff').value;
-  const start=document.getElementById('ws-start').value;
-  const end=document.getElementById('ws-end').value;
-  const hrs=document.getElementById('ws-hours').value;
-  const comments=document.getElementById('ws-comments').value.trim();
-  const dateStr=end&&end!==start?`${start} through ${end}`:`${start}`;
-  const subj=`Work Status Request — ${wsType} — ${name} — ${start}`;
-  const body=`JAG Administration,\n\nPlease find below a work status request for your review:\n\nStaff Member: ${name}\nRequest Type: ${wsType}\nDate(s): ${dateStr}\nTotal Hours: ${hrs}\n${comments?`\nComments:\n${comments}\n`:''}\nA calendar invite (.ics file) has been downloaded to your device — please attach it to this email before sending.\n\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
-  const ics=generateICS(name,wsType,start,end||start,hrs,comments);
+  const name=document.getElementById('ws-staff').value,start=document.getElementById('ws-start').value,end=document.getElementById('ws-end').value,hrs=document.getElementById('ws-hours').value,comments=document.getElementById('ws-comments').value.trim();
+  const dateStr=end&&end!==start?`${start} through ${end}`:start;
+  const subj=`Work Status Request \u2014 ${wsType} \u2014 ${name} \u2014 ${start}`;
+  const body=`JAG Administration,\n\nWork status request for review:\n\nStaff Member: ${name}\nRequest Type: ${wsType}\nDate(s): ${dateStr}`+(hrs&&hrs!=='N/A'?`\nTotal Hours: ${hrs}`:'')+`\n${comments?`\nComments:\n${comments}\n`:''}\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
   const fname=`JAG_${wsType.replace(/\s+/g,'_')}_${name.replace(/\s+/g,'_')}_${start}.ics`;
-  downloadICS(ics,fname);
-  setTimeout(()=>{
-    window.location.href=`mailto:jagadmin@jagreenco.com?cc=${encodeURIComponent('jennifer@jagreenco.com')}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
-  },400);
+  downloadICS(generateICS(name,wsType,start,end||start,hrs,comments),fname);
+  pendingCalURL=buildOutlookURL(name,wsType,start,end,hrs,comments);
+  pendingMailto=`mailto:jagadmin@jagreenco.com?cc=${encodeURIComponent('jennifer@jagreenco.com')}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('ws-ics-name').textContent=fname;
+  document.getElementById('ws-modal-overlay').classList.add('open');
 }
+document.getElementById('ws-modal-close').addEventListener('click',()=>document.getElementById('ws-modal-overlay').classList.remove('open'));
+document.getElementById('ws-modal-cal').addEventListener('click',()=>window.open(pendingCalURL,'_blank'));
+document.getElementById('ws-modal-open').addEventListener('click',()=>{window.location.href=pendingMailto;document.getElementById('ws-modal-overlay').classList.remove('open')});
 
-/* ═══════ TOPBAR HEIGHT ═══════ */
-function setTH(){document.documentElement.style.setProperty('--topbar-h',document.getElementById('topbar').offsetHeight+'px')}
-setTH();setTimeout(setTH,100);window.addEventListener('resize',setTH);
+/* ══ EXPENSE REPORT ══ */
+function buildPeriodSelect(){
+  const sel=document.getElementById('er-month');
+  const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const today=new Date(),d=today.getDate(),m=today.getMonth(),y=today.getFullYear();
+  let defM=m,defY=y;if(d>20){defM++;if(defM>11){defM=0;defY++}}
+  for(let yr=2024;yr<=2028;yr++){
+    for(let mo=0;mo<12;mo++){
+      const sM=(mo+11)%12,sY=mo===0?yr-1:yr;
+      const label=`${mn[sM]} 21, ${sY} \u2013 ${mn[mo]} 20, ${yr}`;
+      const opt=document.createElement('option');opt.value=label;opt.textContent=label;
+      if(yr===defY&&mo===defM)opt.selected=true;
+      sel.appendChild(opt);
+    }
+  }
+}
+function newRowHTML(){
+  return`<tr class="exp-row"><td class="tc"><button class="cam-btn" title="Scan receipt" onclick="openCamera(this)">📷</button></td><td><input type="date" class="exp-inp exp-date"></td><td><input type="text" class="exp-inp exp-vendor" placeholder="Vendor/Place"></td><td><input type="text" class="exp-inp exp-purpose" placeholder="Purpose/Meeting"></td><td><select class="exp-inp exp-billable" onchange="toggleClient(this)"><option value="">—</option><option>Yes</option><option>No</option></select></td><td><select class="exp-inp exp-client" onchange="toggleOther(this)" disabled>${CLIENT_OPTS}</select><input type="text" class="exp-inp exp-client-other" style="display:none;margin-top:3px" placeholder="Specify client..."></td><td><input type="text" class="exp-inp exp-amount" placeholder="0.00" oninput="updateTotals()" onblur="fmtAmt(this)"></td><td><input type="text" class="exp-inp exp-notes" placeholder="Notes"></td><td class="tc"><button class="del-btn" onclick="deleteRow(this)" title="Remove">✕</button></td></tr>`;
+}
+function addRow(tbodyId){document.querySelector(`#${tbodyId} .total-row`).insertAdjacentHTML('beforebegin',newRowHTML());updateTotals()}
+function deleteRow(btn){
+  const row=btn.closest('tr'),tbody=row.closest('tbody');
+  if(tbody.querySelectorAll('.exp-row').length<=1){row.querySelectorAll('.exp-inp').forEach(i=>{if(i.tagName==='SELECT')i.selectedIndex=0;else i.value=''});row.querySelector('.exp-client').disabled=true;row.querySelector('.exp-client-other').style.display='none';updateTotals();return}
+  row.remove();updateTotals();
+}
+function toggleClient(sel){
+  const row=sel.closest('tr'),cl=row.querySelector('.exp-client');
+  cl.disabled=sel.value!=='Yes';
+  if(sel.value!=='Yes'){cl.value='';row.querySelector('.exp-client-other').style.display='none'}
+}
+function toggleOther(sel){sel.closest('tr').querySelector('.exp-client-other').style.display=sel.value==='__other__'?'block':'none'}
+function fmtAmt(inp){const v=parseFloat(inp.value.replace(/[^0-9.]/g,''));inp.value=isNaN(v)?'':v.toFixed(2)}
+function updateTotals(){
+  const sum=id=>{let t=0;document.querySelectorAll(`#${id} .exp-row .exp-amount`).forEach(i=>{const v=parseFloat(i.value);if(!isNaN(v))t+=v});return t};
+  const cc=sum('cc-tbody'),r=sum('r-tbody'),fmt=n=>'$'+n.toFixed(2);
+  document.getElementById('cc-total').textContent=fmt(cc);document.getElementById('r-total').textContent=fmt(r);
+  document.getElementById('cc-total-head').textContent='Total: '+fmt(cc);document.getElementById('r-total-head').textContent='Total: '+fmt(r);
+  document.getElementById('er-grand-total').textContent=fmt(cc+r);
+}
+function validateER(){
+  const ok=!!document.getElementById('er-name').value&&!!document.getElementById('er-month').value;
+  document.getElementById('er-submit').disabled=!ok;document.getElementById('er-btn-dl').disabled=!ok;
+}
+async function openCamera(btn){
+  const input=document.createElement('input');input.type='file';input.accept='image/*';input.capture='environment';
+  input.onchange=async e=>{
+    const file=e.target.files[0];if(!file)return;
+    const orig=btn.textContent;btn.textContent='⏳';btn.disabled=true;
+    try{
+      const base64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=()=>rej(new Error('read failed'));r.readAsDataURL(file)});
+      const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:file.type||'image/jpeg',data:base64}},{type:'text',text:'Extract from this receipt: the date, vendor/store name, and total amount. Return ONLY valid JSON, no preamble: {"date":"YYYY-MM-DD","vendor":"name","amount":"XX.XX"}'}]}]})});
+      const data=await resp.json();
+      const txt=data.content.filter(c=>c.type==='text').map(c=>c.text).join('');
+      const parsed=JSON.parse(txt.replace(/```json|```/g,'').trim());
+      const row=btn.closest('tr');
+      if(parsed.date)row.querySelector('.exp-date').value=parsed.date;
+      if(parsed.vendor)row.querySelector('.exp-vendor').value=parsed.vendor;
+      if(parsed.amount){const a=parseFloat(String(parsed.amount).replace(/[^0-9.]/g,''));if(!isNaN(a))row.querySelector('.exp-amount').value=a.toFixed(2)}
+      updateTotals();btn.textContent='✅';setTimeout(()=>{btn.textContent='📷'},2500);
+    }catch(err){btn.textContent='❌';setTimeout(()=>{btn.textContent='📷'},2500);alert('Could not read receipt. Please enter details manually.')}
+    btn.disabled=false;
+  };
+  input.click();
+}
+function getExpRows(tbodyId){
+  const rows=[];
+  document.querySelectorAll(`#${tbodyId} .exp-row`).forEach(tr=>{
+    const billable=tr.querySelector('.exp-billable').value;
+    const cSel=tr.querySelector('.exp-client').value;
+    const cOther=tr.querySelector('.exp-client-other').value;
+    const client=cSel==='__other__'?cOther:cSel;
+    const amt=parseFloat(tr.querySelector('.exp-amount').value)||0;
+    rows.push([tr.querySelector('.exp-date').value,tr.querySelector('.exp-vendor').value,tr.querySelector('.exp-purpose').value,billable,billable==='Yes'?client:'',amt,tr.querySelector('.exp-notes').value]);
+  });
+  return rows;
+}
+function exportExcel(){
+  if(!window.XLSX){alert('Excel library not loaded. Please try again.');return null}
+  const name=document.getElementById('er-name').value||'Unknown';
+  const month=document.getElementById('er-month').value||'Unknown Period';
+  const hdrs=['Date','Vendor / Place','Biz Purpose / Meeting','Billable?','Client, if Billable','Amount','Notes'];
+  const ccRows=getExpRows('cc-tbody'),rRows=getExpRows('r-tbody');
+  const ccTot=ccRows.reduce((s,r)=>s+(r[5]||0),0),rTot=rRows.reduce((s,r)=>s+(r[5]||0),0);
+  const wsData=[
+    ['J.A. GREEN & COMPANY — MONTHLY EXPENSE REPORT'],[],
+    ['Staff Member:',name,'','Billing Period:',month],[],[],
+    ['JAG CREDIT CARD'],hdrs,...ccRows,
+    ['','','','','','Total:',ccTot],[],[],
+    ['REIMBURSEMENTS'],hdrs,...rRows,
+    ['','','','','','Total:',rTot],[],[],
+    ['','','','','','GRAND TOTAL:',ccTot+rTot]
+  ];
+  const ws=XLSX.utils.aoa_to_sheet(wsData);
+  ws['!cols']=[{wch:12},{wch:22},{wch:28},{wch:10},{wch:24},{wch:10},{wch:25}];
+  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Expense Report');
+  const fname=`JAG_Expense_${name.replace(/\s+/g,'_')}_${month.replace(/[^a-zA-Z0-9]/g,'_').replace(/_+/g,'_')}.xlsx`;
+  XLSX.writeFile(wb,fname);return fname;
+}
+let pendingERMailto='';
+function submitER(){
+  const name=document.getElementById('er-name').value;
+  const month=document.getElementById('er-month').value;
+  if(!name){alert('Please select a staff member.');return}
+  const fname=exportExcel();if(!fname)return;
+  const ccTot=parseFloat(document.getElementById('cc-total').textContent.replace('$',''))||0;
+  const rTot=parseFloat(document.getElementById('r-total').textContent.replace('$',''))||0;
+  const subj=`Expense Report \u2014 ${name} \u2014 ${month}`;
+  const body=`JAG Administration,\n\nPlease find attached the monthly expense report:\n\nStaff Member: ${name}\nBilling Period: ${month}\n\nJAG Credit Card Total: $${ccTot.toFixed(2)}\nReimbursements Total: $${rTot.toFixed(2)}\nGrand Total: $${(ccTot+rTot).toFixed(2)}\n\nNOTE: The Excel file (${fname}) has been downloaded to your device — please attach it before sending.\n\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
+  pendingERMailto=`mailto:jagadmin@jagreenco.com?cc=${encodeURIComponent('jennifer@jagreenco.com')}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('er-fname-display').textContent=fname;
+  document.getElementById('er-modal-overlay').style.display='flex';
+}
+document.getElementById('er-modal-close').addEventListener('click',()=>{document.getElementById('er-modal-overlay').style.display='none'});
+document.getElementById('er-modal-open').addEventListener('click',()=>{window.location.href=pendingERMailto;document.getElementById('er-modal-overlay').style.display='none'});
+
+/* ══ INIT ══ */
+(function init(){
+  buildPeriodSelect();
+  addRow('cc-tbody');
+  addRow('r-tbody');
+  function setTH(){document.documentElement.style.setProperty('--topbar-h',document.getElementById('topbar').offsetHeight+'px')}
+  setTH();setTimeout(setTH,100);window.addEventListener('resize',setTH);
+})();
 </script>
 </body>
 </html>
