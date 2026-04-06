@@ -13,7 +13,7 @@
   --sub:#5a5a5a;--border:#C8D6ED;
   --lp:#145a32;--ls:#1d6a3d;--ep:#1F3864;--po:#5a3e8a;
   --r:8px;--topbar-h:64px;
-  --pto:#b5451b;--telework:#1a6b3a;--offsite:#5a3e8a;
+  --pto:#b5451b;--telework:#1a6b3a;--offsite:#5a3e8a;  --condo:#b45309;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -226,6 +226,7 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .type-pill.sel-pto{border-color:var(--pto);background:#fff3f0;color:var(--pto)}
 .type-pill.sel-telework{border-color:var(--telework);background:#f0f9f3;color:var(--telework)}
 .type-pill.sel-offsite{border-color:var(--offsite);background:#f5f0ff;color:var(--offsite)}
+.type-pill.sel-condo{border-color:#c0392b!important;background:#c0392b!important;color:#fff!important}
 .dot{width:10px;height:10px;border-radius:50%;background:currentColor;flex-shrink:0}
 .ws-submit{
   margin-top:22px;width:100%;height:50px;
@@ -238,6 +239,12 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 @media(hover:hover){.ws-submit:hover{background:var(--mid)}}
 .ws-submit:disabled{background:#b0bfd4;cursor:not-allowed}
 .ws-note{font-size:11px;color:#888;text-align:center;margin-top:10px;font-style:italic}
+.ws-confirm-step{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.ws-confirm-step:last-child{border-bottom:none;padding-bottom:4px}
+.step-icon{font-size:22px;width:28px;flex-shrink:0;text-align:center;margin-top:1px}
+.step-body strong{font-size:14px;color:#1a1a1a;display:block;margin-bottom:3px}
+.step-body span{font-size:12px;color:var(--sub);line-height:1.5;display:block}
+#ws-ics-name{font-size:11px;color:var(--mid);font-family:monospace;margin-top:4px;word-break:break-all;display:block}
 
 /* ── Request Change Modal (CA) ── */
 #modal-overlay{
@@ -453,6 +460,7 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
           <button type="button" class="type-pill" id="pill-pto" onclick="selectType('PTO')"><span class="dot"></span>PTO</button>
           <button type="button" class="type-pill" id="pill-telework" onclick="selectType('Telework')"><span class="dot"></span>Telework</button>
           <button type="button" class="type-pill" id="pill-offsite" onclick="selectType('Offsite')"><span class="dot"></span>Offsite</button>
+          <button type="button" class="type-pill" id="pill-condo" onclick="selectType('Condo Request')"><span class="dot"></span>Condo Request</button>
         </div>
       </div>
 
@@ -466,9 +474,9 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
         <input type="date" id="ws-end">
       </div>
 
-      <div class="form-field">
-        <label>Total Hours <span class="req">*</span></label>
-        <input type="number" id="ws-hours" min="1" max="200" step="0.5" placeholder="e.g. 8">
+      <div class="form-field" id="ws-hours-field">
+        <label>Total Hours <span class="req" id="ws-hours-req">*</span></label>
+        <input type="text" id="ws-hours" placeholder="e.g. 8">
       </div>
 
       <div class="form-field full">
@@ -513,6 +521,45 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Cancel</button>
       <button class="btn-send" id="modal-send" disabled onclick="sendModal()">Open in Email &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── WS Confirm Modal ── -->
+<div id="ws-modal-overlay" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,20,45,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))" role="dialog" aria-modal="true">
+  <div style="background:#fff;border-radius:12px;width:100%;max-width:460px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;animation:modal-in .18s ease">
+    <div class="modal-head" style="background:var(--navy)">
+      <h3>📅 Request Ready to Send</h3>
+      <p>Your calendar invite (.ics) has been downloaded. Follow the steps below before sending.</p>
+    </div>
+    <div class="modal-body">
+      <div class="ws-confirm-step">
+        <span class="step-icon">✅</span>
+        <div class="step-body">
+          <strong>Calendar invite downloaded</strong>
+          <span id="ws-ics-name"></span>
+          <span>Attach it from your <strong>Downloads</strong> folder when you open the email draft.</span>
+        </div>
+      </div>
+      <div class="ws-confirm-step">
+        <span class="step-icon">📅</span>
+        <div class="step-body">
+          <strong>Add directly to Outlook Calendar</strong>
+          <span>Opens a pre-filled event in Outlook Web — just click Save.</span>
+        </div>
+      </div>
+      <div class="ws-confirm-step">
+        <span class="step-icon">📧</span>
+        <div class="step-body">
+          <strong>Send the request email</strong>
+          <span>Opens a pre-filled draft to JAG Administration.</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-actions" style="flex-wrap:wrap;gap:8px">
+      <button class="btn-cancel" id="ws-modal-close">Cancel</button>
+      <button class="btn-send" id="ws-modal-cal" style="background:var(--telework)">Add to Outlook &rarr;</button>
+      <button class="btn-send" id="ws-modal-open">Email Draft &rarr;</button>
     </div>
   </div>
 </div>
@@ -642,8 +689,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElement
 /* ═══════ WORK STATUS ═══════ */
 function selectType(t){
   wsType=t;
-  document.querySelectorAll('.type-pill').forEach(p=>p.classList.remove('sel-pto','sel-telework','sel-offsite'));
-  const map={PTO:'sel-pto',Telework:'sel-telework',Offsite:'sel-offsite'};
+  document.querySelectorAll('.type-pill').forEach(p=>p.classList.remove('sel-pto','sel-telework','sel-offsite','sel-condo'));
+  const map={PTO:'sel-pto',Telework:'sel-telework',Offsite:'sel-offsite','Condo Request':'sel-condo'};
   document.getElementById('pill-'+t.toLowerCase()).classList.add(map[t]);
   validateWS();
 }
@@ -654,6 +701,26 @@ function validateWS(){
 ['ws-staff','ws-start','ws-end','ws-hours','ws-comments'].forEach(id=>document.getElementById(id).addEventListener('input',validateWS));
 document.getElementById('ws-staff').addEventListener('change',validateWS);
 
+function generateICS(name,type,start,end,hrs,comments){
+  const fmt=d=>d.replace(/-/g,'');
+  const startStr=fmt(start);
+  const endObj=new Date(end||start);endObj.setDate(endObj.getDate()+1);
+  const endStr=endObj.toISOString().slice(0,10).replace(/-/g,'');
+  const now=new Date().toISOString().replace(/[-:.]/g,'').slice(0,15)+'Z';
+  const uid=now+'-JAG@jagreenco.com';
+  const desc=`Work Status Request\\nType: ${type}\\nStaff: ${name}\\nHours: ${hrs}`+(comments?`\\nComments: ${comments}`:'');
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//J.A. Green & Company//Staff Portal//EN','CALSCALE:GREGORIAN','METHOD:REQUEST',
+    'BEGIN:VEVENT',`UID:${uid}`,`DTSTAMP:${now}`,`DTSTART;VALUE=DATE:${startStr}`,`DTEND;VALUE=DATE:${endStr}`,
+    `SUMMARY:${type} — ${name}`,`DESCRIPTION:${desc}`,
+    `ORGANIZER;CN=JAG Administration:mailto:jagadmin@jagreenco.com`,
+    'STATUS:TENTATIVE','TRANSP:OPAQUE','END:VEVENT','END:VCALENDAR'].join('\r\n');
+}
+function downloadICS(content,filename){
+  const blob=new Blob([content],{type:'text/calendar;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();
+  setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url)},200);
+}
 function submitWS(){
   const name=document.getElementById('ws-staff').value;
   const start=document.getElementById('ws-start').value;
@@ -662,8 +729,13 @@ function submitWS(){
   const comments=document.getElementById('ws-comments').value.trim();
   const dateStr=end&&end!==start?`${start} through ${end}`:`${start}`;
   const subj=`Work Status Request — ${wsType} — ${name} — ${start}`;
-  const body=`JAG Administration,\n\nPlease find below a work status request for your review:\n\nStaff Member: ${name}\nRequest Type: ${wsType}\nDate(s): ${dateStr}\nTotal Hours: ${hrs}\n${comments?`\nComments:\n${comments}\n`:''}\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
-  window.location.href=`mailto:jagadmin@jagreenco.com?cc=${encodeURIComponent('jennifer@jagreenco.com')}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  const body=`JAG Administration,\n\nPlease find below a work status request for your review:\n\nStaff Member: ${name}\nRequest Type: ${wsType}\nDate(s): ${dateStr}\nTotal Hours: ${hrs}\n${comments?`\nComments:\n${comments}\n`:''}\nA calendar invite (.ics file) has been downloaded to your device — please attach it to this email before sending.\n\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
+  const ics=generateICS(name,wsType,start,end||start,hrs,comments);
+  const fname=`JAG_${wsType.replace(/\s+/g,'_')}_${name.replace(/\s+/g,'_')}_${start}.ics`;
+  downloadICS(ics,fname);
+  setTimeout(()=>{
+    window.location.href=`mailto:jagadmin@jagreenco.com?cc=${encodeURIComponent('jennifer@jagreenco.com')}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  },400);
 }
 
 /* ═══════ TOPBAR HEIGHT ═══════ */
