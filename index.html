@@ -7,13 +7,11 @@
 <title>JAG — Staff Portal</title>
 <style>
 :root{
-  --navy:#1F3864;--mid:#2E5496;--midlt:#3A6AAD;
-  --light:#D9E2F3;--accent:#EEF3FB;
-  --gold:#C8A951;--golddark:#a8842e;
-  --sub:#5a5a5a;--border:#C8D6ED;
+  --navy:#1F3864;--mid:#2E5496;--midlt:#3A6AAD;--light:#D9E2F3;--accent:#EEF3FB;
+  --gold:#C8A951;--golddark:#a8842e;--sub:#5a5a5a;--border:#C8D6ED;
   --lp:#145a32;--ls:#1d6a3d;--ep:#1F3864;--po:#5a3e8a;
   --r:8px;--topbar-h:64px;
-  --pto:#b5451b;--telework:#1a6b3a;--offsite:#5a3e8a;--condo:#b45309;
+  --pto:#b5451b;--telework:#1a6b3a;--offsite:#5a3e8a;
   --danger:#c0392b;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -21,57 +19,55 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.45;color:#1a1a1a;background:#edf1f9;padding-bottom:env(safe-area-inset-bottom,0px);min-height:100vh}
 .js-hidden{display:none!important}
 
-/* ── TOPBAR ── */
+/* TOPBAR */
 #topbar{background:var(--navy);padding:0 16px;padding-top:env(safe-area-inset-top,0px);padding-left:calc(16px + env(safe-area-inset-left,0px));padding-right:calc(16px + env(safe-area-inset-right,0px));position:-webkit-sticky;position:sticky;top:0;z-index:300;box-shadow:0 2px 10px rgba(0,0,0,.4);display:flex;align-items:center;gap:10px;height:calc(var(--topbar-h) + env(safe-area-inset-top,0px))}
 #backBtn{background:transparent;border:none;color:rgba(255,255,255,.75);font-size:22px;cursor:pointer;padding:4px 8px 4px 0;line-height:1;display:none;align-items:center;-webkit-tap-highlight-color:transparent}
-#backBtn.visible{display:flex}#backBtn:active{color:#fff}
+#backBtn.visible{display:flex}
 #topbar-titles{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .topbar-logo-svg{height:38px;width:auto;flex-shrink:0;display:block}
 #topbar-sub{color:#8da6cf;font-size:11px;letter-spacing:1px;text-transform:uppercase;display:none;margin-top:1px}
 #topbar-sub.visible{display:block}
-#printBtn{height:40px;padding:0 14px;background:var(--gold);border:none;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;color:var(--navy);white-space:nowrap;display:none;align-items:center;-webkit-tap-highlight-color:transparent}
-#printBtn.visible{display:flex}#printBtn:active{background:var(--golddark)}
+#printBtn{height:40px;padding:0 14px;background:var(--gold);border:none;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;color:var(--navy);white-space:nowrap;display:none;align-items:center}
+#printBtn.visible{display:flex}
 
-/* ── PAGES ── */
+/* PAGES */
 .page{display:none;max-width:900px;margin:0 auto;padding:20px 12px 60px;padding-left:calc(12px + env(safe-area-inset-left,0px));padding-right:calc(12px + env(safe-area-inset-right,0px))}
 .page.active{display:block}
-#page-er.active{padding-bottom:100px}
+#page-er.active,#page-sc.active{padding-bottom:100px}
 
-/* ── HOME ── */
+/* HOME */
 .home-hero{text-align:center;padding:36px 16px 28px}
 .home-logo-wrap{display:flex;justify-content:center;margin-bottom:20px}
 .home-logo-svg{height:72px;width:auto}
 .home-divider{width:60px;height:2px;background:var(--gold);margin:0 auto 20px;border-radius:2px}
-.home-hero h2{font-size:20px;color:var(--navy);font-weight:800;margin-bottom:6px;letter-spacing:.3px}
+.home-hero h2{font-size:20px;color:var(--navy);font-weight:800;margin-bottom:6px}
 .home-hero p{color:var(--sub);font-size:13px}
-.nav-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:4px}
-.nav-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:28px 20px 24px;cursor:pointer;text-align:center;box-shadow:0 2px 8px rgba(31,56,100,.07);-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform .12s,box-shadow .12s,border-color .12s}
+.nav-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:4px}
+.nav-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:24px 18px 20px;cursor:pointer;text-align:center;box-shadow:0 2px 8px rgba(31,56,100,.07);-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none;display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .12s,box-shadow .12s,border-color .12s}
 .nav-card:active{transform:scale(.97)}
 @media(hover:hover){.nav-card:hover{border-color:var(--mid);box-shadow:0 4px 18px rgba(31,56,100,.13);transform:translateY(-2px)}}
-.nav-card .icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px}
-.icon-ca{background:#e8edf8}.icon-ws{background:#e8f3ec}.icon-er{background:#fef3e2}
-.nav-card h3{font-size:16px;font-weight:700;color:var(--navy);margin:0}
+.nav-card .icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.icon-ca{background:#e8edf8}.icon-ws{background:#e8f3ec}.icon-er{background:#fef3e2}.icon-sc{background:#f3e8f8}
+.nav-card h3{font-size:15px;font-weight:700;color:var(--navy);margin:0}
 .nav-card p{font-size:12px;color:var(--sub);line-height:1.5;margin:0}
 
-/* ── SECTION HEAD ── */
+/* SECTION HEAD */
 .section-head{background:var(--navy);color:#fff;padding:18px 20px 14px;border-radius:var(--r) var(--r) 0 0;display:flex;align-items:flex-start;gap:16px}
-.section-head-logo{flex-shrink:0;margin-top:2px}
-.section-head-logo svg{height:34px;width:auto;display:block}
-.section-head-text{flex:1;min-width:0}
-.section-head .firm{font-size:10px;letter-spacing:1.5px;color:#8da6cf;text-transform:uppercase;margin-bottom:4px}
-.section-head h2{font-size:18px;margin-bottom:4px}
-.section-head .meta{font-size:12px;color:#afc3e3;line-height:1.6}
+.section-head-logo svg{height:32px;width:auto;display:block;flex-shrink:0;margin-top:2px}
+.section-head-text .firm{font-size:10px;letter-spacing:1.5px;color:#8da6cf;text-transform:uppercase;margin-bottom:4px}
+.section-head-text h2{font-size:18px;margin-bottom:4px}
+.section-head-text .meta{font-size:12px;color:#afc3e3;line-height:1.6}
 
-/* ── CA MODULE ── */
+/* CA */
 .ca-filter{background:var(--light);border:1px solid var(--border);border-top:none;padding:10px 14px;display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
-.sel-wrap{flex:1;min-width:160px;position:relative;display:flex;align-items:stretch}
-.sel-wrap::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
-.ca-filter select{width:100%;height:44px;padding:0 34px 0 12px;border:1.5px solid var(--border);border-radius:6px;font-size:15px;font-weight:600;color:var(--navy);background:#fff;-webkit-appearance:none;appearance:none;cursor:pointer}
-.ca-filter select:focus{outline:2px solid var(--gold);outline-offset:2px}
+.sel-wrap{flex:1;min-width:160px;position:relative;display:flex}
+.sel-wrap::after,.sel-inner::after,.er-sel-wrap::after,.modal-field .sel-wrap-inner::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
+.ca-filter select,.form-field select,.er-sel-wrap select,.modal-field select{height:44px;padding:0 34px 0 12px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-weight:600;color:var(--navy);background:#fff;-webkit-appearance:none;appearance:none;cursor:pointer;font-family:inherit;transition:border-color .15s;width:100%}
+.ca-filter select:focus,.er-sel-wrap select:focus{outline:2px solid var(--gold);outline-offset:2px}
 .count-bar{background:var(--light);border:1px solid var(--border);border-top:none;padding:9px 16px;font-size:13px;color:var(--navy);font-weight:700}
-.tbl-wrap{border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);overflow:hidden;overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff}
+.tbl-wrap{border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);overflow:hidden;overflow-x:auto;background:#fff}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px}
-thead th{background:var(--mid);color:#fff;padding:0 12px;height:44px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid #b4c6e7;cursor:pointer;user-select:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+thead th{background:var(--mid);color:#fff;padding:0 12px;height:44px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid #b4c6e7;cursor:pointer;user-select:none;white-space:nowrap}
 @media(hover:hover){thead th:hover{background:var(--midlt)}}
 .si{margin-left:4px;opacity:.45;font-size:10px}
 th.asc .si::after{content:'▲';opacity:1}th.desc .si::after{content:'▼';opacity:1}th:not(.asc):not(.desc) .si::after{content:'⇅'}
@@ -83,32 +79,31 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .footnote{margin-top:14px;font-size:11px;color:#999;font-style:italic;text-align:center;line-height:1.7;padding:0 4px}
 .sort-bar{background:var(--light);border:1px solid var(--border);border-top:none;padding:7px 14px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .sort-label{font-size:11px;color:var(--sub);font-weight:600;white-space:nowrap;margin-right:2px}
-.pill{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;height:32px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--navy);cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-.pill.active{background:var(--mid);color:#fff;border-color:var(--mid)}.pill .arr{font-size:9px;line-height:1}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;height:32px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--navy);cursor:pointer;white-space:nowrap}
+.pill.active{background:var(--mid);color:#fff;border-color:var(--mid)}.pill .arr{font-size:9px}
 
-/* ── WS MODULE ── */
+/* WS */
 .ws-card{background:#fff;border:1px solid var(--border);border-radius:0 0 var(--r) var(--r);padding:24px 20px 28px}
 .notice-banner{background:#fff8e6;border:1.5px solid #e5c44a;border-radius:8px;padding:12px 16px;margin-bottom:22px;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#7a5500;line-height:1.5}
 .notice-banner .bell{font-size:18px;flex-shrink:0;margin-top:1px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:560px){.form-grid{grid-template-columns:1fr}}
 .form-field{display:flex;flex-direction:column;gap:5px}.form-field.full{grid-column:1/-1}
-.form-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)}
-.form-field label .req{color:#c0392b;margin-left:2px}
-.form-field input,.form-field select,.form-field textarea{border:1.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;color:#1a1a1a;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none;transition:border-color .15s}
-.form-field select{height:46px;cursor:pointer;padding-right:34px}
-.sel-inner{position:relative}.sel-inner::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
-.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
+.form-field label,.er-field label,.sheet-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)}
+.req{color:#c0392b;margin-left:2px}
+.form-field input,.form-field textarea{border:1.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;color:#1a1a1a;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none;transition:border-color .15s;width:100%}
+.sel-inner{position:relative}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus,.sheet-field input:focus,.sheet-field select:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
 .form-field textarea{height:100px;resize:vertical;line-height:1.5}
 .type-pills{display:flex;gap:8px;flex-wrap:wrap}
-.type-pill{flex:1;min-width:90px;height:46px;display:flex;align-items:center;justify-content:center;gap:7px;border:2px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;color:#555;background:#fff;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.type-pill{flex:1;min-width:90px;height:46px;display:flex;align-items:center;justify-content:center;gap:7px;border:2px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;color:#555;background:#fff;transition:all .15s}
 .dot{width:10px;height:10px;border-radius:50%;background:currentColor;flex-shrink:0}
 .type-pill.sel-pto{border-color:var(--pto)!important;background:var(--pto)!important;color:#fff!important}
 .type-pill.sel-telework{border-color:var(--telework)!important;background:var(--telework)!important;color:#fff!important}
 .type-pill.sel-offsite{border-color:var(--offsite)!important;background:var(--offsite)!important;color:#fff!important}
 .type-pill.sel-condo{border-color:#c0392b!important;background:#c0392b!important;color:#fff!important}
 .ws-submit{margin-top:22px;width:100%;height:50px;background:var(--navy);border:none;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;color:#fff;transition:background .15s}
-.ws-submit:hover,.ws-submit:active{background:var(--mid)}.ws-submit:disabled{background:#b0bfd4;cursor:not-allowed}
+.ws-submit:hover{background:var(--mid)}.ws-submit:disabled{background:#b0bfd4;cursor:not-allowed}
 .ws-note{font-size:11px;color:#888;text-align:center;margin-top:10px;font-style:italic}
 .ws-confirm-step{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
 .ws-confirm-step:last-child{border-bottom:none;padding-bottom:4px}
@@ -117,45 +112,29 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .step-body span{font-size:12px;color:var(--sub);line-height:1.5;display:block}
 #ws-ics-name{font-size:11px;color:var(--mid);font-family:monospace;margin-top:4px;word-break:break-all;display:block}
 
-/* ══ NEW EXPENSE REPORT MODULE ══ */
-
-/* Header: staff + period */
-.er-hdr{background:#fff;border:1px solid var(--border);border-top:none;padding:16px}
-.er-hdr-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:560px){.er-hdr-fields{grid-template-columns:1fr}}
+/* SHARED ER/SC ELEMENTS */
+.er-hdr,.sc-hdr{background:#fff;border:1px solid var(--border);border-top:none;padding:16px}
+.er-hdr-fields,.sc-hdr-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.er-hdr-fields,.sc-hdr-fields{grid-template-columns:1fr}}
 .er-field{display:flex;flex-direction:column;gap:5px}
-.er-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)}
-.er-field label .req{color:#c0392b;margin-left:2px}
 .er-sel-wrap{position:relative}
-.er-sel-wrap select{width:100%;height:44px;padding:0 34px 0 12px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;color:#1a1a1a;background:#fff;-webkit-appearance:none;appearance:none;cursor:pointer;font-family:inherit;transition:border-color .15s}
+.er-sel-wrap select{height:44px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;color:#1a1a1a;background:#fff;-webkit-appearance:none;appearance:none;cursor:pointer;font-family:inherit;transition:border-color .15s;width:100%;padding:0 34px 0 12px}
 .er-sel-wrap select:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
-.er-sel-wrap::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none}
 .er-sel-wrap select:disabled{background:#f5f7fa;color:#888;cursor:not-allowed}
 .er-save-row{display:flex;align-items:center;justify-content:flex-end;margin-top:10px;min-height:20px}
 .er-save-status{font-size:12px;color:var(--lp);font-weight:600;opacity:0;transition:opacity .3s;white-space:nowrap}
 .er-save-status.visible{opacity:1}
 .er-period-lock{display:none;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:var(--sub);flex-wrap:wrap}
-.er-period-lock .lock-icon{font-size:13px}
 .er-period-lock .unlock-btn{background:none;border:none;color:var(--mid);font-size:12px;cursor:pointer;text-decoration:underline;padding:0;font-weight:600}
-.er-period-lock .unlock-btn:hover{color:var(--navy)}
-
-/* Section wrapper */
 .er-section-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:16px}
 .er-sec-head{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.er-sec-head.cc{background:#1a3a6e;color:#fff}
-.er-sec-head.ri{background:#2a4f96;color:#fff}
+.er-sec-head.cc{background:#1a3a6e;color:#fff}.er-sec-head.ri{background:#2a4f96;color:#fff}
 .er-sec-title{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .er-sec-title-text{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
 .er-count-badge{background:rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;white-space:nowrap}
-.er-sec-amt{font-size:15px;font-weight:800;white-space:nowrap;color:#fff}
-
-/* Expense container */
-.er-exp-container{padding:0}
-
-/* Empty state */
+.er-sec-amt{font-size:15px;font-weight:800;color:#fff;white-space:nowrap}
 .er-empty{text-align:center;padding:32px 16px;font-size:14px;color:#aaa;font-style:italic}
-
-/* ── EXPENSE CARDS (mobile) ── */
+/* Expense cards */
 .exp-card{padding:14px 16px;border-bottom:1px solid var(--border);background:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .12s}
 .exp-card:last-child{border-bottom:none}
 .exp-card:active{background:#f0f5ff}
@@ -167,60 +146,37 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .exp-card-vendor{font-weight:700;font-size:15px;color:#1a1a1a}
 .exp-card-purpose{font-size:13px;color:var(--sub);margin-top:2px}
 .exp-card-billable{font-size:12px;color:var(--lp);margin-top:4px;font-weight:600}
-.exp-card-notes{font-size:12px;color:#aaa;margin-top:3px;font-style:italic}
 .exp-card-meta{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid #f0f0f0}
 .exp-card-edit-btn{background:var(--accent);color:var(--mid);border:1.5px solid var(--border);border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer}
 .exp-card-del-btn{background:none;border:none;color:#ccc;font-size:13px;cursor:pointer;padding:4px 8px;font-weight:700}
 .exp-card-del-btn:hover{color:var(--danger)}
-
-/* ── EXPENSE TABLE (desktop) ── */
-.er-tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.exp-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+/* Expense table */
+.er-tbl-scroll{overflow-x:auto}
+.exp-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
 .exp-tbl thead th{background:#eef2fa;color:var(--navy);padding:9px 10px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid var(--border);white-space:nowrap}
 .exp-tbl tbody td{padding:9px 10px;border-bottom:1px solid #edf1f9;vertical-align:middle;font-size:13px}
 .exp-tbl tbody tr.exp-tbl-row{cursor:pointer;transition:background .1s}
 .exp-tbl tbody tr.exp-tbl-row:nth-child(even){background:var(--accent)}
 @media(hover:hover){.exp-tbl tbody tr.exp-tbl-row:hover{background:#d8e8f8}}
-.exp-tbl-vendor{font-weight:600;color:#1a1a1a}
-.exp-tbl-amount{font-weight:700;color:var(--navy)}
-.exp-tbl-purpose{color:var(--sub)}
-.exp-tbl .tc{width:60px;text-align:right;white-space:nowrap}
-.exp-edit-btn{background:none;border:none;font-size:14px;cursor:pointer;padding:2px 4px;opacity:.6}
-.exp-del-btn{background:none;border:none;color:var(--danger);font-size:14px;cursor:pointer;padding:2px 4px;opacity:.7}
-.exp-edit-btn:hover{opacity:1}.exp-del-btn:hover{opacity:1}
-.billable-yes{color:var(--lp);font-weight:600;font-size:12px}
-.billable-no{color:#bbb;font-size:12px}
-.er-tbl-empty{text-align:center;padding:28px;color:#aaa;font-style:italic;font-size:13px}
-
-/* Total row in table */
 .exp-tbl-total td{background:var(--light);font-weight:700;color:var(--navy);padding:8px 10px;border-top:2px solid var(--border);font-size:13px}
-.exp-tbl-total .total-label{text-align:right}
-.exp-tbl-total .total-val{font-size:14px}
-
-/* Add expense button */
-.er-add-btn{width:100%;padding:12px;background:#fff;border:none;border-top:1px dashed var(--border);color:var(--mid);font-size:14px;font-weight:700;cursor:pointer;text-align:center;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .12s}
-.er-add-btn:hover,.er-add-btn:active{background:var(--accent)}
+.exp-edit-btn,.exp-del-btn{background:none;border:none;font-size:14px;cursor:pointer;padding:2px 4px;opacity:.6}
+.exp-del-btn{color:var(--danger)}.exp-edit-btn:hover,.exp-del-btn:hover{opacity:1}
+.billable-yes{color:var(--lp);font-weight:600;font-size:12px}.billable-no{color:#bbb;font-size:12px}
+.er-add-btn{width:100%;padding:12px;background:#fff;border:none;border-top:1px dashed var(--border);color:var(--mid);font-size:14px;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .12s}
+.er-add-btn:hover{background:var(--accent)}
 .er-add-btn .plus-icon{width:24px;height:24px;background:var(--mid);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;flex-shrink:0}
-.er-add-btn.ri .plus-icon{background:#2a4f96}
-
-/* Grand total */
 .er-grand{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:14px 20px;margin-top:16px;display:flex;justify-content:flex-end;align-items:center;gap:16px}
-.gt-label{font-size:14px;color:var(--sub);font-weight:600}
-.gt-val{font-size:26px;font-weight:800;color:var(--navy)}
-
-/* Action buttons */
+.gt-label{font-size:14px;color:var(--sub);font-weight:600}.gt-val{font-size:26px;font-weight:800;color:var(--navy)}
 .er-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-.er-btn{flex:1;height:50px;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;min-width:120px;transition:opacity .15s;-webkit-tap-highlight-color:transparent}
+.er-btn{flex:1;height:50px;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;min-width:110px;transition:opacity .15s}
 .er-btn:disabled{opacity:.35;cursor:not-allowed}
 .er-btn-clear{background:#fff;border:1.5px solid var(--border)!important;color:var(--sub)}
 .er-btn-clear:hover:not(:disabled){background:#fff0f0;border-color:#e0a0a0!important;color:var(--danger)}
-.er-btn-dl{background:var(--gold);color:var(--navy)}
-.er-btn-dl:hover:not(:disabled){background:var(--golddark)}
-.er-btn-send{background:var(--navy);color:#fff}
-.er-btn-send:hover:not(:disabled){background:var(--mid)}
+.er-btn-dl{background:var(--gold);color:var(--navy)}.er-btn-dl:hover:not(:disabled){background:var(--golddark)}
+.er-btn-send{background:var(--navy);color:#fff}.er-btn-send:hover:not(:disabled){background:var(--mid)}
 
-/* ── STICKY TOTAL BAR ── */
-#er-sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:#fff;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:200;flex-direction:row;align-items:center;justify-content:center;gap:0;box-shadow:0 -3px 16px rgba(0,0,0,.25)}
+/* STICKY BAR */
+#er-sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:#fff;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:200;flex-direction:row;align-items:center;justify-content:center;box-shadow:0 -3px 16px rgba(0,0,0,.25)}
 #er-sticky-bar.visible{display:flex}
 .sticky-item{display:flex;flex-direction:column;align-items:center;padding:0 16px;flex:1}
 .sticky-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8da6cf;margin-bottom:1px}
@@ -228,30 +184,24 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .sticky-divider{width:1px;height:32px;background:rgba(255,255,255,.2)}
 .sticky-item-total .sticky-val{color:var(--gold);font-size:17px}
 
-/* ── EXPENSE ENTRY MODAL / BOTTOM SHEET ── */
-#er-entry-overlay{display:none;position:fixed;inset:0;z-index:900;background:rgba(10,20,45,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);align-items:flex-end;justify-content:center}
+/* ENTRY SHEET */
+#er-entry-overlay{display:none;position:fixed;inset:0;z-index:900;background:rgba(10,20,45,.55);backdrop-filter:blur(3px);align-items:flex-end;justify-content:center}
 #er-entry-overlay.open{display:flex}
-.er-entry-sheet{background:#fff;width:100%;max-height:92vh;border-radius:20px 20px 0 0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 20px 24px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));animation:sheet-up .22s ease}
+.er-entry-sheet{background:#fff;width:100%;max-height:92vh;border-radius:20px 20px 0 0;overflow-y:auto;padding:8px 20px 24px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));animation:sheet-up .22s ease}
 @keyframes sheet-up{from{transform:translateY(40px);opacity:.6}to{transform:translateY(0);opacity:1}}
 .sheet-handle{width:40px;height:4px;background:#e0e0e0;border-radius:2px;margin:8px auto 16px}
 .sheet-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
 .sheet-title{font-size:18px;font-weight:800;color:var(--navy)}
 .sheet-subtitle{font-size:12px;color:var(--sub);margin-top:2px}
 .sheet-close{background:none;border:none;font-size:20px;color:#bbb;cursor:pointer;padding:4px;line-height:1;margin-top:-2px}
-.sheet-close:active{color:#888}
-.scan-btn-primary{width:100%;height:52px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s;-webkit-tap-highlight-color:transparent}
-.scan-btn-primary:hover{background:var(--mid)}.scan-btn-primary:active{background:var(--mid);transform:scale(.98)}
+.scan-btn-primary{width:100%;height:52px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s}
+.scan-btn-primary:hover{background:var(--mid)}
 .scan-or{text-align:center;font-size:12px;color:#bbb;margin:14px 0 4px;letter-spacing:.5px}
 .sheet-fields{display:flex;flex-direction:column;gap:14px;margin-top:8px}
 .sheet-field{display:flex;flex-direction:column;gap:5px}
-.sheet-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)}
-.sheet-field .req{color:#c0392b;margin-left:2px}
-.sheet-field input{border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:15px;color:#1a1a1a;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none;transition:border-color .15s}
-.sheet-field input:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
+.sheet-field input{border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:15px;color:#1a1a1a;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none;transition:border-color .15s;width:100%}
 .sheet-field .er-sel-wrap select{border-radius:8px;font-size:15px;height:48px}
-
-/* Toggle switch */
-.toggle-label-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;padding:10px 0}
+.toggle-label-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 0}
 .toggle-switch{position:relative;flex-shrink:0}
 .toggle-switch input{display:none}
 .toggle-track{display:block;width:48px;height:28px;background:#ccc;border-radius:14px;transition:background .2s;position:relative}
@@ -260,27 +210,62 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .toggle-switch input:checked + .toggle-track .toggle-thumb{transform:translateX(20px)}
 .toggle-text{font-size:14px;font-weight:600;color:var(--sub)}
 .toggle-switch input:checked ~ .toggle-text{color:var(--lp)}
-
-/* Sheet action buttons */
 .sheet-actions{display:flex;gap:10px;margin-top:20px}
 .btn-cancel{flex:0 0 auto;height:50px;padding:0 20px;background:transparent;border:1.5px solid var(--border);border-radius:8px;font-weight:600;font-size:15px;cursor:pointer;color:var(--sub)}
-.btn-save-exp{flex:1;height:50px;background:var(--navy);border:none;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;color:#fff;transition:background .15s}
-.btn-save-exp:hover,.btn-save-exp:active{background:var(--mid)}
-
-/* Validation error on sheet */
+.btn-save-exp{flex:1;height:50px;background:var(--navy);border:none;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;color:#fff}
+.btn-save-exp:hover{background:var(--mid)}
 .sheet-err{background:#fff0f0;border:1.5px solid #f5a0a0;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--danger);display:none;margin-bottom:4px;line-height:1.5}
 .sheet-err.visible{display:block}
-
-/* Desktop modal overrides */
 @media(min-width:701px){
   #er-entry-overlay{align-items:center}
   .er-entry-sheet{max-width:520px;border-radius:12px;animation:modal-in .18s ease}
   .sheet-handle{display:none}
 }
 
-/* ── SHARED MODALS ── */
-#modal-overlay,#ws-modal-overlay,#er-modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,20,45,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
-#modal-overlay.open,#ws-modal-overlay.open,#er-modal-overlay.open{display:flex}
+/* ══ SCORECARD ══ */
+.sc-hdr-fields{grid-template-columns:1fr 1fr}
+.sc-hdr-fields .er-field.full{grid-column:1/-1}
+.sc-hdr-fields input[type=text],.sc-hdr-fields input[type=date]{border:1.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none;width:100%;color:#1a1a1a;transition:border-color .15s}
+.sc-hdr-fields input:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
+.sc-hdr-fields textarea{border:1.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;background:#fff;width:100%;color:#1a1a1a;resize:vertical;min-height:80px;line-height:1.5;transition:border-color .15s}
+.sc-hdr-fields textarea:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
+.sc-criteria-wrap{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.sc-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.sc-card-head{padding:14px 16px 10px;display:flex;align-items:flex-start;gap:12px}
+.sc-num{width:26px;height:26px;background:var(--light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--navy);flex-shrink:0;margin-top:1px}
+.sc-card-body{flex:1;min-width:0}
+.sc-crit-label{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.sc-crit-desc{font-size:12px;color:var(--sub);line-height:1.5}
+.sc-score-row{padding:0 16px 14px 54px;display:flex;align-items:center;gap:12px}
+.sc-score-sel{height:42px;width:80px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;font-weight:700;color:var(--navy);background:#fff;-webkit-appearance:none;appearance:none;text-align:center;cursor:pointer;flex-shrink:0;transition:border-color .15s}
+.sc-score-sel:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
+.sc-score-bar-wrap{flex:1;height:10px;background:#eee;border-radius:5px;overflow:hidden}
+.sc-score-bar{height:100%;border-radius:5px;transition:width .3s,background .3s;width:0%}
+.sc-notes-btn{font-size:12px;color:var(--mid);background:none;border:none;cursor:pointer;padding:0 0 10px 54px;display:block;font-weight:600;text-decoration:underline;width:100%;text-align:left}
+.sc-notes-field{display:none;padding:0 16px 12px 54px}
+.sc-notes-field textarea{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit;line-height:1.5;resize:none;height:64px;color:#555;transition:border-color .15s}
+.sc-notes-field textarea:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
+/* Summary box */
+.sc-summary{background:#fff;border:1px solid var(--border);border-radius:var(--r);margin-top:16px;overflow:hidden}
+.sc-summary-head{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;background:var(--navy);color:#fff}
+.sc-summary-title{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.sc-total-display{font-size:28px;font-weight:900}
+.sc-summary-body{padding:18px 20px}
+.sc-recommendation{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:8px;margin-bottom:16px;font-size:15px;font-weight:700}
+.sc-rec-strong{background:#e8f5ec;color:#145a32;border:1.5px solid #a8d8b8}
+.sc-rec-conditional{background:#fff8e6;color:#7a5500;border:1.5px solid #e5c44a}
+.sc-rec-borderline{background:#fff3e0;color:#8d4a00;border:1.5px solid #f5c07a}
+.sc-rec-no{background:#fff0f0;color:#c0392b;border:1.5px solid #f5a0a0}
+.sc-rec-pending{background:#f5f5f5;color:#999;border:1.5px solid #e0e0e0}
+.sc-score-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
+@media(max-width:560px){.sc-score-grid{grid-template-columns:1fr}}
+.sc-score-item{display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f0f0;font-size:13px}
+.sc-score-item-label{color:var(--sub)}
+.sc-score-item-val{font-weight:700;color:var(--navy);min-width:30px;text-align:right}
+
+/* SHARED MODALS */
+#modal-overlay,#ws-modal-overlay,#er-modal-overlay,#sc-modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,20,45,.55);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+#modal-overlay.open,#ws-modal-overlay.open,#er-modal-overlay.open,#sc-modal-overlay.open{display:flex}
 .modal-box{background:#fff;border-radius:12px;width:100%;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;animation:modal-in .18s ease}
 @keyframes modal-in{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .modal-head{background:var(--navy);color:#fff;padding:18px 20px 14px}
@@ -291,15 +276,16 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
 .modal-field select,.modal-field textarea{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;color:#1a1a1a;font-family:inherit;background:#fff;-webkit-appearance:none;appearance:none}
 .modal-field select{height:44px;cursor:pointer}.modal-field textarea{height:110px;resize:vertical;line-height:1.5}
 .modal-field select:focus,.modal-field textarea:focus{outline:none;border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,84,150,.12)}
-.modal-field .sel-wrap-inner{position:relative}.modal-field .sel-wrap-inner::after{content:'▼';font-size:10px;color:var(--navy);position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none}
+.modal-field .sel-wrap-inner{position:relative}
 .modal-note{font-size:11px;color:#888;margin-top:-10px;margin-bottom:16px;font-style:italic;line-height:1.5}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end;padding:0 20px 20px;flex-wrap:wrap}
+.btn-cancel2{height:42px;padding:0 18px;background:transparent;border:1.5px solid var(--border);border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;color:var(--sub)}
 .btn-send{height:42px;padding:0 20px;background:var(--navy);border:none;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;color:#fff}
-.btn-send:hover,.btn-send:active{background:var(--mid)}.btn-send:disabled{background:#b0bfd4;cursor:not-allowed}
+.btn-send:hover{background:var(--mid)}.btn-send:disabled{background:#b0bfd4;cursor:not-allowed}
 .btn-send-green{height:42px;padding:0 20px;background:var(--telework);border:none;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;color:#fff}
-.btn-send-green:hover,.btn-send-green:active{background:#145a32}
+.btn-send-green:hover{background:#145a32}
 
-/* ── MOBILE CA CARDS ── */
+/* Mobile CA cards */
 @media(max-width:599px){
   .tbl-wrap{overflow:visible;background:transparent;border:none}
   table{display:block!important;min-width:unset}thead{display:none!important}
@@ -311,15 +297,12 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
   td.cn{font-size:16px;padding-bottom:8px!important;border-bottom:1px solid var(--border);margin-bottom:2px}td.cn::before{display:none}
   .count-bar{border-radius:var(--r) var(--r) 0 0;border:1px solid var(--border)}.tbl-wrap{border-radius:0}
   .section-head{gap:10px}.section-head-logo svg{height:26px}
+  .sc-score-row{padding-left:16px}
+  .sc-notes-btn,.sc-notes-field{padding-left:16px}
 }
 @media print{
-  #modal-overlay,#ws-modal-overlay,#er-modal-overlay,#er-entry-overlay,#er-sticky-bar,.pill,#changeBtn,#backBtn{display:none!important}
+  #modal-overlay,#ws-modal-overlay,#er-modal-overlay,#sc-modal-overlay,#er-entry-overlay,#er-sticky-bar,.pill,#changeBtn,#backBtn{display:none!important}
   .page{padding:0!important;max-width:100%}.section-head{border-radius:0!important}
-  .tbl-wrap{overflow:visible;border-radius:0;background:#fff}
-  table{display:table!important;min-width:unset;width:100%}thead{display:table-header-group!important}tbody{display:table-row-group!important}
-  tbody tr{display:table-row!important;background:#fff!important;border:none;box-shadow:none;border-bottom:1px solid #ddd!important}
-  tbody tr:nth-child(even){background:#f5f8ff!important}
-  td{display:table-cell!important;padding:6px 9px!important;border:none;margin:0}td[data-label]::before{display:none}
 }
 </style>
 </head>
@@ -353,393 +336,232 @@ td{padding:10px 12px;vertical-align:top;line-height:1.4}
   <button id="printBtn" onclick="window.print()">Print&nbsp;/&nbsp;PDF</button>
 </div>
 
-<!-- ══ HOME ══ -->
+<!-- HOME -->
 <div id="page-home" class="page active">
   <div class="home-hero">
-    <div class="home-logo-wrap">
-      <svg class="home-logo-svg" role="img" aria-label="J.A. Green & Company"><use href="#logo-navy"/></svg>
-    </div>
+    <div class="home-logo-wrap"><svg class="home-logo-svg" role="img" aria-label="J.A. Green & Company"><use href="#logo-navy"/></svg></div>
     <div class="home-divider"></div>
     <h2>Staff Portal</h2>
     <p>Select a module below to get started.</p>
   </div>
   <div class="nav-cards">
-    <button class="nav-card" onclick="goTo('ca')">
-      <div class="icon icon-ca">📋</div>
-      <h3>Client Assignments</h3>
-      <p>View staffing assignments, positions, and policy leads across the client portfolio.</p>
-    </button>
-    <button class="nav-card" onclick="goTo('ws')">
-      <div class="icon icon-ws">📅</div>
-      <h3>Work Status</h3>
-      <p>Submit PTO, Telework, Offsite, or Condo requests for JAG administration review.</p>
-    </button>
-    <button class="nav-card" onclick="goTo('er')">
-      <div class="icon icon-er">💳</div>
-      <h3>Expense Report</h3>
-      <p>Add expenses throughout the month. Auto-saves your draft. Submit when ready.</p>
-    </button>
+    <button class="nav-card" onclick="goTo('ca')"><div class="icon icon-ca">📋</div><h3>Client Assignments</h3><p>View staffing, positions, and policy leads across the portfolio.</p></button>
+    <button class="nav-card" onclick="goTo('ws')"><div class="icon icon-ws">📅</div><h3>Work Status</h3><p>Submit PTO, Telework, Offsite, or Condo requests for administration.</p></button>
+    <button class="nav-card" onclick="goTo('er')"><div class="icon icon-er">💳</div><h3>Expense Report</h3><p>Add expenses throughout the month. Draft saves automatically.</p></button>
+    <button class="nav-card" onclick="goTo('sc')"><div class="icon icon-sc">🎯</div><h3>Prospect Scorecard</h3><p>Evaluate and score new business opportunities for JAG.</p></button>
   </div>
 </div>
 
-<!-- ══ CLIENT ASSIGNMENTS ══ -->
+<!-- CLIENT ASSIGNMENTS -->
 <div id="page-ca" class="page">
   <div class="section-head">
     <div class="section-head-logo"><svg role="img" aria-label="JAG"><use href="#logo-white"/></svg></div>
-    <div class="section-head-text">
-      <div class="firm">Confidential</div>
-      <h2>Client Assignments</h2>
-      <div class="meta" id="ca-rpt-meta">Select a staff member to view their client assignments.</div>
-    </div>
+    <div class="section-head-text"><div class="firm">Confidential</div><h2>Client Assignments</h2><div class="meta" id="ca-rpt-meta">Select a staff member to view their client assignments.</div></div>
   </div>
   <div class="ca-filter">
     <div class="sel-wrap">
       <select id="staffSel">
         <option value="">— Select a staff member —</option>
-        <optgroup label="EVPs — Defense Programs">
-          <option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option>
-          <option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option>
-          <option>Bill Hepworth</option><option>Karl Gingrich</option>
-        </optgroup>
-        <optgroup label="Lobbyists">
-          <option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option>
-          <option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option>
-          <option>Ryan Altman</option><option>Geno Autrey</option>
-        </optgroup>
-        <optgroup label="Policy Staff">
-          <option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option>
-          <option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option>
-          <option>Will Burgland</option><option>Kendal Walker</option>
-        </optgroup>
+        <optgroup label="EVPs — Defense Programs"><option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option><option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option><option>Bill Hepworth</option><option>Karl Gingrich</option></optgroup>
+        <optgroup label="Lobbyists"><option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option><option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option><option>Ryan Altman</option><option>Geno Autrey</option></optgroup>
+        <optgroup label="Policy Staff"><option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option><option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option><option>Will Burgland</option><option>Kendal Walker</option></optgroup>
       </select>
     </div>
-    <button id="changeBtn" style="display:none;height:44px;padding:0 16px;background:transparent;border:1.5px solid var(--border);border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;color:var(--mid);white-space:nowrap" onclick="openModal()">✏️ Request Change</button>
+    <button id="changeBtn" style="display:none;height:44px;padding:0 16px;background:transparent;border:1.5px solid var(--border);border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;color:var(--mid);white-space:nowrap" onclick="openCAModal()">✏️ Request Change</button>
   </div>
   <div id="ca-sort-bar" class="sort-bar js-hidden"></div>
   <div id="ca-count-bar" class="count-bar js-hidden"></div>
   <div id="ca-placeholder" class="ca-placeholder">Select a staff member above to view their client assignments.</div>
-  <div id="ca-tbl-wrap" class="tbl-wrap js-hidden">
-    <table id="rpt-table"><thead id="rpt-thead"></thead><tbody id="rpt-tbody"></tbody></table>
-  </div>
-  <p class="footnote">This document reflects current client assignments and is intended for internal review. Please contact Jeff Green with any questions or corrections.</p>
+  <div id="ca-tbl-wrap" class="tbl-wrap js-hidden"><table id="rpt-table"><thead id="rpt-thead"></thead><tbody id="rpt-tbody"></tbody></table></div>
+  <p class="footnote">Internal review only. Contact Jeff Green with questions or corrections.</p>
 </div>
 
-<!-- ══ WORK STATUS ══ -->
+<!-- WORK STATUS -->
 <div id="page-ws" class="page">
   <div class="section-head">
     <div class="section-head-logo"><svg role="img" aria-label="JAG"><use href="#logo-white"/></svg></div>
-    <div class="section-head-text">
-      <div class="firm">Confidential</div>
-      <h2>Work Status Request</h2>
-      <div class="meta">PTO · Telework · Offsite · Condo Request — Requests sent to JAG Administration</div>
-    </div>
+    <div class="section-head-text"><div class="firm">Confidential</div><h2>Work Status Request</h2><div class="meta">PTO · Telework · Offsite · Condo Request</div></div>
   </div>
   <div class="ws-card">
     <div class="notice-banner"><span class="bell">🔔</span><div><strong>24-Hour Advance Notice Required.</strong> All requests must be submitted at least 24 hours before the requested date.</div></div>
     <div class="form-grid">
-      <div class="form-field full">
-        <label>Staff Member <span class="req">*</span></label>
-        <div class="sel-inner">
-          <select id="ws-staff">
-            <option value="">— Select your name —</option>
-            <option value="Jeff Green">Jeff Green</option>
-            <optgroup label="EVPs — Defense Programs">
-              <option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option>
-              <option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option>
-              <option>Bill Hepworth</option><option>Karl Gingrich</option>
-            </optgroup>
-            <optgroup label="Lobbyists">
-              <option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option>
-              <option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option>
-              <option>Ryan Altman</option><option>Geno Autrey</option>
-            </optgroup>
-            <optgroup label="Policy Staff">
-              <option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option>
-              <option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option>
-              <option>Will Burgland</option><option>Kendal Walker</option>
-            </optgroup>
-            <optgroup label="Operations"><option>Jennifer Fay</option></optgroup>
-          </select>
-        </div>
-      </div>
-      <div class="form-field full">
-        <label>Request Type <span class="req">*</span></label>
-        <div class="type-pills">
-          <button type="button" class="type-pill" id="pill-pto" onclick="selectType('PTO')"><span class="dot"></span>PTO</button>
-          <button type="button" class="type-pill" id="pill-telework" onclick="selectType('Telework')"><span class="dot"></span>Telework</button>
-          <button type="button" class="type-pill" id="pill-offsite" onclick="selectType('Offsite')"><span class="dot"></span>Offsite</button>
-          <button type="button" class="type-pill" id="pill-condo" onclick="selectType('Condo Request')"><span class="dot"></span>Condo Request</button>
-        </div>
-      </div>
+      <div class="form-field full"><label>Staff Member <span class="req">*</span></label><div class="sel-inner"><select id="ws-staff"><option value="">— Select your name —</option><option>Jeff Green</option><optgroup label="EVPs — Defense Programs"><option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option><option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option><option>Bill Hepworth</option><option>Karl Gingrich</option></optgroup><optgroup label="Lobbyists"><option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option><option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option><option>Ryan Altman</option><option>Geno Autrey</option></optgroup><optgroup label="Policy Staff"><option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option><option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option><option>Will Burgland</option><option>Kendal Walker</option></optgroup><optgroup label="Operations"><option>Jennifer Fay</option></optgroup></select></div></div>
+      <div class="form-field full"><label>Request Type <span class="req">*</span></label><div class="type-pills"><button type="button" class="type-pill" id="pill-pto" onclick="selectType('PTO')"><span class="dot"></span>PTO</button><button type="button" class="type-pill" id="pill-telework" onclick="selectType('Telework')"><span class="dot"></span>Telework</button><button type="button" class="type-pill" id="pill-offsite" onclick="selectType('Offsite')"><span class="dot"></span>Offsite</button><button type="button" class="type-pill" id="pill-condo" onclick="selectType('Condo Request')"><span class="dot"></span>Condo Request</button></div></div>
       <div class="form-field"><label>Start Date <span class="req">*</span></label><input type="date" id="ws-start"></div>
-      <div class="form-field"><label>End Date <span style="color:#888;font-weight:400;font-size:10px">(if multi-day)</span></label><input type="date" id="ws-end"></div>
-      <div class="form-field" id="ws-hours-field">
-        <label>Total Hours <span class="req" id="ws-hours-req">*</span></label>
-        <input type="text" id="ws-hours" placeholder="e.g. 8">
-      </div>
-      <div class="form-field full"><label>Comments <span style="color:#888;font-weight:400;font-size:10px">(optional)</span></label><textarea id="ws-comments" placeholder="Add any relevant context…"></textarea></div>
+      <div class="form-field"><label>End Date <span style="color:#888;font-size:10px;font-weight:400">(if multi-day)</span></label><input type="date" id="ws-end"></div>
+      <div class="form-field"><label>Total Hours <span class="req" id="ws-hours-req">*</span></label><input type="text" id="ws-hours" placeholder="e.g. 8"></div>
+      <div class="form-field full"><label>Comments <span style="color:#888;font-size:10px;font-weight:400">(optional)</span></label><textarea id="ws-comments" placeholder="Add any relevant context…"></textarea></div>
     </div>
     <button class="ws-submit" id="ws-submit" onclick="submitWS()" disabled>Submit Request →</button>
     <p class="ws-note">Submitting downloads a calendar invite and opens a pre-filled email to JAG Administration.</p>
   </div>
 </div>
 
-<!-- ══ EXPENSE REPORT ══ -->
+<!-- EXPENSE REPORT -->
 <div id="page-er" class="page">
   <div class="section-head">
     <div class="section-head-logo"><svg role="img" aria-label="JAG"><use href="#logo-white"/></svg></div>
-    <div class="section-head-text">
-      <div class="firm">Confidential</div>
-      <h2>Monthly Expense Report</h2>
-      <div class="meta">Add expenses anytime — your draft saves automatically</div>
-    </div>
+    <div class="section-head-text"><div class="firm">Confidential</div><h2>Monthly Expense Report</h2><div class="meta">Add expenses anytime — your draft saves automatically across devices</div></div>
   </div>
-
-  <!-- Staff + Period -->
   <div class="er-hdr">
     <div class="er-hdr-fields">
-      <div class="er-field">
-        <label>Staff Member <span class="req">*</span></label>
-        <div class="er-sel-wrap">
-          <select id="er-name">
-            <option value="">— Select your name —</option>
-            <option>Jeff Green</option>
-            <optgroup label="EVPs — Defense Programs">
-              <option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option>
-              <option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option>
-              <option>Bill Hepworth</option><option>Karl Gingrich</option>
-            </optgroup>
-            <optgroup label="Lobbyists">
-              <option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option>
-              <option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option>
-              <option>Ryan Altman</option><option>Geno Autrey</option>
-            </optgroup>
-            <optgroup label="Policy Staff">
-              <option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option>
-              <option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option>
-              <option>Will Burgland</option><option>Kendal Walker</option>
-            </optgroup>
-            <optgroup label="Operations"><option>Jennifer Fay</option></optgroup>
-          </select>
-        </div>
-      </div>
-      <div class="er-field">
-        <label>Billing Period <span class="req">*</span></label>
-        <div class="er-sel-wrap">
-          <select id="er-month"><option value="">— Select period —</option></select>
-        </div>
-        <div class="er-period-lock" id="er-period-lock">
-          <span class="lock-icon">🔒</span>
-          <span>Period locked once entries exist</span>
-          <button class="unlock-btn" onclick="unlockPeriod()">Change period</button>
-        </div>
-      </div>
+      <div class="er-field"><label>Staff Member <span class="req">*</span></label><div class="er-sel-wrap"><select id="er-name"><option value="">— Select your name —</option><option>Jeff Green</option><optgroup label="EVPs — Defense Programs"><option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option><option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option><option>Bill Hepworth</option><option>Karl Gingrich</option></optgroup><optgroup label="Lobbyists"><option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option><option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option><option>Ryan Altman</option><option>Geno Autrey</option></optgroup><optgroup label="Policy Staff"><option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option><option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option><option>Will Burgland</option><option>Kendal Walker</option></optgroup><optgroup label="Operations"><option>Jennifer Fay</option></optgroup></select></div></div>
+      <div class="er-field"><label>Billing Period <span class="req">*</span></label><div class="er-sel-wrap"><select id="er-month"><option value="">— Select period —</option></select></div><div class="er-period-lock" id="er-period-lock"><span>🔒</span><span>Period locked once entries exist</span><button class="unlock-btn" onclick="unlockPeriod()">Change period</button></div></div>
     </div>
-    <div class="er-save-row">
-      <span class="er-save-status" id="er-save-status"></span>
-    </div>
+    <div class="er-save-row"><span class="er-save-status" id="er-save-status"></span></div>
   </div>
-
-  <!-- Credit Card Section -->
-  <div class="er-section-wrap">
-    <div class="er-sec-head cc">
-      <div class="er-sec-title">
-        <span class="er-sec-title-text">💳 JAG Credit Card</span>
-        <span class="er-count-badge" id="cc-count">0 entries</span>
-      </div>
-      <span class="er-sec-amt" id="cc-total-head">$0.00</span>
-    </div>
-    <div id="cc-container" class="er-exp-container">
-      <div class="er-empty">No credit card expenses yet.</div>
-    </div>
-    <button class="er-add-btn" onclick="openExpModal('cc',null)">
-      <span class="plus-icon">＋</span> Add Credit Card Expense
-    </button>
-  </div>
-
-  <!-- Reimbursements Section -->
-  <div class="er-section-wrap">
-    <div class="er-sec-head ri">
-      <div class="er-sec-title">
-        <span class="er-sec-title-text">🧾 Reimbursements</span>
-        <span class="er-count-badge" id="reimb-count">0 entries</span>
-      </div>
-      <span class="er-sec-amt" id="reimb-total-head">$0.00</span>
-    </div>
-    <div id="reimb-container" class="er-exp-container">
-      <div class="er-empty">No reimbursement expenses yet.</div>
-    </div>
-    <button class="er-add-btn ri" onclick="openExpModal('reimb',null)">
-      <span class="plus-icon" style="background:#2a4f96">＋</span> Add Reimbursement
-    </button>
-  </div>
-
-  <!-- Grand Total -->
-  <div class="er-grand">
-    <span class="gt-label">Grand Total</span>
-    <span class="gt-val" id="er-grand-total">$0.00</span>
-  </div>
-
-  <!-- Actions -->
+  <div class="er-section-wrap"><div class="er-sec-head cc"><div class="er-sec-title"><span class="er-sec-title-text">💳 JAG Credit Card</span><span class="er-count-badge" id="cc-count">0 entries</span></div><span class="er-sec-amt" id="cc-total-head">$0.00</span></div><div id="cc-container"><div class="er-empty">No credit card expenses yet.</div></div><button class="er-add-btn" onclick="openExpModal('cc',null)"><span class="plus-icon">＋</span> Add Credit Card Expense</button></div>
+  <div class="er-section-wrap" style="margin-top:16px"><div class="er-sec-head ri"><div class="er-sec-title"><span class="er-sec-title-text">🧾 Reimbursements</span><span class="er-count-badge" id="reimb-count">0 entries</span></div><span class="er-sec-amt" id="reimb-total-head">$0.00</span></div><div id="reimb-container"><div class="er-empty">No reimbursement expenses yet.</div></div><button class="er-add-btn" onclick="openExpModal('reimb',null)"><span class="plus-icon" style="background:#2a4f96">＋</span> Add Reimbursement</button></div>
+  <div class="er-grand"><span class="gt-label">Grand Total</span><span class="gt-val" id="er-grand-total">$0.00</span></div>
   <div class="er-actions">
-    <button class="er-btn er-btn-clear" id="er-btn-clear" onclick="clearDraft()">🗑 Start Fresh</button>
+    <button class="er-btn er-btn-clear" onclick="clearERDraft()">🗑 Start Fresh</button>
     <button class="er-btn er-btn-dl" id="er-btn-dl" onclick="exportExcel()" disabled>⬇ Download Excel</button>
     <button class="er-btn er-btn-send" id="er-submit" onclick="submitER()" disabled>Send Report →</button>
   </div>
 </div>
 
-<!-- STICKY TOTAL BAR -->
-<div id="er-sticky-bar">
-  <div class="sticky-item">
-    <span class="sticky-label">Credit Card</span>
-    <span class="sticky-val" id="sticky-cc">$0.00</span>
+<!-- SCORECARD -->
+<div id="page-sc" class="page">
+  <div class="section-head">
+    <div class="section-head-logo"><svg role="img" aria-label="JAG"><use href="#logo-white"/></svg></div>
+    <div class="section-head-text"><div class="firm">Confidential — Business Development</div><h2>Prospective Client Scorecard</h2><div class="meta">Score 1–10 per criterion · Total 50 points · Submits to Garrett Richards</div></div>
   </div>
-  <div class="sticky-divider"></div>
-  <div class="sticky-item">
-    <span class="sticky-label">Reimbursements</span>
-    <span class="sticky-val" id="sticky-reimb">$0.00</span>
+  <div class="sc-hdr">
+    <div class="sc-hdr-fields">
+      <div class="er-field full"><label>Prospective Client / Company Name <span class="req">*</span></label><input type="text" id="sc-client-name" placeholder="Company or individual name" oninput="scAutoSave()"></div>
+      <div class="er-field"><label>Evaluated By <span class="req">*</span></label><div class="er-sel-wrap"><select id="sc-scorer" onchange="scAutoSave()"><option value="">— Select your name —</option><option>Jeff Green</option><optgroup label="EVPs — Defense Programs"><option>Paul Ostrowski</option><option>Eric Hill</option><option>Chip Rock</option><option>Karsten Heckl</option><option>Steven Basham</option><option>Steven Edwards</option><option>Bill Hepworth</option><option>Karl Gingrich</option></optgroup><optgroup label="Lobbyists"><option>Ryan Caldwell</option><option>Shannon Green</option><option>Leonor Tomero</option><option>Kris Dellapina</option><option>Ike Blanton</option><option>Jackson Cartwright</option><option>Ryan Altman</option><option>Geno Autrey</option></optgroup><optgroup label="Policy Staff"><option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option><option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option><option>Will Burgland</option><option>Kendal Walker</option></optgroup><optgroup label="Operations"><option>Jennifer Fay</option></optgroup></select></div></div>
+      <div class="er-field"><label>Date of Evaluation</label><input type="date" id="sc-date" oninput="scAutoSave()"></div>
+      <div class="er-field"><label>Send To (Policy Staff) <span class="req">*</span></label><div class="er-sel-wrap"><select id="sc-send-to" onchange="validateSC()"><option value="">— Select policy staffer —</option><option>Neha Shridhar</option><option>Aaron Onoff</option><option>Garrett Richards</option><option>Michael Kaether</option><option>Samuel Viskocil</option><option>Bradley Jones</option><option>Will Burgland</option><option>Kendal Walker</option></select></div></div>
+      <div class="er-field full"><label>Context &amp; Background Notes</label><textarea id="sc-context" placeholder="Describe the introduction, referral source, initial contact details, or any relevant context…" oninput="scAutoSave()"></textarea></div>
+    </div>
+    <div class="er-save-row"><span class="er-save-status" id="sc-save-status"></span></div>
   </div>
-  <div class="sticky-divider"></div>
-  <div class="sticky-item sticky-item-total">
-    <span class="sticky-label">Grand Total</span>
-    <span class="sticky-val" id="sticky-total">$0.00</span>
+  <div class="sc-criteria-wrap" id="sc-criteria-wrap"></div>
+  <div class="sc-summary" id="sc-summary">
+    <div class="sc-summary-head"><span class="sc-summary-title">Score Summary</span><span class="sc-total-display" id="sc-total-display">0 / 100</span></div>
+    <div class="sc-summary-body">
+      <div class="sc-recommendation sc-rec-pending" id="sc-recommendation">⏳ &nbsp;Complete all criteria to see recommendation</div>
+      <div class="sc-score-grid" id="sc-score-grid"></div>
+    </div>
+  </div>
+  <div class="er-actions" style="margin-top:16px">
+    <button class="er-btn er-btn-clear" onclick="clearSCDraft()">🗑 Start New</button>
+    <button class="er-btn er-btn-send" id="sc-submit" onclick="submitScorecard()" disabled>Send to Policy →</button>
   </div>
 </div>
 
-<!-- ── CA MODAL ── -->
+<!-- STICKY BAR (ER) -->
+<div id="er-sticky-bar">
+  <div class="sticky-item"><span class="sticky-label">Credit Card</span><span class="sticky-val" id="sticky-cc">$0.00</span></div>
+  <div class="sticky-divider"></div>
+  <div class="sticky-item"><span class="sticky-label">Reimbursements</span><span class="sticky-val" id="sticky-reimb">$0.00</span></div>
+  <div class="sticky-divider"></div>
+  <div class="sticky-item sticky-item-total"><span class="sticky-label">Grand Total</span><span class="sticky-val" id="sticky-total">$0.00</span></div>
+</div>
+
+<!-- EXPENSE ENTRY SHEET -->
+<div id="er-entry-overlay" role="dialog" aria-modal="true">
+  <div class="er-entry-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header"><div><div class="sheet-title" id="modal-exp-title">Add Expense</div><div class="sheet-subtitle" id="modal-exp-subtitle">💳 Credit Card</div></div><button class="sheet-close" onclick="closeExpModal()">✕</button></div>
+    <button class="scan-btn-primary" id="modal-scan-btn" onclick="openCameraModal()">📷&nbsp; Scan Receipt or Choose from Photos</button>
+    <div class="scan-or">— or enter manually —</div>
+    <div class="sheet-err" id="sheet-err"></div>
+    <div class="sheet-fields">
+      <div class="sheet-field"><label>Date <span class="req">*</span></label><input type="date" id="modal-date"></div>
+      <div class="sheet-field"><label>Vendor / Place <span class="req">*</span></label><input type="text" id="modal-vendor" placeholder="e.g. Starbucks, Uber, Delta Airlines"></div>
+      <div class="sheet-field"><label>Business Purpose <span class="req">*</span></label><input type="text" id="modal-purpose" placeholder="e.g. Client meeting, travel to DC"></div>
+      <div class="sheet-field"><label>Amount ($) <span class="req">*</span></label><input type="text" inputmode="decimal" id="modal-amount" placeholder="0.00"></div>
+      <div class="sheet-field"><label class="toggle-label-wrap" style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="flex:1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)">Billable to Client?</span><label class="toggle-switch"><input type="checkbox" id="modal-billable" onchange="toggleBillableModal()"><span class="toggle-track"><span class="toggle-thumb"></span></span></label><span id="modal-billable-text" class="toggle-text">No</span></label></div>
+      <div class="sheet-field" id="modal-client-field" style="display:none"><label>Client <span class="req">*</span></label><div class="er-sel-wrap"><select id="modal-client-sel"></select></div></div>
+      <div class="sheet-field"><label>Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa">(optional)</span></label><input type="text" id="modal-notes-exp" placeholder="Any additional context"></div>
+    </div>
+    <div class="sheet-actions"><button class="btn-cancel" onclick="closeExpModal()" style="flex:0 0 auto;height:50px;padding:0 20px;background:transparent;border:1.5px solid var(--border);border-radius:8px;font-weight:600;font-size:15px;cursor:pointer;color:var(--sub)">Cancel</button><button class="btn-save-exp" onclick="saveExpModal()">Save Expense</button></div>
+  </div>
+</div>
+
+<!-- CA MODAL -->
 <div id="modal-overlay" role="dialog" aria-modal="true">
   <div class="modal-box">
     <div class="modal-head"><h3>Request a Staffing Change</h3><p>Your request will be sent to Jeff Green for review.</p></div>
     <div class="modal-body">
       <div class="modal-field"><label>Staff Member</label><div class="sel-wrap-inner"><select id="modal-staff" disabled></select></div></div>
       <div class="modal-field"><label>Client (optional)</label><div class="sel-wrap-inner"><select id="modal-client"><option value="">-- All clients / General request --</option></select></div></div>
-      <div class="modal-field"><label>Describe the requested change <span style="color:#c0392b">*</span></label><textarea id="modal-notes" placeholder="Describe the change…"></textarea></div>
+      <div class="modal-field"><label>Describe the requested change <span class="req">*</span></label><textarea id="modal-notes" placeholder="Describe the change…"></textarea></div>
       <p class="modal-note">Submitting will open your email client with a pre-filled message to jeff@jagreenco.com.</p>
     </div>
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-send" id="modal-send" disabled onclick="sendModal()">Open in Email &rarr;</button>
-    </div>
+    <div class="modal-actions"><button class="btn-cancel2" onclick="closeCAModal()">Cancel</button><button class="btn-send" id="modal-send" disabled onclick="sendCAModal()">Open in Email &rarr;</button></div>
   </div>
 </div>
 
-<!-- ── WS CONFIRM MODAL ── -->
+<!-- WS CONFIRM MODAL -->
 <div id="ws-modal-overlay" role="dialog" aria-modal="true">
   <div class="modal-box">
     <div class="modal-head"><h3>📅 Request Ready to Send</h3><p>Your calendar invite (.ics) has been downloaded.</p></div>
     <div class="modal-body">
-      <div class="ws-confirm-step"><span class="step-icon">✅</span><div class="step-body"><strong>Calendar invite downloaded</strong><span id="ws-ics-name"></span><span>Find it in your Downloads folder and attach to the email.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">✅</span><div class="step-body"><strong>Calendar invite downloaded</strong><span id="ws-ics-name"></span><span>Find it in your Downloads folder.</span></div></div>
       <div class="ws-confirm-step"><span class="step-icon">📅</span><div class="step-body"><strong>Add directly to Outlook Calendar</strong><span>Opens a pre-filled event in Outlook Web — click Save.</span></div></div>
       <div class="ws-confirm-step"><span class="step-icon">📧</span><div class="step-body"><strong>Send the request email</strong><span>Opens a pre-filled draft to JAG Administration.</span></div></div>
     </div>
-    <div class="modal-actions">
-      <button class="btn-cancel" id="ws-modal-close">Cancel</button>
-      <button class="btn-send-green" id="ws-modal-cal">Add to Outlook &rarr;</button>
-      <button class="btn-send" id="ws-modal-open">Email Draft &rarr;</button>
-    </div>
+    <div class="modal-actions"><button class="btn-cancel2" id="ws-modal-close">Cancel</button><button class="btn-send-green" id="ws-modal-cal">Add to Outlook &rarr;</button><button class="btn-send" id="ws-modal-open">Email Draft &rarr;</button></div>
   </div>
 </div>
 
-<!-- ── EXPENSE ENTRY BOTTOM SHEET ── -->
-<div id="er-entry-overlay" role="dialog" aria-modal="true">
-  <div class="er-entry-sheet" id="er-entry-sheet">
-    <div class="sheet-handle"></div>
-    <div class="sheet-header">
-      <div>
-        <div class="sheet-title" id="modal-exp-title">Add Expense</div>
-        <div class="sheet-subtitle" id="modal-exp-subtitle">💳 Credit Card</div>
-      </div>
-      <button class="sheet-close" onclick="closeExpModal()" aria-label="Close">✕</button>
-    </div>
-
-    <!-- Primary scan action -->
-    <button class="scan-btn-primary" id="modal-scan-btn" onclick="openCameraModal()">
-      📷&nbsp; Scan Receipt or Choose Photo
-    </button>
-    <div class="scan-or">— or enter manually —</div>
-
-    <!-- Validation error -->
-    <div class="sheet-err" id="sheet-err"></div>
-
-    <!-- Fields -->
-    <div class="sheet-fields">
-      <div class="sheet-field">
-        <label>Date <span class="req">*</span></label>
-        <input type="date" id="modal-date">
-      </div>
-      <div class="sheet-field">
-        <label>Vendor / Place <span class="req">*</span></label>
-        <input type="text" id="modal-vendor" placeholder="e.g. Starbucks, Uber, Delta Airlines">
-      </div>
-      <div class="sheet-field">
-        <label>Business Purpose <span class="req">*</span></label>
-        <input type="text" id="modal-purpose" placeholder="e.g. Client meeting, travel to DC">
-      </div>
-      <div class="sheet-field">
-        <label>Amount ($) <span class="req">*</span></label>
-        <input type="text" inputmode="decimal" id="modal-amount" placeholder="0.00">
-      </div>
-      <div class="sheet-field">
-        <label class="toggle-label-wrap">
-          <span style="flex:1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub)">Billable to Client?</span>
-          <label class="toggle-switch">
-            <input type="checkbox" id="modal-billable" onchange="toggleBillableModal()">
-            <span class="toggle-track"><span class="toggle-thumb"></span></span>
-          </label>
-          <span id="modal-billable-text" class="toggle-text">No</span>
-        </label>
-      </div>
-      <div class="sheet-field" id="modal-client-field" style="display:none">
-        <label>Client <span class="req">*</span></label>
-        <div class="er-sel-wrap">
-          <select id="modal-client-sel"></select>
-        </div>
-      </div>
-      <div class="sheet-field">
-        <label>Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa">(optional)</span></label>
-        <input type="text" id="modal-notes-exp" placeholder="Any additional context">
-      </div>
-    </div>
-
-    <div class="sheet-actions">
-      <button class="btn-cancel" onclick="closeExpModal()">Cancel</button>
-      <button class="btn-save-exp" onclick="saveExpModal()">Save Expense</button>
-    </div>
-  </div>
-</div>
-
-<!-- ── ER CONFIRM MODAL ── -->
+<!-- ER CONFIRM MODAL -->
 <div id="er-modal-overlay" role="dialog" aria-modal="true">
   <div class="modal-box">
-    <div class="modal-head"><h3>📊 Expense Report Ready</h3><p>Your Excel file has been downloaded. Complete the steps below to send.</p></div>
+    <div class="modal-head"><h3>📊 Expense Report Ready</h3><p>Excel file downloaded. Complete the steps below.</p></div>
     <div class="modal-body">
-      <div class="ws-confirm-step"><span class="step-icon">✅</span><div class="step-body"><strong>Excel file downloaded</strong><span id="er-fname-display" style="font-size:11px;color:var(--mid);font-family:monospace;margin-top:4px;word-break:break-all;display:block"></span><span>Find it in your <strong>Downloads</strong> folder.</span></div></div>
-      <div class="ws-confirm-step"><span class="step-icon">📎</span><div class="step-body"><strong>Attach the Excel file to your email</strong><span>When Outlook opens, attach the .xlsx before hitting Send.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">✅</span><div class="step-body"><strong>Excel file downloaded</strong><span id="er-fname-display" style="font-size:11px;color:var(--mid);font-family:monospace;margin-top:4px;word-break:break-all;display:block"></span><span>Find it in your Downloads folder.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">📎</span><div class="step-body"><strong>Attach the Excel file to your email</strong><span>Attach the .xlsx before hitting Send.</span></div></div>
       <div class="ws-confirm-step"><span class="step-icon">📧</span><div class="step-body"><strong>Send to JAG Administration</strong><span>Pre-filled with your full expense summary.</span></div></div>
     </div>
-    <div class="modal-actions">
-      <button class="btn-cancel" id="er-modal-close">Cancel</button>
-      <button class="btn-send" id="er-modal-open">Open Email Draft &rarr;</button>
+    <div class="modal-actions"><button class="btn-cancel2" id="er-modal-close">Cancel</button><button class="btn-send" id="er-modal-open">Open Email Draft &rarr;</button></div>
+  </div>
+</div>
+
+<!-- SC CONFIRM MODAL -->
+<div id="sc-modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-head"><h3>🎯 Scorecard Ready to Send</h3><p id="sc-modal-recipient">A pre-filled email draft will open for the selected policy staffer.</p></div>
+    <div class="modal-body">
+      <div class="ws-confirm-step"><span class="step-icon">📧</span><div class="step-body"><strong>Email draft will open</strong><span>Addressed to garrett@jagreenco.com with the full scorecard in the body.</span></div></div>
+      <div class="ws-confirm-step"><span class="step-icon">📎</span><div class="step-body"><strong>Attach supporting materials (optional)</strong><span>Add any pitch decks, bios, or background documents before sending.</span></div></div>
     </div>
+    <div id="sc-preview" style="background:#f8f9fc;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:12px;font-family:monospace;color:#444;white-space:pre-wrap;max-height:180px;overflow-y:auto;margin-bottom:4px;line-height:1.6"></div>
+    <div class="modal-actions"><button class="btn-cancel2" id="sc-modal-close">Cancel</button><button class="btn-send" id="sc-modal-open">Open Email Draft &rarr;</button></div>
   </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-/* ══════════════════════════════════════════
-   STAFF / CLIENT DATA
-══════════════════════════════════════════ */
+/* ═══════════════════════════════════
+   DATA
+═══════════════════════════════════ */
 const D={"staffType":{"Paul Ostrowski":"evp","Eric Hill":"evp","Chip Rock":"evp","Karsten Heckl":"evp","Steven Basham":"evp","Steven Edwards":"evp","Bill Hepworth":"evp","Karl Gingrich":"evp","Ryan Caldwell":"lobbyist","Shannon Green":"lobbyist","Leonor Tomero":"lobbyist","Kris Dellapina":"lobbyist","Ike Blanton":"lobbyist","Jackson Cartwright":"lobbyist","Ryan Altman":"lobbyist","Geno Autrey":"lobbyist","Neha Shridhar":"policy","Aaron Onoff":"policy","Garrett Richards":"policy","Michael Kaether":"policy","Samuel Viskocil":"policy","Bradley Jones":"policy","Will Burgland":"policy","Kendal Walker":"policy"},"evpLob":[{"staff":"Jackson Cartwright","client":"Titan AES","position":"Lobbyist Primary","coassigned":"","policy":""},{"staff":"Shannon Green","client":"Albion Platform","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Steven Basham","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"Albion Platform","position":"Lobbyist Secondary","coassigned":"Shannon Green; Steven Basham","policy":"Bradley Jones"},{"staff":"Steven Basham","client":"Albion Platform","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Argo Space","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Eric Hill","client":"Assured Space","position":"Defense Programs Primary","coassigned":"Paul Ostrowski","policy":"Bradley Jones"},{"staff":"Paul Ostrowski","client":"Assured Space","position":"Defense Programs Secondary","coassigned":"Eric Hill","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Avio USA","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Kris Dellapina","client":"Cross Domain Systems","position":"Lobbyist Primary","coassigned":"Geno Autrey; Steven Edwards","policy":"Bradley Jones"},{"staff":"Geno Autrey","client":"Cross Domain Systems","position":"Lobbyist Secondary","coassigned":"Kris Dellapina; Steven Edwards","policy":"Bradley Jones"},{"staff":"Steven Edwards","client":"Cross Domain Systems","position":"Defense Programs Primary","coassigned":"Kris Dellapina; Geno Autrey","policy":"Bradley Jones"},{"staff":"Shannon Green","client":"IDS","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Karl Gingrich; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"IDS","position":"Lobbyist Secondary","coassigned":"Shannon Green; Karl Gingrich; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Karl Gingrich","client":"IDS","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright; Bill Hepworth","policy":"Bradley Jones"},{"staff":"Bill Hepworth","client":"IDS","position":"Defense Programs Secondary","coassigned":"Shannon Green; Jackson Cartwright; Karl Gingrich","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"Outpost Space","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"Outpost Space","position":"Lobbyist Secondary","coassigned":"Leonor Tomero","policy":"Bradley Jones"},{"staff":"Leonor Tomero","client":"SpaceX","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Bradley Jones"},{"staff":"Jackson Cartwright","client":"SpaceX","position":"Lobbyist Secondary","coassigned":"Leonor Tomero","policy":"Bradley Jones"},{"staff":"Kris Dellapina","client":"WPRC","position":"Lobbyist Primary","coassigned":"","policy":"Bradley Jones"},{"staff":"Karsten Heckl","client":"Aimpoint USA","position":"Lobbyist Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Karsten Heckl","client":"Aimpoint USA","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Eric Hill","client":"Digital Force Tech","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"GallatinAI","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Maytag Aircraft","position":"Lobbyist Primary","coassigned":"Steven Basham","policy":"Michael Kaether"},{"staff":"Steven Basham","client":"Maytag Aircraft","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Steven Basham","client":"Powerlight","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Leonor Tomero","client":"StemRad","position":"Lobbyist Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Striveworks","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Michael Kaether"},{"staff":"Paul Ostrowski","client":"Striveworks","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"Veritone","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"World Fuel","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Michael Kaether"},{"staff":"Chip Rock","client":"World Fuel","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Michael Kaether"},{"staff":"Bill Hepworth","client":"Zscaler","position":"Defense Programs Primary","coassigned":"","policy":"Michael Kaether"},{"staff":"Shannon Green","client":"Acalvio","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Kendal Walker"},{"staff":"Bill Hepworth","client":"Acalvio","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Kendal Walker"},{"staff":"Geno Autrey","client":"ACMI","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Steven Edwards","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"ACMI","position":"Lobbyist Secondary","coassigned":"Geno Autrey; Steven Edwards","policy":"Neha Shridhar"},{"staff":"Steven Edwards","client":"ACMI","position":"Defense Programs Primary","coassigned":"Geno Autrey; Jackson Cartwright","policy":"Neha Shridhar"},{"staff":"Eric Hill","client":"Adyton","position":"Defense Programs Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Ike Blanton","client":"Allocore","position":"Defense Programs Primary","coassigned":"","policy":"Aaron Onoff"},{"staff":"Karsten Heckl","client":"ARC","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Aaron Onoff"},{"staff":"Paul Ostrowski","client":"ARC","position":"Defense Programs Primary","coassigned":"Karsten Heckl","policy":"Aaron Onoff"},{"staff":"Chip Rock","client":"Ashland Foundry","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"Atlas Energy","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Aaron Onoff"},{"staff":"Chip Rock","client":"Atlas Energy","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Aaron Onoff"},{"staff":"Shannon Green","client":"CACI","position":"Lobbyist Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Bill Hepworth","client":"Dell / Carahsoft","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Shannon Green","client":"GelSight","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Paul Ostrowski","client":"GelSight","position":"Defense Programs Primary","coassigned":"Shannon Green","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Global Foundries","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ryan Caldwell","client":"Global Foundries","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Global Foundries","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"IBM / Hashi","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Kendal Walker"},{"staff":"Bill Hepworth","client":"IBM / Hashi","position":"Defense Programs Primary","coassigned":"Jackson Cartwright","policy":"Kendal Walker"},{"staff":"Geno Autrey","client":"Longwall","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Kendal Walker"},{"staff":"Paul Ostrowski","client":"Longwall","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Kendal Walker"},{"staff":"Leonor Tomero","client":"Lynx","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Kendal Walker"},{"staff":"Eric Hill","client":"Lynx","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Kendal Walker"},{"staff":"Ryan Altman","client":"MTSI","position":"Lobbyist Primary","coassigned":"","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"Nathan Trotter","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Nathan Trotter","position":"Lobbyist Secondary","coassigned":"Kris Dellapina","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"NobelClad","position":"Lobbyist Primary","coassigned":"Ryan Caldwell; Chip Rock","policy":"Kendal Walker"},{"staff":"Ryan Caldwell","client":"NobelClad","position":"Lobbyist Secondary","coassigned":"Kris Dellapina; Chip Rock","policy":"Kendal Walker"},{"staff":"Chip Rock","client":"NobelClad","position":"Defense Programs Primary","coassigned":"Kris Dellapina; Ryan Caldwell","policy":"Kendal Walker"},{"staff":"Leonor Tomero","client":"Oura","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Eric Hill; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"Oura","position":"Lobbyist Secondary","coassigned":"Leonor Tomero; Eric Hill; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Eric Hill","client":"Oura","position":"Defense Programs Primary","coassigned":"Leonor Tomero; Jackson Cartwright; Paul Ostrowski","policy":"Neha Shridhar"},{"staff":"Paul Ostrowski","client":"Oura","position":"Defense Programs Secondary","coassigned":"Leonor Tomero; Jackson Cartwright; Eric Hill","policy":"Neha Shridhar"},{"staff":"Leonor Tomero","client":"Palantir","position":"Lobbyist Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Shannon Green","client":"Sayari","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Ike Blanton","policy":"Neha Shridhar"},{"staff":"Jackson Cartwright","client":"Sayari","position":"Lobbyist Secondary","coassigned":"Shannon Green; Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Sayari","position":"Defense Programs Primary","coassigned":"Shannon Green; Jackson Cartwright","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"Senergy Power Solutions","position":"Lobbyist Primary","coassigned":"Steven Edwards","policy":"Aaron Onoff"},{"staff":"Steven Edwards","client":"Senergy Power Solutions","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Aaron Onoff"},{"staff":"Karsten Heckl","client":"Shield AI","position":"Lobbyist Primary","coassigned":"Jackson Cartwright; Eric Hill","policy":"Kendal Walker"},{"staff":"Jackson Cartwright","client":"Shield AI","position":"Lobbyist Secondary","coassigned":"Karsten Heckl; Eric Hill","policy":"Kendal Walker"},{"staff":"Eric Hill","client":"Shield AI","position":"Defense Programs Primary","coassigned":"Karsten Heckl; Jackson Cartwright","policy":"Kendal Walker"},{"staff":"Kris Dellapina","client":"Teamworks","position":"Lobbyist Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"TTM","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ryan Caldwell","client":"TTM","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"TTM","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Neha Shridhar"},{"staff":"Ike Blanton","client":"Ucore","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Ucore","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Aaron Onoff"},{"staff":"Ike Blanton","client":"Umicore","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Aaron Onoff"},{"staff":"Ryan Caldwell","client":"Umicore","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Aaron Onoff"},{"staff":"Kris Dellapina","client":"US Ordnance","position":"Lobbyist Primary","coassigned":"","policy":"Kendal Walker"},{"staff":"Chip Rock","client":"Wellman Dynamics","position":"Defense Programs Primary","coassigned":"","policy":"Neha Shridhar"},{"staff":"Geno Autrey","client":"ARD","position":"Lobbyist Primary","coassigned":"Jackson Cartwright","policy":"Will Burgland"},{"staff":"Jackson Cartwright","client":"ARD","position":"Lobbyist Secondary","coassigned":"Geno Autrey","policy":"Will Burgland"},{"staff":"Leonor Tomero","client":"BioFlyte","position":"Lobbyist Primary","coassigned":"Steven Basham","policy":"Will Burgland"},{"staff":"Steven Basham","client":"BioFlyte","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Will Burgland"},{"staff":"Chip Rock","client":"Gecko","position":"Defense Programs Primary","coassigned":"","policy":"Will Burgland"},{"staff":"Kris Dellapina","client":"Grid Aero","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Will Burgland"},{"staff":"Eric Hill","client":"Grid Aero","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Will Burgland"},{"staff":"Steven Edwards","client":"Hanjin","position":"Defense Programs Primary","coassigned":"","policy":"Will Burgland"},{"staff":"Karsten Heckl","client":"Secturion","position":"Defense Programs Primary","coassigned":"Bill Hepworth","policy":"Will Burgland"},{"staff":"Bill Hepworth","client":"Secturion","position":"Defense Programs Secondary","coassigned":"Karsten Heckl","policy":"Will Burgland"},{"staff":"Ike Blanton","client":"6K Additive","position":"Lobbyist Primary","coassigned":"","policy":"Samuel Viskocil"},{"staff":"Ryan Altman","client":"Arktos","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Samuel Viskocil"},{"staff":"Paul Ostrowski","client":"Arktos","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"GAM","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"GAM","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"GTP","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"GTP","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Magnetic Holdings","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Magnetic Holdings","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ryan Altman","client":"MAIA","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"MAIA","position":"Lobbyist Secondary","coassigned":"Ryan Altman","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Materion","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Materion","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"MP Materials","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"MP Materials","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Noveon","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Noveon","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Resin Solutions","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Resin Solutions","position":"Lobbyist Secondary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Resin Solutions","position":"Defense Programs Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Geno Autrey","client":"Seurat","position":"Lobbyist Primary","coassigned":"Paul Ostrowski","policy":"Samuel Viskocil"},{"staff":"Paul Ostrowski","client":"Seurat","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Samuel Viskocil"},{"staff":"Steven Edwards","client":"South8","position":"Defense Programs Primary","coassigned":"","policy":"Samuel Viskocil"},{"staff":"Kris Dellapina","client":"Ti Group","position":"Lobbyist Primary","coassigned":"Ryan Caldwell","policy":"Samuel Viskocil"},{"staff":"Ryan Caldwell","client":"Ti Group","position":"Lobbyist Secondary","coassigned":"Kris Dellapina","policy":"Samuel Viskocil"},{"staff":"Kris Dellapina","client":"Western Digital","position":"Lobbyist Primary","coassigned":"Ike Blanton","policy":"Samuel Viskocil"},{"staff":"Ike Blanton","client":"Western Digital","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Samuel Viskocil"},{"staff":"Leonor Tomero","client":"Charter Communications","position":"Lobbyist Primary","coassigned":"Bill Hepworth","policy":"Garrett Richards"},{"staff":"Bill Hepworth","client":"Charter Communications","position":"Defense Programs Primary","coassigned":"Leonor Tomero","policy":"Garrett Richards"},{"staff":"Paul Ostrowski","client":"Conflict Kinetics","position":"Defense Programs Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Kris Dellapina","client":"Elbit","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"Elbit","position":"Defense Programs Primary","coassigned":"Kris Dellapina","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"HavocAI","position":"Defense Programs Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Ryan Altman","client":"Kodiak","position":"Lobbyist Primary","coassigned":"Eric Hill","policy":"Garrett Richards"},{"staff":"Eric Hill","client":"Kodiak","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Garrett Richards"},{"staff":"Ryan Altman","client":"Motorola Solutions","position":"Lobbyist Primary","coassigned":"Karsten Heckl","policy":"Garrett Richards"},{"staff":"Karsten Heckl","client":"Motorola Solutions","position":"Defense Programs Primary","coassigned":"Ryan Altman","policy":"Garrett Richards"},{"staff":"Karsten Heckl","client":"Rolls Royce","position":"Lobbyist Primary","coassigned":"","policy":"Garrett Richards"},{"staff":"Geno Autrey","client":"RS Tech","position":"Lobbyist Primary","coassigned":"Chip Rock","policy":"Garrett Richards"},{"staff":"Chip Rock","client":"RS Tech","position":"Defense Programs Primary","coassigned":"Geno Autrey","policy":"Garrett Richards"}],"policy":{"Neha Shridhar":[{"client":"ACMI","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":"Jackson Cartwright"},{"client":"Ashland Foundry","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"CACI","evp_pri":"","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Dell / Carahsoft","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"GelSight","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Global Foundries","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Oura","evp_pri":"Eric Hill","evp_sec":"Paul Ostrowski","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"Sayari","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Teamworks","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"TTM","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Wellman Dynamics","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""}],"Aaron Onoff":[{"client":"Allocore","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"ARC","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"Atlas Energy","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"MTSI","evp_pri":"","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Nathan Trotter","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Senergy Power Solutions","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"Ucore","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Umicore","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"}],"Garrett Richards":[{"client":"Charter Communications","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Conflict Kinetics","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Elbit","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"HavocAI","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Kodiak","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Motorola Solutions","evp_pri":"Karsten Heckl","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"Rolls Royce","evp_pri":"","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"RS Tech","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""}],"Michael Kaether":[{"client":"Aimpoint USA","evp_pri":"Karsten Heckl","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":""},{"client":"Digital Force Tech","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"GallatinAI","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Maytag Aircraft","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Powerlight","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"StemRad","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Striveworks","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Veritone","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"World Fuel","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Zscaler","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"","lob_sec":""}],"Samuel Viskocil":[{"client":"6K Additive","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":""},{"client":"Arktos","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":""},{"client":"GAM","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"GTP","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Magnetic Holdings","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"MAIA","evp_pri":"","evp_sec":"","lob_pri":"Ryan Altman","lob_sec":"Ryan Caldwell"},{"client":"Materion","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"MP Materials","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Noveon","evp_pri":"","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Resin Solutions","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Ike Blanton","lob_sec":"Ryan Caldwell"},{"client":"Seurat","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"South8","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Ti Group","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Western Digital","evp_pri":"Ike Blanton","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}],"Bradley Jones":[{"client":"Albion Platform","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Argo Space","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Assured Space","evp_pri":"Eric Hill","evp_sec":"Paul Ostrowski","lob_pri":"","lob_sec":""},{"client":"Avio USA","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Cross Domain Systems","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Geno Autrey"},{"client":"IDS","evp_pri":"Karl Gingrich","evp_sec":"Bill Hepworth","lob_pri":"Shannon Green","lob_sec":"Jackson Cartwright"},{"client":"Outpost Space","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"SpaceX","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":"Jackson Cartwright"},{"client":"WPRC","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}],"Will Burgland":[{"client":"ARD","evp_pri":"","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":"Jackson Cartwright"},{"client":"BioFlyte","evp_pri":"Steven Basham","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Gecko","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Grid Aero","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""},{"client":"Hanjin","evp_pri":"Steven Edwards","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"Secturion","evp_pri":"Karsten Heckl","evp_sec":"Bill Hepworth","lob_pri":"","lob_sec":""}],"Kendal Walker":[{"client":"Acalvio","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Shannon Green","lob_sec":""},{"client":"Adyton","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"","lob_sec":""},{"client":"IBM / Hashi","evp_pri":"Bill Hepworth","evp_sec":"","lob_pri":"Jackson Cartwright","lob_sec":""},{"client":"Longwall","evp_pri":"Paul Ostrowski","evp_sec":"","lob_pri":"Geno Autrey","lob_sec":""},{"client":"Lynx","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"NobelClad","evp_pri":"Chip Rock","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":"Ryan Caldwell"},{"client":"Palantir","evp_pri":"","evp_sec":"","lob_pri":"Leonor Tomero","lob_sec":""},{"client":"Shield AI","evp_pri":"Eric Hill","evp_sec":"","lob_pri":"Karsten Heckl","lob_sec":"Jackson Cartwright"},{"client":"US Ordnance","evp_pri":"","evp_sec":"","lob_pri":"Kris Dellapina","lob_sec":""}]}};
 
 const CLIENTS=['6K Additive','Acalvio','ACMI','Adyton','Aimpoint USA','Albion Platform','Allocore','ARC','ARD','Argo Space','Arktos','Ashland Foundry','Assured Space','Atlas Energy','Avio USA','BioFlyte','CACI','Charter Communications','Conflict Kinetics','Cross Domain Systems','Dell / Carahsoft','Digital Force Tech','Elbit','GallatinAI','GAM','Gecko','GelSight','Global Foundries','Grid Aero','GTP','Hanjin','HavocAI','IBM / Hashi','IDS','Kodiak','Longwall','Lynx','Magnetic Holdings','MAIA','Materion','Maytag Aircraft','Motorola Solutions','MP Materials','MTSI','Nathan Trotter','NobelClad','Noveon','Oura','Outpost Space','Palantir','Powerlight','Resin Solutions','Rolls Royce','RS Tech','Sayari','Secturion','Senergy Power Solutions','Seurat','Shield AI','South8','SpaceX','StemRad','Striveworks','Teamworks','Ti Group','Titan AES','TTM','Ucore','Umicore','US Ordnance','Veritone','Wellman Dynamics','Western Digital','World Fuel','WPRC','Zscaler'];
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════
+   SCORECARD CRITERIA
+   ⚠️  Excel file was unreadable — criteria below are designed
+   for JAG's defense/BD context. Please confirm or adjust.
+═══════════════════════════════════ */
+const SC_CRITERIA = [
+  ['tech_maturity',    'Technological Maturity',                      'Stage of technology development and readiness for federal procurement or commercialization — TRL level, manufacturing readiness, and demonstrated performance.'],
+  ['ns_relevance',     'National Security Relevance',                 'Direct applicability to DoD, DHS, IC, or national security priorities; alignment with warfighter needs, critical infrastructure, or homeland security missions.'],
+  ['corp_maturity',    'Corporate Maturity & Working Relationship',   'Organizational stability, leadership strength, financial health, and the quality and depth of the working relationship between JAG and the prospective client.'],
+  ['req_viability',    'Request Viability (Legislative, B2B, B2G)',   'Feasibility and clarity of the ask — whether viable legislative, business-to-business, or business-to-government pathways exist to advance the client\'s objectives.'],
+  ['pol_capital',      'Political Capital',                           'Existing political relationships, congressional champions, executive branch access, and the client\'s ability to leverage political connections to advance their mission.']
+];
+
+/* ═══════════════════════════════════
    NAVIGATION
-══════════════════════════════════════════ */
+═══════════════════════════════════ */
 function goTo(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  const titles={ca:'Client Assignments',ws:'Work Status',er:'Expense Report'};
+  const titles={ca:'Client Assignments',ws:'Work Status',er:'Expense Report',sc:'Prospect Scorecard'};
   document.getElementById('topbar-sub').textContent=titles[id]||'';
   document.getElementById('topbar-sub').classList.add('visible');
   document.getElementById('backBtn').classList.add('visible');
@@ -758,65 +580,61 @@ function goHome(){
   window.scrollTo(0,0);
 }
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════
    CLIENT ASSIGNMENTS
-══════════════════════════════════════════ */
+═══════════════════════════════════ */
 const CFG_EVP={keys:['client','position','coassigned','policy'],heads:['Client','Position','Co-Assigned Staff','Policy Staff'],pills:['Client','Position','Co-Assigned','Policy Staff']};
 const CFG_POL={keys:['client','evp_pri','lob_pri'],heads:['Client','Defense Programs','Lobbyist'],pills:['Client','Defense Programs','Lobbyist']};
-let currentRows=[],sortCol=0,sortDir=1,currentType='';
-function cfg(){return currentType==='policy'?CFG_POL:CFG_EVP}
+let caRows=[],caCol=0,caDir=1,caType='';
+function caCfg(){return caType==='policy'?CFG_POL:CFG_EVP}
 function posClass(p){return p==='Lobbyist Primary'?'lp-c':p==='Lobbyist Secondary'?'ls-c':p==='Defense Programs Primary'?'ep-c':p==='Defense Programs Secondary'?'es-c':''}
 function todayLabel(){return new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}
-function sortData(rows,col,dir){const key=cfg().keys[col]||'client';return[...rows].sort((a,b)=>{const av=(a[key]||'').toLowerCase(),bv=(b[key]||'').toLowerCase();return av<bv?-dir:av>bv?dir:0})}
-function renderEvpRow(r){return`<tr><td class="cn" data-label="Client">${r.client}</td><td class="${posClass(r.position)}" data-label="Position">${r.position}</td><td class="co" data-label="Co-Assigned Staff">${r.coassigned||'<span class="dash">—</span>'}</td><td class="po" data-label="Policy Staff">${r.policy||'<span class="dash">—</span>'}</td></tr>`}
-function renderPolRow(r){const ep=r.evp_pri||'<span class="dash">—</span>',es=r.evp_sec?` <span class="es-c">/ ${r.evp_sec}</span>`:'',lp=r.lob_pri||'<span class="dash">—</span>',ls=r.lob_sec?` <span class="ls-c">/ ${r.lob_sec}</span>`:'';return`<tr><td class="cn" data-label="Client">${r.client}</td><td class="ep-c" data-label="Defense Programs">${ep}${es}</td><td class="lp-c" data-label="Lobbyist">${lp}${ls}</td></tr>`}
-function renderCaRow(r){return currentType==='policy'?renderPolRow(r):renderEvpRow(r)}
-function applySort(col){sortDir=(sortCol===col)?-sortDir:1;sortCol=col;currentRows=sortData(currentRows,sortCol,sortDir);rebuildTable();rebuildSortBar()}
-function rebuildTable(){
-  const n=cfg().heads.length;
-  document.getElementById('rpt-tbody').innerHTML=currentRows.length?currentRows.map(renderCaRow).join(''):`<tr><td colspan="${n}" style="text-align:center;padding:28px;color:#888;font-style:italic">No clients found.</td></tr>`;
-  document.getElementById('rpt-thead').querySelectorAll('th').forEach((th,i)=>{th.classList.remove('asc','desc');if(i===sortCol)th.classList.add(sortDir===1?'asc':'desc')});
-  document.getElementById('ca-count-bar').textContent=`${currentRows.length} client assignment${currentRows.length!==1?'s':''}`;
-}
-function rebuildSortBar(){
-  const sb=document.getElementById('ca-sort-bar');
-  sb.innerHTML=`<span class="sort-label">Sort:</span>`+cfg().pills.map((l,i)=>`<button class="pill${i===sortCol?' active':''}" data-col="${i}">${l}<span class="arr">${i===sortCol?(sortDir===1?'▲':'▼'):''}</span></button>`).join('');
-}
+function sortRows(rows,col,dir,cfg){const k=cfg.keys[col]||'client';return[...rows].sort((a,b)=>{const av=(a[k]||'').toLowerCase(),bv=(b[k]||'').toLowerCase();return av<bv?-dir:av>bv?dir:0})}
 document.getElementById('staffSel').addEventListener('change',function(){
-  const name=this.value;
-  const ph=document.getElementById('ca-placeholder'),tw=document.getElementById('ca-tbl-wrap'),sb=document.getElementById('ca-sort-bar'),cb=document.getElementById('ca-count-bar'),chBtn=document.getElementById('changeBtn');
+  const name=this.value,ph=document.getElementById('ca-placeholder'),tw=document.getElementById('ca-tbl-wrap'),sb=document.getElementById('ca-sort-bar'),cb=document.getElementById('ca-count-bar'),chBtn=document.getElementById('changeBtn');
   if(!name){ph.style.display='';tw.classList.add('js-hidden');sb.classList.add('js-hidden');cb.classList.add('js-hidden');chBtn.style.display='none';return}
   ph.style.display='none';tw.classList.remove('js-hidden');sb.classList.remove('js-hidden');cb.classList.remove('js-hidden');chBtn.style.display='flex';
-  currentType=D.staffType[name]||'evp';sortCol=0;sortDir=1;
-  currentRows=currentType==='policy'?sortData(D.policy[name]||[],0,1):sortData(D.evpLob.filter(a=>a.staff===name),0,1);
+  caType=D.staffType[name]||'evp';caCol=0;caDir=1;
+  const cfg=caCfg();
+  caRows=caType==='policy'?sortRows(D.policy[name]||[],0,1,cfg):sortRows(D.evpLob.filter(a=>a.staff===name),0,1,cfg);
   document.getElementById('ca-rpt-meta').innerHTML=`Prepared for: <strong>${name}</strong> &nbsp;·&nbsp; Generated: ${todayLabel()}`;
-  document.getElementById('rpt-thead').innerHTML=`<tr>${cfg().heads.map((h,i)=>`<th data-col="${i}"${i===0?' class="asc"':''}>${h}<span class="si"></span></th>`).join('')}</tr>`;
-  rebuildTable();rebuildSortBar();
+  document.getElementById('rpt-thead').innerHTML=`<tr>${cfg.heads.map((h,i)=>`<th data-col="${i}"${i===0?' class="asc"':''}>${h}<span class="si"></span></th>`).join('')}</tr>`;
+  rebuildCATable();rebuildSortBar();
 });
-document.getElementById('ca-sort-bar').addEventListener('click',e=>{const p=e.target.closest('.pill[data-col]');if(p)applySort(parseInt(p.dataset.col))});
-document.getElementById('rpt-table').addEventListener('click',e=>{const th=e.target.closest('th[data-col]');if(th)applySort(parseInt(th.dataset.col))});
-function openModal(){
+function rebuildCATable(){
+  const cfg=caCfg(),n=cfg.heads.length;
+  document.getElementById('rpt-tbody').innerHTML=caRows.length?caRows.map(r=>caType==='policy'?renderPolRow(r):renderEvpRow(r)).join(''):`<tr><td colspan="${n}" style="text-align:center;padding:28px;color:#888;font-style:italic">No clients found.</td></tr>`;
+  document.getElementById('rpt-thead').querySelectorAll('th').forEach((th,i)=>{th.classList.remove('asc','desc');if(i===caCol)th.classList.add(caDir===1?'asc':'desc')});
+  document.getElementById('ca-count-bar').textContent=`${caRows.length} client assignment${caRows.length!==1?'s':''}`;
+}
+function renderEvpRow(r){return`<tr><td class="cn" data-label="Client">${r.client}</td><td class="${posClass(r.position)}" data-label="Position">${r.position}</td><td class="co" data-label="Co-Assigned Staff">${r.coassigned||'<span class="dash">—</span>'}</td><td class="po" data-label="Policy Staff">${r.policy||'<span class="dash">—</span>'}</td></tr>`}
+function renderPolRow(r){const ep=r.evp_pri||'<span class="dash">—</span>',es=r.evp_sec?` <span class="es-c">/ ${r.evp_sec}</span>`:'',lp=r.lob_pri||'<span class="dash">—</span>',ls=r.lob_sec?` <span class="ls-c">/ ${r.lob_sec}</span>`:'';return`<tr><td class="cn" data-label="Client">${r.client}</td><td class="ep-c" data-label="Defense Programs">${ep}${es}</td><td class="lp-c" data-label="Lobbyist">${lp}${ls}</td></tr>`}
+function rebuildSortBar(){const cfg=caCfg(),sb=document.getElementById('ca-sort-bar');sb.innerHTML=`<span class="sort-label">Sort:</span>`+cfg.pills.map((l,i)=>`<button class="pill${i===caCol?' active':''}" data-col="${i}">${l}<span class="arr">${i===caCol?(caDir===1?'▲':'▼'):''}</span></button>`).join('')}
+function applyCASort(col){caDir=(caCol===col)?-caDir:1;caCol=col;caRows=sortRows(caRows,caCol,caDir,caCfg());rebuildCATable();rebuildSortBar()}
+document.getElementById('ca-sort-bar').addEventListener('click',e=>{const p=e.target.closest('.pill[data-col]');if(p)applyCASort(parseInt(p.dataset.col))});
+document.getElementById('rpt-table').addEventListener('click',e=>{const th=e.target.closest('th[data-col]');if(th)applyCASort(parseInt(th.dataset.col))});
+function openCAModal(){
   const name=document.getElementById('staffSel').value;
   document.getElementById('modal-staff').innerHTML=`<option>${name}</option>`;
   const mc=document.getElementById('modal-client');mc.innerHTML='<option value="">-- All clients / General request --</option>';
-  [...new Set(currentRows.map(r=>r.client))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;mc.appendChild(o)});
+  [...new Set(caRows.map(r=>r.client))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;mc.appendChild(o)});
   document.getElementById('modal-notes').value='';document.getElementById('modal-send').disabled=true;
-  document.getElementById('modal-overlay').classList.add('open');setTimeout(()=>document.getElementById('modal-notes').focus(),80);
+  document.getElementById('modal-overlay').classList.add('open');
 }
-function closeModal(){document.getElementById('modal-overlay').classList.remove('open')}
-function sendModal(){
+function closeCAModal(){document.getElementById('modal-overlay').classList.remove('open')}
+function sendCAModal(){
   const name=document.getElementById('modal-staff').value,client=document.getElementById('modal-client').value,notes=document.getElementById('modal-notes').value.trim();
   if(!notes)return;
   const subj=client?`Assignment Change Request — ${name} / ${client}`:`Assignment Change Request — ${name}`;
   const body=`Jeff,\n\nI am requesting a review of the following staffing assignment:\n\nStaff Member: ${name}\n${client?`Client: ${client}\n`:''}\nRequested Change:\n${notes}\n\nThank you.`;
-  window.location.href=`mailto:jeff@jagreenco.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;closeModal();
+  window.location.href=`mailto:jeff@jagreenco.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;closeCAModal();
 }
 document.getElementById('modal-notes').addEventListener('input',function(){document.getElementById('modal-send').disabled=!this.value.trim()});
-document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('modal-overlay'))closeModal()});
+document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('modal-overlay'))closeCAModal()});
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════
    WORK STATUS
-══════════════════════════════════════════ */
+═══════════════════════════════════ */
 let wsType='',pendingWSMailto='',pendingCalURL='';
 function selectType(t){
   wsType=t;
@@ -824,38 +642,27 @@ function selectType(t){
   const sMap={PTO:'sel-pto',Telework:'sel-telework',Offsite:'sel-offsite','Condo Request':'sel-condo'};
   const iMap={PTO:'pill-pto',Telework:'pill-telework',Offsite:'pill-offsite','Condo Request':'pill-condo'};
   document.getElementById(iMap[t]).classList.add(sMap[t]);
-  const hInput=document.getElementById('ws-hours');
-  if(t==='Condo Request'){hInput.value='N/A';hInput.readOnly=true;hInput.style.color='#888';hInput.style.fontStyle='italic';document.getElementById('ws-hours-req').style.display='none';}
-  else{if(hInput.value==='N/A')hInput.value='';hInput.readOnly=false;hInput.style.color='';hInput.style.fontStyle='';document.getElementById('ws-hours-req').style.display='';}
+  const h=document.getElementById('ws-hours');
+  if(t==='Condo Request'){h.value='N/A';h.readOnly=true;h.style.color='#888';document.getElementById('ws-hours-req').style.display='none';}
+  else{if(h.value==='N/A')h.value='';h.readOnly=false;h.style.color='';document.getElementById('ws-hours-req').style.display='';}
   validateWS();
 }
-function validateWS(){
-  const hoursOk=wsType==='Condo Request'||!!document.getElementById('ws-hours').value;
-  document.getElementById('ws-submit').disabled=!(document.getElementById('ws-staff').value&&wsType&&document.getElementById('ws-start').value&&hoursOk);
-}
+function validateWS(){document.getElementById('ws-submit').disabled=!(document.getElementById('ws-staff').value&&wsType&&document.getElementById('ws-start').value&&(wsType==='Condo Request'||document.getElementById('ws-hours').value))}
 ['ws-staff','ws-start','ws-end','ws-hours','ws-comments'].forEach(id=>document.getElementById(id).addEventListener('input',validateWS));
 document.getElementById('ws-staff').addEventListener('change',validateWS);
 function generateICS(name,type,start,end,hrs,comments){
-  const fmt=d=>d.replace(/-/g,'');
-  const endObj=new Date(end||start);endObj.setDate(endObj.getDate()+1);
+  const fmt=d=>d.replace(/-/g,''),endObj=new Date(end||start);endObj.setDate(endObj.getDate()+1);
   const now=new Date().toISOString().replace(/[-:.]/g,'').slice(0,15)+'Z';
-  const desc=`Work Status Request\\nType: ${type}\\nStaff: ${name}`+(hrs?`\\nHours: ${hrs}`:'')+( comments?`\\nComments: ${comments}`:'');
-  return['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//J.A. Green & Company//EN','CALSCALE:GREGORIAN','METHOD:REQUEST','BEGIN:VEVENT',`UID:${now}@jagreenco.com`,`DTSTAMP:${now}`,`DTSTART;VALUE=DATE:${fmt(start)}`,`DTEND;VALUE=DATE:${fmt(endObj.toISOString().slice(0,10))}`,`SUMMARY:${type} \u2014 ${name}`,`DESCRIPTION:${desc}`,'ORGANIZER;CN=JAG Administration:mailto:jagadmin@jagreenco.com','STATUS:TENTATIVE','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  return['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//J.A. Green & Company//EN','CALSCALE:GREGORIAN','METHOD:REQUEST','BEGIN:VEVENT',`UID:${now}@jagreenco.com`,`DTSTAMP:${now}`,`DTSTART;VALUE=DATE:${fmt(start)}`,`DTEND;VALUE=DATE:${fmt(endObj.toISOString().slice(0,10))}`,`SUMMARY:${type} \u2014 ${name}`,`DESCRIPTION:Work Status Request\\nType: ${type}\\nStaff: ${name}`+(hrs?`\\nHours: ${hrs}`:'')+( comments?`\\nComments: ${comments}`:'')+`\nORGANIZER;CN=JAG Administration:mailto:jagadmin@jagreenco.com\nSTATUS:TENTATIVE\nEND:VEVENT\nEND:VCALENDAR`].join('\r\n');
 }
-function downloadICS(content,fname){const blob=new Blob([content],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=fname;document.body.appendChild(a);a.click();setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url)},300)}
-function buildOutlookURL(name,type,start,end,hrs,comments){
-  const endD=end&&end!==start?end:start;const endObj=new Date(endD);endObj.setDate(endObj.getDate()+1);
-  const body=`Work Status Request\nType: ${type}\nStaff: ${name}\nDate(s): ${start}${end&&end!==start?' through '+end:''}`+(hrs?`\nHours: ${hrs}`:'')+( comments?`\nComments: ${comments}`:'');
-  return`https://outlook.office.com/calendar/action/compose?subject=${encodeURIComponent(`${type} \u2014 ${name}`)}&startdt=${start}&enddt=${endObj.toISOString().slice(0,10)}&body=${encodeURIComponent(body)}`;
-}
+function downloadICS(c,f){const b=new Blob([c],{type:'text/calendar;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=f;document.body.appendChild(a);a.click();setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(u)},300)}
 function submitWS(){
   const name=document.getElementById('ws-staff').value,start=document.getElementById('ws-start').value,end=document.getElementById('ws-end').value,hrs=document.getElementById('ws-hours').value,comments=document.getElementById('ws-comments').value.trim();
-  const dateStr=end&&end!==start?`${start} through ${end}`:start;
-  const subj=`Work Status Request \u2014 ${wsType} \u2014 ${name} \u2014 ${start}`;
+  const dateStr=end&&end!==start?`${start} through ${end}`:start,subj=`Work Status Request \u2014 ${wsType} \u2014 ${name} \u2014 ${start}`;
   const body=`JAG Administration,\n\nWork status request for review:\n\nStaff Member: ${name}\nRequest Type: ${wsType}\nDate(s): ${dateStr}`+(hrs&&hrs!=='N/A'?`\nTotal Hours: ${hrs}`:'')+`\n${comments?`\nComments:\n${comments}\n`:''}\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
   const fname=`JAG_${wsType.replace(/\s+/g,'_')}_${name.replace(/\s+/g,'_')}_${start}.ics`;
   downloadICS(generateICS(name,wsType,start,end||start,hrs,comments),fname);
-  pendingCalURL=buildOutlookURL(name,wsType,start,end,hrs,comments);
+  pendingCalURL=`https://outlook.office.com/calendar/action/compose?subject=${encodeURIComponent(`${wsType} \u2014 ${name}`)}&startdt=${start}&enddt=${new Date(new Date(end||start).getTime()+86400000).toISOString().slice(0,10)}&body=${encodeURIComponent(body)}`;
   pendingWSMailto=`mailto:jagadmin@jagreenco.com?cc=${encodeURIComponent('jennifer@jagreenco.com')}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
   document.getElementById('ws-ics-name').textContent=fname;
   document.getElementById('ws-modal-overlay').classList.add('open');
@@ -864,483 +671,356 @@ document.getElementById('ws-modal-close').addEventListener('click',()=>document.
 document.getElementById('ws-modal-cal').addEventListener('click',()=>window.open(pendingCalURL,'_blank'));
 document.getElementById('ws-modal-open').addEventListener('click',()=>{window.location.href=pendingWSMailto;document.getElementById('ws-modal-overlay').classList.remove('open')});
 
-/* ══════════════════════════════════════════
-   EXPENSE REPORT — STATE & PERSISTENCE
-══════════════════════════════════════════ */
-let erState = { staffName:'', period:'', periodLocked:false, cc:[], reimb:[] };
-let erModal = { section:null, id:null };
-let saveDraftTimer = null;
+/* ═══════════════════════════════════
+   EXPENSE REPORT — STATE + STORAGE
+   Storage: shared=true, keyed by staff+period
+   → accessible from any device via same key
+═══════════════════════════════════ */
+let erState={staffName:'',period:'',periodLocked:false,cc:[],reimb:[]};
+let erModal={section:null,id:null},erSaveTimer=null;
 
-function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,5); }
-function todayStr(){ return new Date().toISOString().slice(0,10); }
-function fmtMoney(v){ const n=parseFloat(v); return isNaN(n)||v===''?'—':'$'+n.toFixed(2); }
-function fmtDate(s){
-  if(!s) return '—';
-  try{ const [,m,d]=s.split('-'); const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return mn[parseInt(m)-1]+' '+parseInt(d); }
-  catch(e){ return s; }
-}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
+function todayStr(){return new Date().toISOString().slice(0,10)}
+function fmtDate(s){if(!s)return'—';try{const[,m,d]=s.split('-');return['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+parseInt(d)}catch(e){return s}}
+function erStorageKey(name,period){return('jag_er_'+(name||'')+'_'+(period||'')).replace(/[^a-zA-Z0-9_]/g,'_').slice(0,190)}
 
-async function loadDraft(){
+async function loadERDraft(){
+  const name=document.getElementById('er-name').value, period=document.getElementById('er-month').value;
+  if(!name||!period) return;
   try{
-    const r = await window.storage.get('jag_er_draft');
-    if(r){
-      const data = JSON.parse(r.value);
-      erState = { ...erState, ...data };
-      if(erState.staffName){ const sel=document.getElementById('er-name'); sel.value=erState.staffName; }
-      if(erState.period){ document.getElementById('er-month').value=erState.period; }
-      updatePeriodLock();
-      renderAllExpenses();
-      updateTotals();
-      if(erState.savedAt) showSaveStatus(erState.savedAt, true);
-    }
-  } catch(e){ /* storage unavailable or empty */ }
+    const r=await window.storage.get(erStorageKey(name,period),true);
+    if(r){const d=JSON.parse(r.value);erState={...erState,...d};updatePeriodLock();renderAllExpenses();updateERTotals();showSaveStatus('er-save-status',d.savedAt,true);}
+  }catch(e){}
   validateER();
 }
-
-function scheduleSave(){
-  clearTimeout(saveDraftTimer);
-  saveDraftTimer = setTimeout(persistDraft, 800);
+function erScheduleSave(){clearTimeout(erSaveTimer);erSaveTimer=setTimeout(persistERDraft,800)}
+async function persistERDraft(){
+  const name=document.getElementById('er-name').value,period=document.getElementById('er-month').value;
+  if(!name||!period) return;
+  try{erState.staffName=name;erState.period=period;erState.savedAt=Date.now();await window.storage.set(erStorageKey(name,period),JSON.stringify(erState),true);showSaveStatus('er-save-status',erState.savedAt,false);}catch(e){}
 }
-
-async function persistDraft(){
-  try{
-    erState.staffName = document.getElementById('er-name').value;
-    erState.period = document.getElementById('er-month').value;
-    erState.savedAt = Date.now();
-    await window.storage.set('jag_er_draft', JSON.stringify(erState));
-    showSaveStatus(erState.savedAt, false);
-  } catch(e){ /* fail silently */ }
+function showSaveStatus(elId,ts,isLoad){
+  const el=document.getElementById(elId);if(!el)return;
+  const t=new Date(ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  el.textContent=(isLoad?'↩ Draft restored — ':'✓ Saved — ')+t;el.classList.add('visible');
+  clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('visible'),4000);
 }
-
-function showSaveStatus(ts, isLoad){
-  const el = document.getElementById('er-save-status');
-  if(!el) return;
-  const d = new Date(ts);
-  const t = d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-  el.textContent = isLoad ? '↩ Draft restored — ' + t : '✓ Draft saved — ' + t;
-  el.classList.add('visible');
-  clearTimeout(el._ft);
-  el._ft = setTimeout(()=>el.classList.remove('visible'), 4000);
-}
-
-/* ── Period lock ── */
+document.getElementById('er-name').addEventListener('change',()=>{erState.staffName=document.getElementById('er-name').value;loadERDraft();validateER()});
+document.getElementById('er-month').addEventListener('change',()=>{erState.period=document.getElementById('er-month').value;loadERDraft();validateER()});
 function updatePeriodLock(){
-  const total = (erState.cc||[]).length + (erState.reimb||[]).length;
-  const lock = document.getElementById('er-period-lock');
-  const sel = document.getElementById('er-month');
-  if(total > 0){
-    erState.periodLocked = true;
-    sel.disabled = true;
-    lock.style.display = 'flex';
-  } else {
-    erState.periodLocked = false;
-    sel.disabled = false;
-    lock.style.display = 'none';
-  }
+  const tot=(erState.cc||[]).length+(erState.reimb||[]).length,lock=document.getElementById('er-period-lock'),sel=document.getElementById('er-month');
+  erState.periodLocked=tot>0;sel.disabled=tot>0;lock.style.display=tot>0?'flex':'none';
 }
+function unlockPeriod(){if(((erState.cc||[]).length+(erState.reimb||[]).length)>0&&!confirm('Changing the period will delete all current entries. Continue?'))return;erState.cc=[];erState.reimb=[];erState.periodLocked=false;document.getElementById('er-month').disabled=false;document.getElementById('er-period-lock').style.display='none';renderAllExpenses();updateERTotals();erScheduleSave();}
 
-function unlockPeriod(){
-  const total = (erState.cc||[]).length + (erState.reimb||[]).length;
-  if(total > 0 && !confirm('Changing the billing period will delete all current entries. Are you sure?')) return;
-  erState.cc = []; erState.reimb = [];
-  erState.periodLocked = false;
-  document.getElementById('er-month').disabled = false;
-  document.getElementById('er-period-lock').style.display = 'none';
-  renderAllExpenses();
-  updateTotals();
-  scheduleSave();
+/* ── Render ── */
+let erResizeTimer=null;
+window.addEventListener('resize',()=>{clearTimeout(erResizeTimer);erResizeTimer=setTimeout(renderAllExpenses,200)});
+function renderAllExpenses(){renderERSection('cc');renderERSection('reimb')}
+function renderERSection(sec){
+  const items=erState[sec]||[],c=document.getElementById(sec==='.cc'?'cc-container':sec+'-container');
+  const container=document.getElementById(sec==='cc'?'cc-container':'reimb-container');
+  document.getElementById(sec==='cc'?'cc-count':'reimb-count').textContent=items.length+(items.length===1?' entry':' entries');
+  if(!container)return;
+  if(!items.length){container.innerHTML=`<div class="er-empty">No ${sec==='cc'?'credit card':'reimbursement'} expenses yet.</div>`;return;}
+  container.innerHTML=window.innerWidth<700?items.map(i=>renderExpCard(sec,i)).join(''):renderExpTable(sec,items);
 }
-
-/* ── Header field listeners ── */
-document.getElementById('er-name').addEventListener('change', function(){
-  erState.staffName = this.value;
-  scheduleSave();
-  validateER();
-});
-document.getElementById('er-month').addEventListener('change', function(){
-  erState.period = this.value;
-  scheduleSave();
-  validateER();
-});
-
-/* ══════════════════════════════════════════
-   EXPENSE REPORT — RENDER
-══════════════════════════════════════════ */
-let resizeTimer = null;
-window.addEventListener('resize', ()=>{ clearTimeout(resizeTimer); resizeTimer=setTimeout(renderAllExpenses,180); });
-
-function renderAllExpenses(){
-  renderSection('cc');
-  renderSection('reimb');
-}
-
-function renderSection(sec){
-  const items = erState[sec] || [];
-  const container = document.getElementById(sec+'-container');
-  const countEl = document.getElementById(sec+'-count');
-  countEl.textContent = items.length + (items.length===1?' entry':' entries');
-
-  if(!container) return;
-  if(items.length === 0){
-    container.innerHTML = `<div class="er-empty">No ${sec==='cc'?'credit card':'reimbursement'} expenses yet.</div>`;
-    return;
-  }
-
-  const isMobile = window.innerWidth < 700;
-  container.innerHTML = isMobile ? items.map(i=>renderCard(sec,i)).join('') : renderTable(sec,items);
-}
-
-function renderCard(sec, item){
-  const amt = parseFloat(item.amount);
-  const hasAmt = !isNaN(amt) && item.amount !== '';
-  return `<div class="exp-card" onclick="openExpModal('${sec}','${item.id}')">
-    <div class="exp-card-row1">
-      <span class="exp-card-date">${fmtDate(item.date)}</span>
-      <span class="exp-card-amount${hasAmt?'':' missing'}">${hasAmt?'$'+amt.toFixed(2):'No amount'}</span>
-    </div>
+function renderExpCard(sec,item){
+  const amt=parseFloat(item.amount),ok=!isNaN(amt)&&item.amount!=='';
+  return`<div class="exp-card" onclick="openExpModal('${sec}','${item.id}')">
+    <div class="exp-card-row1"><span class="exp-card-date">${fmtDate(item.date)}</span><span class="exp-card-amount${ok?'':' missing'}">${ok?'$'+amt.toFixed(2):'No amount'}</span></div>
     <div class="exp-card-vendor">${item.vendor||'<span style="color:#bbb;font-style:italic;font-weight:400">No vendor</span>'}</div>
     ${item.purpose?`<div class="exp-card-purpose">${item.purpose}</div>`:''}
     ${item.billable?`<div class="exp-card-billable">● Billable${item.client?': '+item.client:''}</div>`:''}
-    ${item.notes?`<div class="exp-card-notes">${item.notes}</div>`:''}
-    <div class="exp-card-meta">
-      <button class="exp-card-edit-btn" onclick="event.stopPropagation();openExpModal('${sec}','${item.id}')">✏️ Edit</button>
-      <button class="exp-card-del-btn" onclick="event.stopPropagation();deleteExpense('${sec}','${item.id}')">Delete</button>
-    </div>
+    <div class="exp-card-meta"><button class="exp-card-edit-btn" onclick="event.stopPropagation();openExpModal('${sec}','${item.id}')">✏️ Edit</button><button class="exp-card-del-btn" onclick="event.stopPropagation();deleteExpense('${sec}','${item.id}')">Delete</button></div>
   </div>`;
 }
-
-function renderTable(sec, items){
-  const rows = items.map(item=>{
-    const amt = parseFloat(item.amount);
-    return `<tr class="exp-tbl-row" onclick="openExpModal('${sec}','${item.id}')">
-      <td>${item.date||'<span class="dash">—</span>'}</td>
-      <td class="exp-tbl-vendor">${item.vendor||'<span class="dash">—</span>'}</td>
-      <td class="exp-tbl-purpose" style="color:var(--sub)">${item.purpose||'<span class="dash">—</span>'}</td>
-      <td>${item.billable?'<span class="billable-yes">● Yes</span>':'<span class="billable-no">No</span>'}</td>
-      <td style="font-size:12px;color:var(--sub)">${item.billable&&item.client?item.client:'<span class="dash">—</span>'}</td>
-      <td class="exp-tbl-amount">${!isNaN(amt)&&item.amount!==''?'$'+amt.toFixed(2):'<span class="dash">—</span>'}</td>
-      <td style="font-size:12px;color:#aaa">${item.notes||'<span class="dash">—</span>'}</td>
-      <td class="tc" onclick="event.stopPropagation()">
-        <button class="exp-edit-btn" onclick="openExpModal('${sec}','${item.id}')" title="Edit">✏️</button>
-        <button class="exp-del-btn" onclick="deleteExpense('${sec}','${item.id}')" title="Delete">✕</button>
-      </td>
-    </tr>`;
-  }).join('');
-
-  const total = items.reduce((s,r)=>{ const v=parseFloat(r.amount); return s+(isNaN(v)?0:v); },0);
-
-  return `<div class="er-tbl-scroll"><table class="exp-tbl">
-    <thead><tr>
-      <th style="min-width:100px">Date</th>
-      <th style="min-width:130px">Vendor</th>
-      <th style="min-width:150px">Business Purpose</th>
-      <th style="min-width:70px">Billable</th>
-      <th style="min-width:130px">Client</th>
-      <th style="min-width:80px">Amount</th>
-      <th style="min-width:110px">Notes</th>
-      <th style="width:60px"></th>
-    </tr></thead>
-    <tbody>
-      ${rows}
-      <tr class="exp-tbl-total">
-        <td colspan="5" class="total-label" style="text-align:right;font-size:12px">Section Total</td>
-        <td class="total-val exp-tbl-amount">$${total.toFixed(2)}</td>
-        <td colspan="2"></td>
-      </tr>
-    </tbody>
-  </table></div>`;
+function renderExpTable(sec,items){
+  const rows=items.map(item=>{const amt=parseFloat(item.amount);return`<tr class="exp-tbl-row" onclick="openExpModal('${sec}','${item.id}')"><td>${item.date||'<span class="dash">—</span>'}</td><td style="font-weight:600">${item.vendor||'<span class="dash">—</span>'}</td><td style="color:var(--sub)">${item.purpose||'<span class="dash">—</span>'}</td><td>${item.billable?'<span class="billable-yes">● Yes</span>':'<span class="billable-no">No</span>'}</td><td style="font-size:12px;color:var(--sub)">${item.billable&&item.client?item.client:'<span class="dash">—</span>'}</td><td style="font-weight:700;color:var(--navy)">${!isNaN(amt)&&item.amount!==''?'$'+amt.toFixed(2):'<span class="dash">—</span>'}</td><td style="font-size:12px;color:#aaa">${item.notes||'<span class="dash">—</span>'}</td><td style="text-align:right;white-space:nowrap" onclick="event.stopPropagation()"><button class="exp-edit-btn" onclick="openExpModal('${sec}','${item.id}')">✏️</button><button class="exp-del-btn" onclick="deleteExpense('${sec}','${item.id}')">✕</button></td></tr>`}).join('');
+  const tot=items.reduce((s,r)=>s+(parseFloat(r.amount)||0),0);
+  return`<div class="er-tbl-scroll"><table class="exp-tbl"><thead><tr><th style="min-width:100px">Date</th><th style="min-width:130px">Vendor</th><th style="min-width:140px">Purpose</th><th style="min-width:70px">Billable</th><th style="min-width:120px">Client</th><th style="min-width:80px">Amount</th><th style="min-width:100px">Notes</th><th style="width:60px"></th></tr></thead><tbody>${rows}<tr class="exp-tbl-total"><td colspan="5" style="text-align:right;font-size:12px">Section Total</td><td style="font-weight:700;color:var(--navy);font-size:14px">$${tot.toFixed(2)}</td><td colspan="2"></td></tr></tbody></table></div>`;
 }
-
-/* ══════════════════════════════════════════
-   EXPENSE REPORT — TOTALS
-══════════════════════════════════════════ */
-function updateTotals(){
-  const sum = sec=>(erState[sec]||[]).reduce((s,r)=>{ const v=parseFloat(r.amount); return s+(isNaN(v)?0:v); },0);
-  const cc=sum('cc'), r=sum('reimb'), total=cc+r;
-  const fmt=n=>'$'+n.toFixed(2);
-  document.getElementById('cc-total-head').textContent=fmt(cc);
-  document.getElementById('reimb-total-head').textContent=fmt(r);
-  document.getElementById('er-grand-total').textContent=fmt(total);
-  document.getElementById('sticky-cc').textContent=fmt(cc);
-  document.getElementById('sticky-reimb').textContent=fmt(r);
-  document.getElementById('sticky-total').textContent=fmt(total);
+function updateERTotals(){
+  const s=sec=>(erState[sec]||[]).reduce((t,r)=>t+(parseFloat(r.amount)||0),0),cc=s('cc'),r=s('reimb'),tot=cc+r,f=n=>'$'+n.toFixed(2);
+  document.getElementById('cc-total-head').textContent=f(cc);document.getElementById('reimb-total-head').textContent=f(r);document.getElementById('er-grand-total').textContent=f(tot);
+  document.getElementById('sticky-cc').textContent=f(cc);document.getElementById('sticky-reimb').textContent=f(r);document.getElementById('sticky-total').textContent=f(tot);
 }
+function validateER(){const ok=!!document.getElementById('er-name').value&&!!document.getElementById('er-month').value&&((erState.cc||[]).length+(erState.reimb||[]).length)>0;document.getElementById('er-submit').disabled=!ok;document.getElementById('er-btn-dl').disabled=!ok;}
 
-function validateER(){
-  const ok = !!document.getElementById('er-name').value && !!document.getElementById('er-month').value
-    && ((erState.cc||[]).length + (erState.reimb||[]).length) > 0;
-  document.getElementById('er-submit').disabled=!ok;
-  document.getElementById('er-btn-dl').disabled=!ok;
-}
-
-/* ══════════════════════════════════════════
-   EXPENSE ENTRY MODAL
-══════════════════════════════════════════ */
-function buildClientSelect(){
-  const sel = document.getElementById('modal-client-sel');
-  sel.innerHTML = '<option value="">— Select client —</option>' +
-    CLIENTS.map(c=>`<option value="${c}">${c}</option>`).join('');
-}
-
-function openExpModal(sec, id){
-  erModal = { section:sec, id:id||null };
-
-  let item = { id:uid(), date:todayStr(), vendor:'', purpose:'', billable:false, client:'', amount:'', notes:'' };
-  if(id){
-    const found = (erState[sec]||[]).find(r=>r.id===id);
-    if(found) item = {...found};
-  }
-
-  document.getElementById('modal-exp-title').textContent = id ? 'Edit Expense' : 'Add Expense';
-  document.getElementById('modal-exp-subtitle').textContent = sec==='cc' ? '💳 Credit Card' : '🧾 Reimbursement';
-  document.getElementById('modal-date').value = item.date || todayStr();
-  document.getElementById('modal-vendor').value = item.vendor;
-  document.getElementById('modal-purpose').value = item.purpose;
-  document.getElementById('modal-billable').checked = item.billable;
-  document.getElementById('modal-client-sel').value = item.client;
-  document.getElementById('modal-amount').value = item.amount;
-  document.getElementById('modal-notes-exp').value = item.notes;
+/* ── Entry modal ── */
+function buildClientSel(){document.getElementById('modal-client-sel').innerHTML='<option value="">— Select client —</option>'+CLIENTS.map(c=>`<option>${c}</option>`).join('')}
+function openExpModal(sec,id){
+  erModal={section:sec,id:id||null};
+  let item={id:uid(),date:todayStr(),vendor:'',purpose:'',billable:false,client:'',amount:'',notes:''};
+  if(id){const f=(erState[sec]||[]).find(r=>r.id===id);if(f)item={...f};}
+  document.getElementById('modal-exp-title').textContent=id?'Edit Expense':'Add Expense';
+  document.getElementById('modal-exp-subtitle').textContent=sec==='cc'?'💳 Credit Card':'🧾 Reimbursement';
+  document.getElementById('modal-date').value=item.date||todayStr();
+  document.getElementById('modal-vendor').value=item.vendor;
+  document.getElementById('modal-purpose').value=item.purpose;
+  document.getElementById('modal-billable').checked=item.billable;
+  document.getElementById('modal-client-sel').value=item.client;
+  document.getElementById('modal-amount').value=item.amount;
+  document.getElementById('modal-notes-exp').value=item.notes;
   document.getElementById('sheet-err').classList.remove('visible');
   toggleBillableModal();
-
-  const overlay = document.getElementById('er-entry-overlay');
-  overlay.style.display='flex';
-  setTimeout(()=>{ overlay.classList.add('open'); document.getElementById('modal-vendor').focus(); },10);
+  const ov=document.getElementById('er-entry-overlay');ov.style.display='flex';
+  setTimeout(()=>{ov.classList.add('open');document.getElementById('modal-vendor').focus();},10);
 }
-
-function closeExpModal(){
-  const overlay = document.getElementById('er-entry-overlay');
-  overlay.classList.remove('open');
-  setTimeout(()=>{ overlay.style.display='none'; },220);
-  erModal = { section:null, id:null };
-}
-
-function toggleBillableModal(){
-  const checked = document.getElementById('modal-billable').checked;
-  document.getElementById('modal-client-field').style.display = checked ? 'flex' : 'none';
-  document.getElementById('modal-billable-text').textContent = checked ? 'Yes — Billable' : 'No';
-}
-
+function closeExpModal(){const ov=document.getElementById('er-entry-overlay');ov.classList.remove('open');setTimeout(()=>ov.style.display='none',220);erModal={section:null,id:null}}
+function toggleBillableModal(){const c=document.getElementById('modal-billable').checked;document.getElementById('modal-client-field').style.display=c?'flex':'none';document.getElementById('modal-billable-text').textContent=c?'Yes — Billable':'No'}
 function saveExpModal(){
-  const errEl = document.getElementById('sheet-err');
-  const vendor = document.getElementById('modal-vendor').value.trim();
-  const amount = document.getElementById('modal-amount').value;
-  const date = document.getElementById('modal-date').value;
-  const billable = document.getElementById('modal-billable').checked;
-  const client = document.getElementById('modal-client-sel').value;
-
-  // Validation
-  const errs = [];
-  if(!vendor) errs.push('Vendor / Place is required.');
-  if(!date) errs.push('Date is required.');
-  if(!amount || isNaN(parseFloat(amount.replace(/[^0-9.]/g,'')))) errs.push('A valid amount is required.');
-  if(billable && !client) errs.push('Please select a client for billable expenses.');
-
-  if(errs.length){
-    errEl.textContent = errs.join(' ');
-    errEl.classList.add('visible');
-    return;
-  }
-  errEl.classList.remove('visible');
-
-  const sec = erModal.section;
-  const item = {
-    id: erModal.id || uid(),
-    date,
-    vendor,
-    purpose: document.getElementById('modal-purpose').value.trim(),
-    billable,
-    client: billable ? client : '',
-    amount: parseFloat(amount.replace(/[^0-9.]/g,'')).toFixed(2),
-    notes: document.getElementById('modal-notes-exp').value.trim()
-  };
-
-  if(!erState[sec]) erState[sec]=[];
-  if(erModal.id){
-    const idx = erState[sec].findIndex(r=>r.id===erModal.id);
-    if(idx>=0) erState[sec][idx]=item; else erState[sec].push(item);
-  } else {
-    erState[sec].push(item);
-  }
-
-  updatePeriodLock();
-  closeExpModal();
-  renderSection(sec);
-  updateTotals();
-  validateER();
-  scheduleSave();
+  const err=document.getElementById('sheet-err'),v=document.getElementById('modal-vendor').value.trim(),amt=document.getElementById('modal-amount').value,d=document.getElementById('modal-date').value,b=document.getElementById('modal-billable').checked,cl=document.getElementById('modal-client-sel').value;
+  const errs=[];if(!v)errs.push('Vendor is required.');if(!d)errs.push('Date is required.');if(!amt||isNaN(parseFloat(amt.replace(/[^0-9.]/g,''))))errs.push('A valid amount is required.');if(b&&!cl)errs.push('Please select a client.');
+  if(errs.length){err.textContent=errs.join(' ');err.classList.add('visible');return;}err.classList.remove('visible');
+  const item={id:erModal.id||uid(),date:d,vendor:v,purpose:document.getElementById('modal-purpose').value.trim(),billable:b,client:b?cl:'',amount:parseFloat(amt.replace(/[^0-9.]/g,'')).toFixed(2),notes:document.getElementById('modal-notes-exp').value.trim()};
+  const sec=erModal.section;if(!erState[sec])erState[sec]=[];
+  if(erModal.id){const i=erState[sec].findIndex(r=>r.id===erModal.id);if(i>=0)erState[sec][i]=item;else erState[sec].push(item);}
+  else erState[sec].push(item);
+  updatePeriodLock();closeExpModal();renderERSection(sec);updateERTotals();validateER();erScheduleSave();
 }
+function deleteExpense(sec,id){if(!confirm('Remove this expense?'))return;erState[sec]=(erState[sec]||[]).filter(r=>r.id!==id);updatePeriodLock();renderERSection(sec);updateERTotals();validateER();erScheduleSave();}
+document.getElementById('er-entry-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('er-entry-overlay'))closeExpModal()});
 
-function deleteExpense(sec, id){
-  if(!confirm('Remove this expense?')) return;
-  erState[sec] = (erState[sec]||[]).filter(r=>r.id!==id);
-  updatePeriodLock();
-  renderSection(sec);
-  updateTotals();
-  validateER();
-  scheduleSave();
-}
-
-/* Close sheet on overlay click */
-document.getElementById('er-entry-overlay').addEventListener('click', e=>{
-  if(e.target===document.getElementById('er-entry-overlay')) closeExpModal();
-});
-
-/* ── Receipt scanning ── */
+/* ── IMPROVED Receipt Scanning ── */
 async function openCameraModal(){
-  const input = document.createElement('input');
-  input.type='file'; input.accept='image/*'; // No capture= so user can choose camera OR library
-  input.onchange = async e=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    const btn = document.getElementById('modal-scan-btn');
-    const orig = btn.innerHTML;
-    btn.innerHTML = '⏳  Reading receipt...';
-    btn.disabled = true;
+  const input=document.createElement('input');input.type='file';input.accept='image/*'; // No capture= allows camera OR library
+  input.onchange=async e=>{
+    const file=e.target.files[0];if(!file)return;
+    const btn=document.getElementById('modal-scan-btn'),orig=btn.innerHTML;
+    btn.innerHTML='⏳&nbsp; Reading receipt…';btn.disabled=true;
     try{
-      const b64 = await new Promise((res,rej)=>{
-        const fr=new FileReader();
-        fr.onload=()=>res(fr.result.split(',')[1]);
-        fr.onerror=()=>rej();
-        fr.readAsDataURL(file);
-      });
-      const resp = await fetch('https://api.anthropic.com/v1/messages',{
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({
-          model:'claude-sonnet-4-20250514', max_tokens:500,
-          messages:[{role:'user',content:[
-            {type:'image',source:{type:'base64',media_type:file.type||'image/jpeg',data:b64}},
-            {type:'text',text:'Extract from this receipt: the date, vendor/store name, and total amount. Return ONLY valid JSON, no preamble or markdown: {"date":"YYYY-MM-DD","vendor":"name","amount":"XX.XX"}'}
-          ]}]
-        })
-      });
-      const data = await resp.json();
-      const txt = data.content.filter(c=>c.type==='text').map(c=>c.text).join('');
-      const parsed = JSON.parse(txt.replace(/```json|```/g,'').trim());
-      if(parsed.date) document.getElementById('modal-date').value=parsed.date;
-      if(parsed.vendor) document.getElementById('modal-vendor').value=parsed.vendor;
-      if(parsed.amount){ const a=parseFloat(String(parsed.amount).replace(/[^0-9.]/g,'')); if(!isNaN(a)) document.getElementById('modal-amount').value=a.toFixed(2); }
-      btn.innerHTML='✅  Receipt scanned!';
-      setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},2500);
-    } catch(err){
-      btn.innerHTML='❌  Could not read receipt';
-      setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},2200);
+      const b64=await new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>res(fr.result.split(',')[1]);fr.onerror=()=>rej();fr.readAsDataURL(file)});
+      const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:600,
+        messages:[{role:'user',content:[
+          {type:'image',source:{type:'base64',media_type:file.type||'image/jpeg',data:b64}},
+          {type:'text',text:`You are reading a receipt or invoice photo. The image may be taken at an angle, in low light, rotated, or partially obscured — do your best with what is visible.
+
+Extract these three fields:
+1. DATE: The transaction date. Format as YYYY-MM-DD. Look for printed dates near the top or bottom of the receipt. If only month/day is visible, use the current year.
+2. VENDOR: The business name — usually the largest text at the top of the receipt (restaurant, store, airline, hotel, rideshare service, etc.). Do NOT include the address.
+3. TOTAL: The final amount charged. Look for labels like "Total", "Grand Total", "Amount Due", "Total Due", "Balance Due", "Amount Charged", "Total Amount". This is the FINAL number after tax and tip — not a subtotal. If multiple totals appear, use the largest/final one.
+
+If a field is genuinely not visible or not present in the image, omit it from the JSON.
+
+Respond with ONLY a valid JSON object — no explanation, no markdown backticks:
+{"date":"YYYY-MM-DD","vendor":"Business Name","amount":"0.00"}`}
+        ]}]})});
+      const data=await resp.json();
+      const txt=(data.content||[]).filter(c=>c.type==='text').map(c=>c.text).join('');
+      const cleaned=txt.replace(/```json|```/g,'').replace(/^\s*[\r\n]/gm,'').trim();
+      const parsed=JSON.parse(cleaned);
+      if(parsed.date)document.getElementById('modal-date').value=parsed.date;
+      if(parsed.vendor)document.getElementById('modal-vendor').value=parsed.vendor;
+      if(parsed.amount){const a=parseFloat(String(parsed.amount).replace(/[^0-9.]/g,''));if(!isNaN(a))document.getElementById('modal-amount').value=a.toFixed(2);}
+      btn.innerHTML='✅&nbsp; Receipt scanned!';setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},2500);
+    }catch(err){
+      btn.innerHTML='❌&nbsp; Could not read — enter manually';
+      setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},2800);
     }
   };
   input.click();
 }
-
-/* ── Clear / Start Fresh ── */
-async function clearDraft(){
-  const total = (erState.cc||[]).length + (erState.reimb||[]).length;
-  const msg = total>0
-    ? `Clear all ${total} expense${total>1?'s':''} and start fresh?`
-    : 'Reset the expense report form?';
-  if(!confirm(msg)) return;
-  erState = {
-    staffName: document.getElementById('er-name').value,
-    period: '', periodLocked: false, cc:[], reimb:[]
-  };
-  document.getElementById('er-month').value='';
-  document.getElementById('er-month').disabled=false;
-  document.getElementById('er-period-lock').style.display='none';
-  renderAllExpenses();
-  updateTotals();
-  validateER();
-  const el=document.getElementById('er-save-status');
-  el.textContent='Draft cleared.';el.classList.add('visible');
-  clearTimeout(el._ft);el._ft=setTimeout(()=>el.classList.remove('visible'),3000);
-  try{ await window.storage.delete('jag_er_draft'); }catch(e){}
+async function clearERDraft(){
+  const tot=(erState.cc||[]).length+(erState.reimb||[]).length;
+  if(!confirm(tot>0?`Clear all ${tot} expense${tot>1?'s':''} and start fresh?`:'Reset expense form?'))return;
+  const name=document.getElementById('er-name').value,period=document.getElementById('er-month').value;
+  erState={staffName:name,period:'',periodLocked:false,cc:[],reimb:[]};
+  document.getElementById('er-month').value='';document.getElementById('er-month').disabled=false;document.getElementById('er-period-lock').style.display='none';
+  renderAllExpenses();updateERTotals();validateER();
+  const el=document.getElementById('er-save-status');el.textContent='Draft cleared.';el.classList.add('visible');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('visible'),3000);
+  if(name&&period){try{await window.storage.delete(erStorageKey(name,period),true);}catch(e){}}
 }
 
-/* ══════════════════════════════════════════
-   EXPENSE REPORT — EXCEL EXPORT & SUBMIT
-══════════════════════════════════════════ */
-function getStateRows(sec){
-  return (erState[sec]||[]).map(r=>[
-    r.date, r.vendor, r.purpose,
-    r.billable?'Yes':'No',
-    r.billable?r.client:'',
-    parseFloat(r.amount)||0,
-    r.notes
-  ]);
-}
-
+/* ── Export & Submit ── */
+function getERRows(sec){return(erState[sec]||[]).map(r=>[r.date,r.vendor,r.purpose,r.billable?'Yes':'No',r.billable?r.client:'',parseFloat(r.amount)||0,r.notes])}
 function exportExcel(){
-  if(!window.XLSX){alert('Excel library not loaded. Please try again.');return null;}
-  const name=document.getElementById('er-name').value||'Unknown';
-  const month=document.getElementById('er-month').value||'Unknown Period';
+  if(!window.XLSX){alert('Excel library not loaded.');return null;}
+  const name=document.getElementById('er-name').value||'Unknown',month=document.getElementById('er-month').value||'Unknown Period';
   const hdrs=['Date','Vendor / Place','Biz Purpose / Meeting','Billable?','Client, if Billable','Amount','Notes'];
-  const ccRows=getStateRows('cc'), rRows=getStateRows('reimb');
-  const ccTot=ccRows.reduce((s,r)=>s+(r[5]||0),0), rTot=rRows.reduce((s,r)=>s+(r[5]||0),0);
-  const wsData=[
-    ['J.A. GREEN & COMPANY — MONTHLY EXPENSE REPORT'],[],
-    ['Staff Member:',name,'','Billing Period:',month],[],[],
-    ['JAG CREDIT CARD'],hdrs,...ccRows,
-    ['','','','','','Total:',ccTot],[],[],
-    ['REIMBURSEMENTS'],hdrs,...rRows,
-    ['','','','','','Total:',rTot],[],[],
-    ['','','','','','GRAND TOTAL:',ccTot+rTot]
-  ];
-  const ws=XLSX.utils.aoa_to_sheet(wsData);
-  ws['!cols']=[{wch:12},{wch:22},{wch:28},{wch:10},{wch:24},{wch:10},{wch:25}];
+  const ccR=getERRows('cc'),rR=getERRows('reimb'),ccT=ccR.reduce((s,r)=>s+(r[5]||0),0),rT=rR.reduce((s,r)=>s+(r[5]||0),0);
+  const wsData=[['J.A. GREEN & COMPANY — MONTHLY EXPENSE REPORT'],[],['Staff Member:',name,'','Billing Period:',month],[],[],['JAG CREDIT CARD'],hdrs,...ccR,['','','','','','Total:',ccT],[],[],['REIMBURSEMENTS'],hdrs,...rR,['','','','','','Total:',rT],[],[],['','','','','','GRAND TOTAL:',ccT+rT]];
+  const ws=XLSX.utils.aoa_to_sheet(wsData);ws['!cols']=[{wch:12},{wch:22},{wch:28},{wch:10},{wch:24},{wch:10},{wch:25}];
   const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Expense Report');
   const fname=`JAG_Expense_${name.replace(/\s+/g,'_')}_${month.replace(/[^a-zA-Z0-9]/g,'_').replace(/_+/g,'_')}.xlsx`;
   XLSX.writeFile(wb,fname);return fname;
 }
-
 let pendingERMailto='';
 function submitER(){
-  const name=document.getElementById('er-name').value;
-  const month=document.getElementById('er-month').value;
+  const name=document.getElementById('er-name').value,month=document.getElementById('er-month').value;
   if(!name){alert('Please select a staff member.');return;}
   const fname=exportExcel();if(!fname)return;
-  const ccTot=(erState.cc||[]).reduce((s,r)=>s+(parseFloat(r.amount)||0),0);
-  const rTot=(erState.reimb||[]).reduce((s,r)=>s+(parseFloat(r.amount)||0),0);
+  const ccT=(erState.cc||[]).reduce((s,r)=>s+(parseFloat(r.amount)||0),0),rT=(erState.reimb||[]).reduce((s,r)=>s+(parseFloat(r.amount)||0),0);
   const subj=`Expense Report \u2014 ${name} \u2014 ${month}`;
-  const body=`JAG Administration,\n\nPlease find attached the monthly expense report:\n\nStaff Member: ${name}\nBilling Period: ${month}\n\nJAG Credit Card Total: $${ccTot.toFixed(2)}\nReimbursements Total: $${rTot.toFixed(2)}\nGrand Total: $${(ccTot+rTot).toFixed(2)}\n\nNOTE: The Excel file (${fname}) has been downloaded — please attach it before sending.\n\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
+  const body=`JAG Administration,\n\nPlease find attached the monthly expense report:\n\nStaff Member: ${name}\nBilling Period: ${month}\n\nJAG Credit Card Total: $${ccT.toFixed(2)}\nReimbursements Total: $${rT.toFixed(2)}\nGrand Total: $${(ccT+rT).toFixed(2)}\n\nNOTE: The Excel file (${fname}) has been downloaded — please attach it before sending.\n\nSubmitted: ${new Date().toLocaleString()}\n\nThank you.`;
   pendingERMailto=`mailto:jagadmin@jagreenco.com?cc=${encodeURIComponent('jennifer@jagreenco.com')}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
   document.getElementById('er-fname-display').textContent=fname;
   document.getElementById('er-modal-overlay').classList.add('open');
 }
 document.getElementById('er-modal-close').addEventListener('click',()=>document.getElementById('er-modal-overlay').classList.remove('open'));
-document.getElementById('er-modal-open').addEventListener('click',()=>{window.location.href=pendingERMailto;document.getElementById('er-modal-overlay').classList.remove('open');});
+document.getElementById('er-modal-open').addEventListener('click',()=>{window.location.href=pendingERMailto;document.getElementById('er-modal-overlay').classList.remove('open')});
 
-/* ══════════════════════════════════════════
-   INIT
-══════════════════════════════════════════ */
-(function init(){
-  // Build billing period dropdown
-  const sel=document.getElementById('er-month');
-  const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const now=new Date(),d=now.getDate(),m=now.getMonth(),y=now.getFullYear();
-  let defM=m,defY=y; if(d>20){defM++;if(defM>11){defM=0;defY++;}}
-  for(let yr=2024;yr<=2028;yr++){
-    for(let mo=0;mo<12;mo++){
-      const sM=(mo+11)%12,sY=mo===0?yr-1:yr;
-      const label=`${mn[sM]} 21, ${sY} \u2013 ${mn[mo]} 20, ${yr}`;
-      const opt=document.createElement('option');opt.value=label;opt.textContent=label;
-      if(yr===defY&&mo===defM)opt.selected=true;
-      sel.appendChild(opt);
+/* ═══════════════════════════════════
+   SCORECARD
+═══════════════════════════════════ */
+let scState={scorer:'',clientName:'',date:'',context:'',scores:{},notes:{}},scSaveTimer=null;
+
+function scStorageKey(scorer){return('jag_sc_draft_'+(scorer||'').replace(/[^a-zA-Z0-9]/g,'_')).slice(0,190)}
+
+async function loadSCDraft(){
+  const scorer=document.getElementById('sc-scorer').value;if(!scorer)return;
+  try{
+    const r=await window.storage.get(scStorageKey(scorer),true);
+    if(r){const d=JSON.parse(r.value);scState={...scState,...d};
+      document.getElementById('sc-client-name').value=scState.clientName||'';
+      document.getElementById('sc-date').value=scState.date||'';
+      document.getElementById('sc-context').value=scState.context||'';
+      SC_CRITERIA.forEach(([key])=>{
+        const sel=document.getElementById('sc-sel-'+key);
+        if(sel)sel.value=scState.scores[key]||'';
+        const ta=document.getElementById('sc-note-'+key);
+        if(ta)ta.value=scState.notes[key]||'';
+        if(scState.scores[key])updateScBar(key,scState.scores[key]);
+      });
+      updateSCTotal();
+      showSaveStatus('sc-save-status',d.savedAt,true);
     }
-  }
+  }catch(e){}
+  validateSC();
+}
 
-  // Populate client select in entry modal
-  buildClientSelect();
+function scScheduleSave(){clearTimeout(scSaveTimer);scSaveTimer=setTimeout(persistSCDraft,1000)}
+async function persistSCDraft(){
+  const scorer=document.getElementById('sc-scorer').value;if(!scorer)return;
+  try{
+    scState.scorer=scorer;scState.clientName=document.getElementById('sc-client-name').value;
+    scState.date=document.getElementById('sc-date').value;scState.context=document.getElementById('sc-context').value;scState.savedAt=Date.now();
+    await window.storage.set(scStorageKey(scorer),JSON.stringify(scState),true);
+    showSaveStatus('sc-save-status',scState.savedAt,false);
+  }catch(e){}
+}
+function scAutoSave(){scScheduleSave();updateSCTotal();validateSC()}
 
-  // Load any saved draft
-  loadDraft();
+function buildScorecard(){
+  const wrap=document.getElementById('sc-criteria-wrap');
+  wrap.innerHTML=SC_CRITERIA.map(([key,label,desc],i)=>`
+    <div class="sc-card">
+      <div class="sc-card-head">
+        <div class="sc-num">${i+1}</div>
+        <div class="sc-card-body"><div class="sc-crit-label">${label}</div><div class="sc-crit-desc">${desc}</div></div>
+      </div>
+      <div class="sc-score-row">
+        <select class="sc-score-sel" id="sc-sel-${key}" onchange="onSCScore('${key}',this.value)">
+          <option value="">—</option>${[1,2,3,4,5,6,7,8,9,10].map(n=>`<option value="${n}">${n}</option>`).join('')}
+        </select>
+        <div class="sc-score-bar-wrap"><div class="sc-score-bar" id="sc-bar-${key}"></div></div>
+      </div>
+      <button class="sc-notes-btn" onclick="toggleSCNotes('${key}')">+ Add notes for this criterion</button>
+      <div class="sc-notes-field" id="sc-notewrap-${key}"><textarea id="sc-note-${key}" placeholder="Optional notes…" oninput="scState.notes['${key}']=this.value;scScheduleSave()" rows="2"></textarea></div>
+    </div>`).join('');
+  buildSCGrid();
+}
 
-  // Topbar height fix
-  function setTH(){document.documentElement.style.setProperty('--topbar-h',document.getElementById('topbar').offsetHeight+'px')}
+function onSCScore(key,val){
+  scState.scores[key]=val?parseInt(val):null;
+  updateScBar(key,val);updateSCTotal();validateSC();scScheduleSave();
+}
+function updateScBar(key,val){
+  const bar=document.getElementById('sc-bar-'+key);if(!bar)return;
+  const v=parseInt(val)||0;
+  bar.style.width=(v*10)+'%';
+  bar.style.background=v>=8?'#C8A951':v>=6?'#145a32':v>=4?'#e6a817':v>0?'#c0392b':'transparent';
+}
+function toggleSCNotes(key){const w=document.getElementById('sc-notewrap-'+key),btn=w.previousElementSibling;w.style.display=w.style.display==='block'?'none':'block';btn.textContent=w.style.display==='block'?'− Hide notes':'+ Add notes for this criterion'}
+
+function buildSCGrid(){
+  document.getElementById('sc-score-grid').innerHTML=SC_CRITERIA.map(([key,label])=>`<div class="sc-score-item"><span class="sc-score-item-label">${label}</span><span class="sc-score-item-val" id="sc-grid-${key}">—</span></div>`).join('');
+}
+
+function updateSCTotal(){
+  let total=0,scored=0;
+  SC_CRITERIA.forEach(([key,label])=>{
+    const v=parseInt(document.getElementById('sc-sel-'+key)?.value)||0;
+    total+=v;if(v>0)scored++;
+    const g=document.getElementById('sc-grid-'+key);if(g)g.textContent=v>0?`${v}/10`:'—';
+  });
+  document.getElementById('sc-total-display').textContent=`${total} / 50`;
+  const rec=document.getElementById('sc-recommendation');
+  rec.className='sc-recommendation';
+  if(scored<SC_CRITERIA.length){rec.className+=' sc-rec-pending';rec.textContent='⏳  Score all '+SC_CRITERIA.length+' criteria to generate recommendation ('+scored+'/'+SC_CRITERIA.length+' scored)';}
+  else if(total>=40){rec.className+=' sc-rec-strong';rec.innerHTML='✅&nbsp; <strong>Strong Recommendation</strong> — Score '+total+'/50. Proceed with engagement.'}
+  else if(total>=32){rec.className+=' sc-rec-conditional';rec.innerHTML='⚡&nbsp; <strong>Conditional Recommendation</strong> — Score '+total+'/50. Address flagged items before proceeding.'}
+  else if(total>=22){rec.className+=' sc-rec-borderline';rec.innerHTML='⚠️&nbsp; <strong>Borderline</strong> — Score '+total+'/50. Additional diligence required before decision.'}
+  else{rec.className+=' sc-rec-no';rec.innerHTML='❌&nbsp; <strong>Do Not Recommend at This Time</strong> — Score '+total+'/50. Significant concerns present.'}
+}
+function validateSC(){document.getElementById('sc-submit').disabled=!(document.getElementById('sc-scorer').value&&document.getElementById('sc-client-name').value.trim()&&document.getElementById('sc-send-to').value)}
+
+document.getElementById('sc-scorer').addEventListener('change',()=>{loadSCDraft();validateSC()});
+
+function buildSCEmailBody(){
+  const scorer=document.getElementById('sc-scorer').value,client=document.getElementById('sc-client-name').value,date=document.getElementById('sc-date').value,context=document.getElementById('sc-context').value;
+  let total=0;SC_CRITERIA.forEach(([key])=>{total+=parseInt(document.getElementById('sc-sel-'+key)?.value)||0});
+  const rec=total>=80?'STRONG RECOMMENDATION — Proceed with engagement':total>=65?'CONDITIONAL RECOMMENDATION — Address flagged items':total>=45?'BORDERLINE — Additional diligence required':'DO NOT RECOMMEND AT THIS TIME';
+  const lines=[`Garrett,`,``,`Please find below the prospective client scorecard for your review.`,``,`PROSPECTIVE CLIENT: ${client}`,`EVALUATED BY: ${scorer}`,`DATE: ${date||'—'}`,``,`SCORING SUMMARY (1–10 per criterion):`,`─────────────────────────────────────`];
+  SC_CRITERIA.forEach(([key,label])=>{const v=parseInt(document.getElementById('sc-sel-'+key)?.value)||0;const n=scState.notes[key];lines.push(label.padEnd(35)+(v?v+'/10':'—')+(n?'   Note: '+n:''))});
+  lines.push('─────────────────────────────────────',`TOTAL SCORE:                       ${total}/100`,``,`RECOMMENDATION: ${rec}`,``);
+  if(context){lines.push(`BACKGROUND & CONTEXT:`,context,``)}
+  lines.push(`Submitted: ${new Date().toLocaleString()}`);
+  return lines.join('\n');
+}
+
+let pendingSCMailto='';
+function submitScorecard(){
+  const client=document.getElementById('sc-client-name').value.trim(),
+        scorer=document.getElementById('sc-scorer').value,
+        date=document.getElementById('sc-date').value,
+        sendTo=document.getElementById('sc-send-to').value;
+  const email=sendTo.split(' ')[0].toLowerCase()+'@jagreenco.com';
+  const body=buildSCEmailBody();
+  const subj=`Prospect Scorecard \u2014 ${client} \u2014 ${date||new Date().toLocaleDateString()}`;
+  document.getElementById('sc-preview').textContent=body.slice(0,600)+(body.length>600?'\n…(see full email)':'');
+  document.getElementById('sc-modal-recipient').textContent=`Addressed to ${sendTo} — ${email}`;
+  pendingSCMailto=`mailto:${email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('sc-modal-overlay').classList.add('open');
+}
+document.getElementById('sc-modal-close').addEventListener('click',()=>document.getElementById('sc-modal-overlay').classList.remove('open'));
+document.getElementById('sc-modal-open').addEventListener('click',()=>{window.location.href=pendingSCMailto;document.getElementById('sc-modal-overlay').classList.remove('open')});
+async function clearSCDraft(){
+  if(!confirm('Start a new scorecard? This will clear the current draft.'))return;
+  const scorer=document.getElementById('sc-scorer').value;
+  scState={scorer:'',clientName:'',date:'',context:'',scores:{},notes:{}};
+  document.getElementById('sc-client-name').value='';document.getElementById('sc-date').value=todayStr();document.getElementById('sc-context').value='';
+  SC_CRITERIA.forEach(([key])=>{const s=document.getElementById('sc-sel-'+key);if(s)s.value='';updateScBar(key,0);const n=document.getElementById('sc-note-'+key);if(n)n.value='';});
+  updateSCTotal();validateSC();
+  if(scorer)try{await window.storage.delete(scStorageKey(scorer),true);}catch(e){}
+}
+
+/* ═══════════════════════════════════
+   INIT
+═══════════════════════════════════ */
+(function init(){
+  // Billing period options
+  const sel=document.getElementById('er-month'),mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const now=new Date(),d=now.getDate(),m=now.getMonth(),y=now.getFullYear();
+  let defM=m,defY=y;if(d>20){defM++;if(defM>11){defM=0;defY++;}}
+  for(let yr=2024;yr<=2028;yr++){for(let mo=0;mo<12;mo++){const sM=(mo+11)%12,sY=mo===0?yr-1:yr,label=`${mn[sM]} 21, ${sY} \u2013 ${mn[mo]} 20, ${yr}`,opt=document.createElement('option');opt.value=label;opt.textContent=label;if(yr===defY&&mo===defM)opt.selected=true;sel.appendChild(opt);}}
+  // Client select in expense modal
+  buildClientSel();
+  // Build scorecard criteria
+  buildScorecard();
+  // Set scorecard date default
+  document.getElementById('sc-date').value=todayStr();
+  // Topbar height
+  const setTH=()=>document.documentElement.style.setProperty('--topbar-h',document.getElementById('topbar').offsetHeight+'px');
   setTH();setTimeout(setTH,100);window.addEventListener('resize',setTH);
-
-  // Keyboard: Escape closes modals
+  // Escape key
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){
       closeExpModal();
       document.getElementById('modal-overlay').classList.remove('open');
       document.getElementById('ws-modal-overlay').classList.remove('open');
+      document.getElementById('sc-modal-overlay').classList.remove('open');
     }
   });
 })();
